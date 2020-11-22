@@ -57,7 +57,7 @@ app.get("/api/v1", (req, res) => {
 });
 
 //Publish
-app.use("/api/v1/publish", verifyCookieToken, publishStory);
+app.use("/api/v1/publish", publishStory);
 
 //Auth
 app.use("/api/v1/auth", auth);

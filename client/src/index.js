@@ -32,6 +32,8 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
+//Avoiding console.log in production mode
+if (process.env.NODE_ENV !== "development") console.log = () => {};
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>

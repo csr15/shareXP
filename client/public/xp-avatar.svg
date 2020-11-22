@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="346.444" height="347.009" viewBox="0 0 346.444 347.009">
+  <g id="xp-avatar" transform="translate(-787 -366.424)">
+    <g id="Rectangle_15" data-name="Rectangle 15" transform="translate(787 367)" fill="#8e27f6" stroke="#707070" stroke-width="1">
+      <rect width="346" height="346" rx="35" stroke="none"/>
+      <rect x="0.5" y="0.5" width="345" height="345" rx="34.5" fill="none"/>
+    </g>
+    <text id="XP" transform="matrix(0.799, -0.602, 0.602, 0.799, 968.997, 677.494)" fill="#fff" font-size="128" font-family="Poppins-Bold, Poppins" font-weight="700"><tspan x="0" y="0">XP</tspan></text>
+    <path id="Icon_metro-power" data-name="Icon metro-power" d="M94.069,1.928l-91.5,122h91.5L2.571,275.309l244-181.883h-122l91.5-91.5Z" transform="translate(835.429 364.496)" fill="#fff"/>
+  </g>
+</svg>

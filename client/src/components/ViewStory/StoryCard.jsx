@@ -128,7 +128,7 @@ const StoryCard = React.memo(({ storyData }) => {
 
   const shareStoryHandler = () => {
     navigator.clipboard.writeText(
-      `http://localhost:3000/sharedStory/${storyData._id}`
+      `https://sharexp.netlify.app/sharedStory/${storyData._id}`
     );
     setLinkCopied(true);
     setTimeout(() => {
