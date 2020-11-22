@@ -1,0 +1,220 @@
+@import "../../utilities/scss-variables/variables";
+.xp-auth {
+  margin: 0px;
+
+  .xp-auth-img {
+    background-image: url("../../Assets/shareXP-draw.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    color: transparent;
+    @extend .xp-center;
+    height: 100%;
+    background-color: $xp-pri;
+
+    p {
+      color: transparent;
+    }
+  }
+
+  .col-md-7 {
+    overflow-y: scroll;
+    height: calc(100vh - 70px);
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      transition: all 0.3s ease;
+    }
+    &::-webkit-scrollbar-track {
+      background: $xp-editor;
+      cursor: pointer;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: $xp-border;
+    }
+    .nav {
+      margin: 15px auto 10px auto;
+      justify-content: center;
+      border: none;
+      -webkit-user-select: none;
+      p {
+        border: none;
+        margin: 0px auto;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-bottom: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+    }
+    .xp-auth-form-group {
+      padding: 10px 10px;
+      h4 {
+        text-align: center;
+        color: $xp-title;
+        margin: 10px auto;
+        font-family: $xp-serif;
+      }
+      .xp-auth-form {
+        margin: 20px auto;
+        .xp-auth-input {
+          margin: 10px auto 10px auto;
+          width: 65%;
+
+          label {
+            color: $xp-accent;
+            font-size: 14px;
+            text-transform: none;
+            margin: 5px auto;
+
+            span {
+              font-size: 12px;
+              // color: lighten($color: #000000, $amount: 70%);
+            }
+          }
+          input {
+            display: block;
+            border: 1px solid $xp-border;
+            background: $xp-editor;
+            padding: 15px 10px;
+            color: $xp-black;
+            font-family: $xp-pop;
+            text-transform: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 7px;
+            width: 100%;
+            transition: all 0.3s ease;
+
+            &:hover {
+              background: darken($color: $xp-editor, $amount: 5%);
+            }
+
+            &:focus {
+              outline: none !important;
+              border-color: $xp-pri;
+            }
+          }
+          ::placeholder {
+            color: $xp-accent;
+            font-weight: 400;
+          }
+          .xp-error {
+            color: $xp-danger;
+            font-family: $xp-pop;
+            text-transform: none;
+            font-size: 12px;
+            margin: 5px 15px 5px auto;
+          }
+          .xp-auth-password-wrapper {
+            @extend .xp-center;
+            border: 1px solid $xp-border;
+            background: $xp-editor;
+            color: $xp-black;
+            font-family: $xp-pop;
+            text-transform: none;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 7px;
+            width: 100%;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            &:hover {
+              background: darken($color: $xp-editor, $amount: 5%);
+            }
+            &:focus {
+              border-color: $xp-pri;
+            }
+            img {
+              width: 20px;
+              opacity: 0.5;
+              margin: auto 15px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              position: relative;
+
+              &:hover {
+                opacity: 1;
+              }
+            }
+            input {
+              border: none;
+              border-radius: 0px;
+
+              &:focus {
+                outline: none !important;
+              }
+            }
+          }
+        }
+        button {
+          @extend .xp-btn-primary;
+          background: $xp-pri;
+          margin: 15px auto;
+        }
+      }
+      .xp-auth-authO {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        i {
+          font-size: 2.5rem !important;
+          margin: 5px 20px;
+          color: $xp-accent;
+          transition: all 0.3s ease;
+          cursor: pointer;
+
+          &:hover {
+            color: $xp-sec;
+          }
+        }
+      }
+    }
+  }
+}
+.alert-popup {
+  position: fixed;
+  top: 7%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: alert_reveal 0.3s linear;
+}
+
+@media (max-width: 991px) {
+  .xp-auth {
+    .col-md-7 {
+      .xp-auth-form-group {
+        .xp-auth-form {
+          .xp-auth-input {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-auth {
+    .xp-auth-img {
+      display: none;
+    }
+    .col-md-7 {
+      height: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+@keyframes alert_reveal {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 7%;
+  }
+}

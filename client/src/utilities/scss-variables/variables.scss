@@ -1,0 +1,140 @@
+//Google Fonts CDN
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+//Fonts
+$xp-pop: "Poppins", sans-serif;
+$xp-serif: "DM Serif Display", serif;
+
+//Colors
+$xp-pri: #8e27f6;
+$xp-sec: #fca311;
+$xp-shade: #d3a8ff;
+$xp-accent: #686b78;
+$xp-title: #3c383f;
+$xp-white: #ffffff;
+$xp-black: #000000;
+$xp-black-alt: #242323;
+$xp-border: #ebebeb;
+$xp-story-border: #c5c5c5;
+$xp-editor: #f5f5f5;
+$xp-tag: #F2F2F2;
+$xp-danger: #ee3902;
+
+//Default Configuration
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $xp-pop;
+  font-weight: 500;
+  color: $xp-black;
+}
+
+p,
+a {
+  font-size: 14px;
+  font-family: $xp-pop;
+  color: $xp-accent;
+  text-decoration: none;
+}
+
+button {
+  &:hover {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.xp-btn-primary {
+  background: $xp-pri;
+  color: $xp-white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: $xp-pop;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  &:hover {
+    transition: all 0.3s ease;
+    background: darken($color: $xp-pri, $amount: 8%);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.xp-btn-secondary {
+  background: transparent !important;
+  color: $xp-pri;
+  padding: 8px 25px;
+  border: 1px solid $xp-pri;
+  border-radius: 50px;
+  font-family: $xp-pop;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  &:hover {
+    transition: all 0.3s ease;
+    color: darken($color: $xp-pri, $amount: 10%);
+    border-color: darken($color: $xp-pri, $amount: 10%);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.xp-btn-primary-outline {
+  background: $xp-shade;
+  color: $xp-pri;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 50px;
+  font-family: $xp-pop;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+
+  &:hover {
+    transition: all 0.3s ease;
+    background: $xp-pri;
+    color: $xp-white;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+.xp-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//Categories wrapper
+.xp-categories-wrapper {
+  color: $xp-black-alt;
+  font-size: 12px;
+  border: none;
+  background-color: $xp-tag;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 0px;
+  white-space: nowrap;
+}
+@media (min-width: 250px) and (max-width: 500px) {
+  .xp-btn-secondary {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}

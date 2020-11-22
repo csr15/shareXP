@@ -1,0 +1,65 @@
+@import "../../utilities/scss-variables/variables";
+
+.xp-modal {
+  width: 50vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  background-color: $xp-white;
+  height: auto;
+  padding: 20px 20px;
+  text-align: center;
+  border-radius: 12px;
+
+  h6 {
+    color: $xp-black-alt;
+    font-weight: 600;
+    margin: 10px auto;
+    text-transform: none;
+    margin-bottom: 15px;
+
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+
+  .xp-modal-buttons {
+    .btn-primary {
+      @extend .xp-btn-primary;
+      margin: auto 10px;
+    }
+    .btn-secondary {
+      @extend .xp-btn-secondary;
+      margin: auto 10px;
+    }
+  }
+
+  .xp-modal-progress {
+    h6 {
+      color: $xp-title;
+
+      i {
+        font-size: 1.5rem !important;
+        margin-left: 7px;
+        animation: rocket_launch 1.5s linear infinite;
+      }
+    }
+    .progress {
+      margin: 15px auto 0px auto;
+      background: $xp-border;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    .progress-bar {
+      background: $xp-sec;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-modal {
+    width: 80vw;
+  }
+}

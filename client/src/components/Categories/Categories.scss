@@ -1,0 +1,31 @@
+@import "../../utilities/scss-variables/variables";
+
+.xp-categories {
+  margin: 0px auto 10px auto;
+  background: transparent;
+
+  h5 {
+    font-weight: 400;
+    color: $xp-title;
+    margin: 7px auto;
+  }
+  .xp-categories-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: all 0.3s ease;
+
+    p {
+      @extend .xp-categories-wrapper;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        color: $xp-sec;
+        transition: all 0.3s ease;
+        border-color: $xp-sec;
+      }
+    }
+  }
+}

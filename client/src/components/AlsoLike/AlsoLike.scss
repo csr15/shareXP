@@ -1,0 +1,51 @@
+@import "../../utilities/scss-variables/variables";
+
+.also_like {
+  background: $xp-white;
+  border: 1px solid $xp-border;
+  padding: 10px;
+  margin: 10px 0px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  p {
+    color: $xp-accent;
+    font-family: $xp-pop;
+    font-weight: 600;
+  }
+
+  .xp-also_like-reaction {
+    @extend .xp-center;
+    justify-content: flex-start;
+    margin: 5px auto;
+
+    .xp-also_like-img,
+    .xp-also_view-img {
+      @extend .xp-center;
+
+      img {
+        width: 15px;
+        opacity: 0.5;
+      }
+
+      span {
+        color: $xp-accent;
+        font-family: $xp-pop;
+        font-size: 12px;
+        margin-left: 3px;
+      }
+    }
+    .xp-also_view-img {
+      margin-left: 20px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+    border-color: transparent;
+
+    p{
+        color: $xp-title;
+    }
+  }
+}

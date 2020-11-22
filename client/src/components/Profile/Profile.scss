@@ -1,0 +1,488 @@
+@import "../../utilities/scss-variables/variables";
+
+h6 {
+  color: $xp-black;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.xp-profile-tabs {
+  margin-bottom: 15px;
+
+  .nav-tabs .nav-item.show .nav-link,
+  .nav-tabs .nav-link.active {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid $xp-pri;
+  }
+
+  p {
+    margin: 0px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+}
+
+.xp-profile-tabs-mobile {
+  display: none;
+  @extend .xp-center;
+  justify-content: space-between;
+  border-bottom: 1px solid $xp-story-border;
+  padding: 3px 5px 10px 5px;
+
+  button {
+    border-color: $xp-accent;
+    color: $xp-accent;
+    font-size: 14px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+  }
+  .dropdown-menu {
+    transition: all 0.3s ease;
+    p {
+      cursor: pointer;
+      &:hover {
+        color: $xp-pri;
+      }
+    }
+  }
+}
+
+.xp-profile-social_media-wrapper {
+  @extend .xp-center;
+  justify-content: flex-start;
+  margin: 10px 8px 10px 0px;
+  background: $xp-white;
+  padding: 0px;
+  border: 1px solid $xp-story-border;
+  border-radius: 7px;
+
+  &:hover {
+    border-color: $xp-accent;
+    transition: all 0.3s ease;
+  }
+
+  i {
+    color: $xp-accent;
+    font-size: 1.8rem !important;
+    margin: auto 10px auto 10px;
+  }
+  input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 0.9rem 0.5rem;
+    border-left: 1px solid $xp-story-border;
+    font-family: $xp-pop;
+    font-size: 14px;
+    color: $xp-black-alt;
+    flex: 1;
+
+    &:focus {
+      border-color: $xp-accent;
+      outline: none;
+      box-shadow: none;
+      transition: all 0.3s ease;
+    }
+  }
+}
+
+.xp-wrapper {
+  @extend .xp-center;
+  justify-content: space-between;
+  button {
+    border-radius: 7px;
+    padding: 0.7rem 1rem;
+    border-color: $xp-story-border;
+
+    i {
+      font-size: 1.5rem !important;
+      color: $xp-accent;
+    }
+  }
+}
+
+.xp-profile {
+  .xp-profile-img-bg {
+    background: $xp-pri;
+    height: 15vh;
+    position: relative;
+    margin: 0px auto 30px auto;
+
+    .xp-profile-img {
+      img {
+        position: absolute;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 5px solid $xp-white;
+        background-color: $xp-pri;
+      }
+
+      h6 {
+        color: transparent;
+        user-select: none;
+      }
+    }
+  }
+
+  .xp-profile-title {
+    margin: 60px auto 10px auto;
+    h1 {
+      font-family: $xp-serif;
+      text-transform: capitalize;
+      margin: 5px auto;
+    }
+    h6 {
+      color: $xp-accent;
+      text-transform: none;
+      font-style: italic;
+      margin: 2px auto 15px auto;
+    }
+    p {
+      text-transform: lowercase;
+      margin: 5px auto;
+      line-height: 24px;
+
+      span {
+        color: $xp-pri;
+        font-size: 20px;
+      }
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+    // .xp-profile-working_exp {
+    //   margin-top: 10px;
+    //   font-style: italic;
+    //   span {
+    //     font-weight: 600;
+    //     color: $xp-black;
+    //   }
+    // }
+  }
+  .xp-profile-activity {
+    margin: 40px auto;
+    width: 70%;
+
+    .xp-profile-story {
+      .xp-no_post {
+        margin-top: 20px;
+        background: $xp-editor;
+        padding: 1rem;
+        @extend .xp-center;
+        flex-direction: column;
+        height: 30vh;
+
+        h6 {
+          color: $xp-black;
+        }
+        button {
+          @extend .xp-btn-primary-outline;
+          margin-top: 5px;
+        }
+      }
+    }
+    .xp-profile-details {
+      .xp-profile-description {
+        position: relative;
+
+        .xp-desc-edit {
+          button {
+            position: absolute;
+            bottom: 10%;
+            right: 1%;
+            border-radius: 7px;
+            border: none;
+            padding: 0rem;
+
+            i {
+              color: $xp-accent;
+              font-size: 1.5rem !important;
+            }
+          }
+        }
+        textarea {
+          width: 100%;
+          height: 30vh;
+          margin: 10px auto;
+          border: 1px solid $xp-story-border;
+          background: $xp-white;
+          font-family: $xp-pop;
+          font-size: 14px;
+          line-height: 24px;
+          padding: 0.5rem;
+          transition: all 0.3s ease;
+          border-radius: 7px;
+          color: $xp-black-alt;
+
+          &:hover {
+            border-color: $xp-accent;
+            transition: all 0.3s ease;
+          }
+
+          &:focus {
+            border-color: $xp-accent;
+            outline: none;
+            box-shadow: none;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+      .xp-profile-status {
+        margin: 10px auto 20px auto;
+        input {
+          width: 100%;
+          padding: 0.9rem 0.5rem;
+          border: 1px solid $xp-story-border;
+          font-family: $xp-pop;
+          font-size: 14px;
+          color: $xp-accent;
+          background: $xp-white;
+          border-radius: 7px;
+          margin: auto 10px auto 0px;
+          color: $xp-black-alt;
+
+          &:focus {
+            border-color: $xp-accent;
+            outline: none;
+            box-shadow: none;
+            transition: all 0.3s ease;
+          }
+        }
+      }
+      .xp-profile-social_media {
+        margin: 10px auto;
+        ::placeholder {
+          text-transform: lowercase;
+        }
+        .xp-facebook,
+        .xp-linked_in,
+        .xp-mail,
+        .xp-website {
+          flex: 1;
+          @extend .xp-profile-social_media-wrapper;
+        }
+      }
+      .xp-profile-avatar {
+        user-select: none;
+        .xp-profile-avatar-layout {
+          display: flex;
+          width: 100%;
+          .xp-profile-avatar_wrapper {
+            width: 80%;
+            flex: 1;
+            margin: 0px;
+            label {
+              cursor: pointer;
+              background: $xp-white;
+              border: 1px solid $xp-story-border;
+              font-size: 12px;
+              padding: 15px 10px;
+              border-radius: 7px;
+              @extend .xp-center;
+              color: $xp-accent;
+              font-family: $xp-pop;
+              font-weight: 500;
+              margin: 5px;
+
+              i {
+                font-size: 1.2rem !important;
+                color: $xp-accent;
+              }
+
+              input {
+                display: none;
+              }
+            }
+          }
+
+          .xp-profile-avatar_delete {
+            width: 80%;
+            flex: 1;
+            margin: 0px;
+            p {
+              font-size: 12px;
+              color: $xp-accent;
+              font-family: $xp-pop;
+              font-weight: 500;
+              width: 100%;
+              flex: 1;
+              cursor: pointer;
+              background: $xp-white;
+              border: 1px solid $xp-story-border;
+              padding: 15px 10px;
+              border-radius: 7px;
+              @extend .xp-center;
+              margin: 5px;
+            }
+          }
+        }
+      }
+    }
+    .xp-profile-total_reactions {
+      margin: 20px auto;
+    }
+    .xp-story-total_reactions-container {
+      @extend .xp-center;
+
+      .xp-profile-total_reactions-card {
+        border: 1px solid $xp-story-border;
+        padding: 0.2rem;
+        background: $xp-white;
+        text-align: center;
+        width: 50%;
+        margin: 7px 10px;
+        position: relative;
+
+        img {
+          width: 25px;
+          opacity: 0.4;
+          margin: 7px auto;
+          transform: translateY(0px);
+        }
+
+        h6 {
+          font-weight: 600;
+          color: $xp-accent;
+          margin: 5px auto;
+          font-size: 14px !important;
+        }
+
+        p {
+          font-weight: 500;
+          text-transform: uppercase;
+          font-size: 12px;
+          margin: 7px auto;
+          border-top: 2px solid $xp-border;
+          padding: 0.3rem 0rem 0rem 0rem;
+        }
+
+        &:hover {
+          img {
+            transition: all 0.3s ease-out;
+            opacity: 1;
+            transform: scale(1.3);
+          }
+        }
+      }
+
+      .xp-profile-total_likes,
+      .xp-profile-total_views {
+        @extend .xp-profile-total_reactions-card;
+      }
+    }
+  }
+  .xp-profile-save {
+    @extend .xp-center;
+    flex-wrap: wrap;
+
+    .xp-btn-primary {
+      @extend .xp-btn-primary;
+      margin: 5px 15px;
+    }
+
+    .xp-btn-secondary {
+      @extend .xp-btn-secondary;
+      margin: 5px 15px;
+    }
+  }
+  .xp-profile-action {
+    .xp-profile-logout {
+      margin: 15px auto;
+      p {
+        margin: 5px auto;
+      }
+      button {
+        @extend .xp-btn-secondary;
+        border-color: $xp-accent;
+        color: $xp-accent;
+        margin: 5px auto;
+      }
+    }
+    .xp-profile-danger_zone {
+      margin: 20px auto;
+
+      h6 {
+        margin-bottom: 7px;
+      }
+
+      p {
+        margin: 5px auto;
+        color: $xp-danger;
+      }
+
+      button {
+        @extend .xp-btn-primary;
+        background: $xp-danger;
+        border-radius: 7px;
+        margin: 5px auto;
+
+        &:hover {
+          background: darken($color: $xp-danger, $amount: 8%);
+        }
+      }
+    }
+    .xp-profile-following_tags {
+      @extend .xp-center;
+      width: 100%;
+      flex-direction: column;
+      .xp-following-card {
+        @extend .xp-center;
+        justify-content: space-between;
+        background: $xp-editor;
+        border: 1px solid $xp-border;
+        padding: 10px 20px 8px 20px;
+        width: 100%;
+        margin: 10px auto;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+
+        h5 {
+          font-weight: 400;
+        }
+
+        button {
+          @extend .xp-btn-primary;
+          background: transparent;
+          font-size: 14px;
+          color: $xp-danger;
+
+          &:hover {
+            background: $xp-danger;
+            color: $xp-white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .xp-profile {
+    .xp-profile-activity {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-profile {
+    .xp-profile-title {
+      p {
+        display: none;
+      }
+    }
+    .xp-profile-tabs {
+      display: none;
+    }
+    .xp-profile-tabs-mobile {
+      display: flex;
+    }
+  }
+}

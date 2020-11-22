@@ -1,0 +1,37 @@
+@import "../../../utilities/scss-variables/variables";
+
+.xp-search-categories-card {
+  background: $xp-white;
+  display: flex;
+  height: 20vh;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+  border-radius: 7px;
+  line-height: 26px;
+  word-break: break-all;
+  margin: 15px auto;
+  cursor: pointer;
+  border: 2px solid;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  h5 {
+    font-weight: 500;
+    text-transform: none;
+    color: $xp-black-alt;
+  }
+  p {
+    margin: 5px 0px;
+    color: $xp-black-alt;
+    text-align: right;
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-search-categories-card {
+    height: 15vh;
+  }
+}

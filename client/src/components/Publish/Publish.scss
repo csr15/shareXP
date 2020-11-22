@@ -1,0 +1,277 @@
+@import "../../utilities/scss-variables/variables";
+
+//Ckeditor styles
+.ck-editor__editable_inline {
+  min-height: 300px;
+  font-size: 20px !important;
+}
+.ck.ck-editor__main > .ck-editor__editable:not(.ck-focused) {
+  border-color: $xp-story-border;
+}
+.ck.ck-editor__main > .ck-editor__editable {
+  background: $xp-white;
+  font-size: 20px !important;
+  font-size: 16px !important;
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none;
+  }
+}
+.ck.ck-editor__main > .ck-editor__editable {
+  font: bolder;
+}
+.xp-publish {
+  width: 80%;
+  margin: 10px auto;
+  .xp-publish-title h5 {
+    text-align: center;
+    color: $xp-accent;
+    text-transform: none;
+    word-spacing: 3px;
+    margin: 20px auto 20px auto;
+    font-family: $xp-serif;
+  }
+  .xp-publish-editor {
+    background: $xp-white;
+    margin: 10px auto;
+    font-family: $xp-pop;
+    line-height: 26px;
+    font-size: 16px;
+    position: relative;
+
+    input {
+      width: 100%;
+      padding: 1.5rem 1rem;
+      margin: 0px auto 0px auto;
+      border: 1px solid $xp-story-border;
+      border-bottom: none;
+      border-bottom: 0px;
+      background: $xp-white;
+      font-size: 28px;
+      font-family: $xp-serif;
+      color: $xp-black;
+      font-weight: 600;
+      text-transform: none;
+
+      &::first-letter {
+        text-transform: capitalize;
+      }
+
+      &:hover {
+        background: darken($color: $xp-border, $amount: 1%);
+        transition: all 0.3s ease;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        border-color: $xp-accent;
+      }
+    }
+
+    ::placeholder {
+      color: $xp-story-border;
+    }
+
+    .xp-publish-editor-hint_text {
+      p {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: -1;
+        transform: translate(-50%, -50%);
+        font-weight: 400;
+        animation: editor_hint_text 8s linear;
+
+        span {
+          font-weight: 600;
+          color: $xp-black-alt;
+        }
+      }
+    }
+    .xp-publish-editor-layout {
+      position: relative;
+      font-size: 20px !important;
+      textarea {
+        outline: none !important;
+        box-shadow: none !important;
+        font-size: 20px !important;
+      }
+      p {
+        color: $xp-black !important;
+      }
+    }
+  }
+  .xp-publish-all-tags {
+    @extend .xp-center;
+    flex-wrap: wrap;
+    margin: 10px auto 5px auto;
+    p {
+      @extend .xp-categories-wrapper;
+      font-size: 12px;
+      margin: 5px 3px;
+
+      &:hover {
+        color: $xp-black-alt;
+        border-color: $xp-black-alt;
+      }
+
+      i {
+        cursor: pointer;
+      }
+    }
+  }
+  .xp-editor-tags-image {
+    margin: 10px auto 0px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .xp-editor-tags {
+      width: 100%;
+      flex: 1;
+      margin-right: 10px;
+      h6 {
+        font-size: 14px;
+        margin: 5px auto;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: $xp-accent;
+
+        span {
+          color: $xp-accent;
+          font-size: 12px;
+          margin-left: 7px;
+          text-transform: lowercase;
+          font-weight: 400;
+        }
+      }
+      input {
+        border: 1px solid $xp-story-border;
+        background: $xp-white;
+        font-size: 14px;
+        @extend .xp-center;
+        font-weight: 500;
+        font-family: $xp-pop;
+        color: $xp-accent;
+        border-radius: 7px;
+        padding: 15px 10px;
+        width: 100%;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+    .xp-editor-image {
+      h6 {
+        font-size: 14px;
+        margin: 10px auto 5px auto;
+        font-weight: 500;
+        text-transform: capitalize;
+        color: $xp-accent;
+      }
+      .xp-editor-image-wrapper {
+        p {
+          font-size: 12px;
+          margin: 5px auto;
+        }
+
+        label {
+          cursor: pointer;
+          background: $xp-white;
+          border: 1px solid $xp-story-border;
+          font-size: 12px;
+          padding: 15px 10px;
+          border-radius: 7px;
+          @extend .xp-center;
+          color: $xp-accent;
+          font-family: $xp-pop;
+          font-weight: 500;
+
+          i {
+            font-size: 1.2rem !important;
+            color: $xp-accent;
+          }
+
+          input {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .xp-loader {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    @extend .xp-center;
+
+    i {
+      font-size: 1.5rem !important;
+      margin-left: 7px;
+      animation: rocket_launch 1.5s linear infinite;
+    }
+  }
+}
+
+//Responsive
+
+@media (max-width: 991px) {
+  .xp-publish {
+    .xp-editor-tags-image {
+      display: block;
+      .xp-editor-image {
+        margin: 15px auto 5px auto;
+        .xp-editor-image-wrapper {
+          label {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .xp-publish {
+    width: 100%;
+
+    .xp-publish-editor {
+      input {
+        padding: 1rem 0.8rem;
+        font-size: 22px;
+      }
+    }
+    .xp-publish-buttons {
+      margin: 5px auto 5px auto;
+    }
+  }
+}
+
+//Animation
+@keyframes editor_hint_text {
+  form {
+    z-index: 1;
+  }
+  to {
+    z-index: -1;
+  }
+}
+
+@keyframes rocket_launch {
+  form {
+    transform: translate(0px, 0px);
+    opacity: 0.1;
+  }
+  to {
+    transform: translate(10px, -10px);
+    opacity: 1;
+  }
+}

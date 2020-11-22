@@ -1,0 +1,174 @@
+@import "../../utilities/scss-variables/variables";
+
+.xp-help {
+  overflow-x: hidden;
+  .xp-help-header {
+    background-image: url("../../Assets/icons/hexp-help-bg.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80vh;
+    position: absolute;
+    width: 100%;
+    top: 11%;
+    left: 0;
+    z-index: -1;
+
+    h1 {
+      margin: 20px auto;
+      color: #481081;
+      font-weight: 600;
+      text-transform: capitalize;
+      font-size: 28px;
+
+      span {
+        color: $xp-white;
+        font-size: 50px;
+        font-weight: 700;
+        margin: 0px;
+      }
+    }
+  }
+  .xp-help-container {
+    background-color: $xp-white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    height: auto;
+    width: 80%;
+    margin: 10px auto;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    h4 {
+      color: $xp-black-alt;
+      font-weight: 600;
+    }
+
+    .xp-help-FAQ {
+      margin: 30px 0px;
+      details {
+        background-color: $xp-editor;
+        border-radius: 7px;
+        margin: 15px 0px;
+      }
+      summary {
+        padding: 1em;
+        font-family: $xp-pop;
+        font-size: 16px;
+        font-weight: 500;
+        color: $xp-title;
+        outline: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: $xp-black;
+        }
+      }
+
+      ol {
+        padding-bottom: 10px;
+      }
+      li {
+        color: $xp-accent;
+        font-family: $xp-pop;
+        font-size: 14px;
+        margin: 10px 0px;
+
+        &::first-letter {
+          text-transform: capitalize;
+        }
+
+        span {
+          color: $xp-title;
+          font-weight: 600;
+        }
+      }
+
+      p {
+        font-style: italic;
+        font-weight: 600;
+        padding-bottom: 10px;
+        margin: 10px;
+      }
+
+      details[open] summary ~ * {
+        animation: sweep 0.4s ease-in-out;
+      }
+    }
+  }
+
+  .xp-footer {
+    margin: 30px auto;
+    padding: 10px;
+
+    h6 {
+      margin-bottom: 30px;
+      color: $xp-black;
+      font-weight: 400;
+
+      i{
+        color: $xp-pri;
+      }
+
+      span{
+        color: $xp-pri;
+        text-decoration: underline;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+@keyframes sweep {
+  from {
+    opacity: 0;
+    margin-top: -10px;
+  }
+  to {
+    opacity: 1;
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-help {
+    .xp-help-header {
+      h1 {
+        span {
+          font-size: 32px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .xp-help {
+    .xp-help-header {
+      top: 12%;
+      h1 {
+        span {
+          font-size: 32px;
+        }
+      }
+    }
+    .xp-help-container {
+      padding: 1.5rem 1rem;
+      width: 90%;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .xp-help {
+    .xp-help-header {
+      top: 12%;
+      h1 {
+        span {
+          font-size: 32px;
+        }
+      }
+    }
+    .xp-help-container {
+      padding: 1.5rem 1rem;
+    }
+  }
+}

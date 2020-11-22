@@ -1,0 +1,669 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #000000;
+}
+
+p,
+a {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: #686b78;
+  text-decoration: none;
+}
+
+button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.xp-btn-primary, .xp-profile .xp-profile-save .xp-btn-primary, .xp-profile .xp-profile-action .xp-profile-danger_zone button, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button {
+  background: #8e27f6;
+  color: #ffffff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-primary:hover, .xp-profile .xp-profile-save .xp-btn-primary:hover, .xp-profile .xp-profile-action .xp-profile-danger_zone button:hover, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #7a0aea;
+}
+
+.xp-btn-primary:focus, .xp-profile .xp-profile-save .xp-btn-primary:focus, .xp-profile .xp-profile-action .xp-profile-danger_zone button:focus, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-btn-secondary, .xp-profile .xp-profile-save .xp-btn-secondary, .xp-profile .xp-profile-action .xp-profile-logout button {
+  background: transparent !important;
+  color: #8e27f6;
+  padding: 8px 25px;
+  border: 1px solid #8e27f6;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-secondary:hover, .xp-profile .xp-profile-save .xp-btn-secondary:hover, .xp-profile .xp-profile-action .xp-profile-logout button:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: #7409e1;
+  border-color: #7409e1;
+}
+
+.xp-btn-secondary:focus, .xp-profile .xp-profile-save .xp-btn-secondary:focus, .xp-profile .xp-profile-action .xp-profile-logout button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-btn-primary-outline, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button {
+  background: #d3a8ff;
+  color: #8e27f6;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-primary-outline:hover, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #8e27f6;
+  color: #ffffff;
+}
+
+.xp-btn-primary-outline:focus, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-center, .xp-profile-tabs-mobile, .xp-profile-social_media-wrapper, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website, .xp-wrapper, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_wrapper label, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_delete p, .xp-profile .xp-profile-activity .xp-story-total_reactions-container, .xp-profile .xp-profile-save, .xp-profile .xp-profile-action .xp-profile-following_tags, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.xp-categories-wrapper {
+  color: #242323;
+  font-size: 12px;
+  border: none;
+  background-color: #F2F2F2;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 0px;
+  white-space: nowrap;
+}
+
+@media (min-width: 250px) and (max-width: 500px) {
+  .xp-btn-secondary, .xp-profile .xp-profile-save .xp-btn-secondary, .xp-profile .xp-profile-action .xp-profile-logout button {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}
+
+h6 {
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.xp-profile-tabs {
+  margin-bottom: 15px;
+}
+
+.xp-profile-tabs .nav-tabs .nav-item.show .nav-link,
+.xp-profile-tabs .nav-tabs .nav-link.active {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #8e27f6;
+}
+
+.xp-profile-tabs p {
+  margin: 0px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.xp-profile-tabs-mobile {
+  display: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #c5c5c5;
+  padding: 3px 5px 10px 5px;
+}
+
+.xp-profile-tabs-mobile button {
+  border-color: #686b78;
+  color: #686b78;
+  font-size: 14px;
+  padding: 0.4rem 1rem;
+  font-weight: 500;
+}
+
+.xp-profile-tabs-mobile .dropdown-menu {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile-tabs-mobile .dropdown-menu p {
+  cursor: pointer;
+}
+
+.xp-profile-tabs-mobile .dropdown-menu p:hover {
+  color: #8e27f6;
+}
+
+.xp-profile-social_media-wrapper, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 10px 8px 10px 0px;
+  background: #ffffff;
+  padding: 0px;
+  border: 1px solid #c5c5c5;
+  border-radius: 7px;
+}
+
+.xp-profile-social_media-wrapper:hover, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook:hover,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in:hover,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail:hover,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website:hover {
+  border-color: #686b78;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile-social_media-wrapper i, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook i, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in i, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail i, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website i {
+  color: #686b78;
+  font-size: 1.8rem !important;
+  margin: auto 10px auto 10px;
+}
+
+.xp-profile-social_media-wrapper input, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook input, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in input, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail input, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 0.9rem 0.5rem;
+  border-left: 1px solid #c5c5c5;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #242323;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.xp-profile-social_media-wrapper input:focus, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook input:focus, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in input:focus, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail input:focus, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website input:focus {
+  border-color: #686b78;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-wrapper {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.xp-wrapper button {
+  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  border-color: #c5c5c5;
+}
+
+.xp-wrapper button i {
+  font-size: 1.5rem !important;
+  color: #686b78;
+}
+
+.xp-profile .xp-profile-img-bg {
+  background: #8e27f6;
+  height: 15vh;
+  position: relative;
+  margin: 0px auto 30px auto;
+}
+
+.xp-profile .xp-profile-img-bg .xp-profile-img img {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  background-color: #8e27f6;
+}
+
+.xp-profile .xp-profile-img-bg .xp-profile-img h6 {
+  color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.xp-profile .xp-profile-title {
+  margin: 60px auto 10px auto;
+}
+
+.xp-profile .xp-profile-title h1 {
+  font-family: "DM Serif Display", serif;
+  text-transform: capitalize;
+  margin: 5px auto;
+}
+
+.xp-profile .xp-profile-title h6 {
+  color: #686b78;
+  text-transform: none;
+  font-style: italic;
+  margin: 2px auto 15px auto;
+}
+
+.xp-profile .xp-profile-title p {
+  text-transform: lowercase;
+  margin: 5px auto;
+  line-height: 24px;
+}
+
+.xp-profile .xp-profile-title p span {
+  color: #8e27f6;
+  font-size: 20px;
+}
+
+.xp-profile .xp-profile-title p::first-letter {
+  text-transform: capitalize;
+}
+
+.xp-profile .xp-profile-activity {
+  margin: 40px auto;
+  width: 70%;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-story .xp-no_post {
+  margin-top: 20px;
+  background: #f5f5f5;
+  padding: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 30vh;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-story .xp-no_post h6 {
+  color: #000000;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button {
+  margin-top: 5px;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description {
+  position: relative;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description .xp-desc-edit button {
+  position: absolute;
+  bottom: 10%;
+  right: 1%;
+  border-radius: 7px;
+  border: none;
+  padding: 0rem;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description .xp-desc-edit button i {
+  color: #686b78;
+  font-size: 1.5rem !important;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description textarea {
+  width: 100%;
+  height: 30vh;
+  margin: 10px auto;
+  border: 1px solid #c5c5c5;
+  background: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0.5rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-radius: 7px;
+  color: #242323;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description textarea:hover {
+  border-color: #686b78;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-description textarea:focus {
+  border-color: #686b78;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-status {
+  margin: 10px auto 20px auto;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-status input {
+  width: 100%;
+  padding: 0.9rem 0.5rem;
+  border: 1px solid #c5c5c5;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  color: #686b78;
+  background: #ffffff;
+  border-radius: 7px;
+  margin: auto 10px auto 0px;
+  color: #242323;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-status input:focus {
+  border-color: #686b78;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media {
+  margin: 10px auto;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media ::-webkit-input-placeholder {
+  text-transform: lowercase;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media :-ms-input-placeholder {
+  text-transform: lowercase;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media ::-ms-input-placeholder {
+  text-transform: lowercase;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media ::placeholder {
+  text-transform: lowercase;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-linked_in,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-mail,
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-website {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_wrapper {
+  width: 80%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0px;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_wrapper label {
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #c5c5c5;
+  font-size: 12px;
+  padding: 15px 10px;
+  border-radius: 7px;
+  color: #686b78;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin: 5px;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_wrapper label i {
+  font-size: 1.2rem !important;
+  color: #686b78;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_wrapper label input {
+  display: none;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_delete {
+  width: 80%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin: 0px;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-details .xp-profile-avatar .xp-profile-avatar-layout .xp-profile-avatar_delete p {
+  font-size: 12px;
+  color: #686b78;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  cursor: pointer;
+  background: #ffffff;
+  border: 1px solid #c5c5c5;
+  padding: 15px 10px;
+  border-radius: 7px;
+  margin: 5px;
+}
+
+.xp-profile .xp-profile-activity .xp-profile-total_reactions {
+  margin: 20px auto;
+}
+
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_reactions-card, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_likes,
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_views {
+  border: 1px solid #c5c5c5;
+  padding: 0.2rem;
+  background: #ffffff;
+  text-align: center;
+  width: 50%;
+  margin: 7px 10px;
+  position: relative;
+}
+
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_reactions-card img, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_likes img, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_views img {
+  width: 25px;
+  opacity: 0.4;
+  margin: 7px auto;
+  -webkit-transform: translateY(0px);
+          transform: translateY(0px);
+}
+
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_reactions-card h6, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_likes h6, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_views h6 {
+  font-weight: 600;
+  color: #686b78;
+  margin: 5px auto;
+  font-size: 14px !important;
+}
+
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_reactions-card p, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_likes p, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_views p {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 7px auto;
+  border-top: 2px solid #ebebeb;
+  padding: 0.3rem 0rem 0rem 0rem;
+}
+
+.xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_reactions-card:hover img, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_likes:hover img, .xp-profile .xp-profile-activity .xp-story-total_reactions-container .xp-profile-total_views:hover img {
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  opacity: 1;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.xp-profile .xp-profile-save {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.xp-profile .xp-profile-save .xp-btn-primary, .xp-profile .xp-profile-save .xp-profile-action .xp-profile-danger_zone button, .xp-profile .xp-profile-action .xp-profile-danger_zone .xp-profile-save button, .xp-profile .xp-profile-save .xp-profile-action .xp-profile-following_tags .xp-following-card button, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card .xp-profile-save button {
+  margin: 5px 15px;
+}
+
+.xp-profile .xp-profile-save .xp-btn-secondary, .xp-profile .xp-profile-save .xp-profile-action .xp-profile-logout button, .xp-profile .xp-profile-action .xp-profile-logout .xp-profile-save button {
+  margin: 5px 15px;
+}
+
+.xp-profile .xp-profile-action .xp-profile-logout {
+  margin: 15px auto;
+}
+
+.xp-profile .xp-profile-action .xp-profile-logout p {
+  margin: 5px auto;
+}
+
+.xp-profile .xp-profile-action .xp-profile-logout button {
+  border-color: #686b78;
+  color: #686b78;
+  margin: 5px auto;
+}
+
+.xp-profile .xp-profile-action .xp-profile-danger_zone {
+  margin: 20px auto;
+}
+
+.xp-profile .xp-profile-action .xp-profile-danger_zone h6 {
+  margin-bottom: 7px;
+}
+
+.xp-profile .xp-profile-action .xp-profile-danger_zone p {
+  margin: 5px auto;
+  color: #ee3902;
+}
+
+.xp-profile .xp-profile-action .xp-profile-danger_zone button {
+  background: #ee3902;
+  border-radius: 7px;
+  margin: 5px auto;
+}
+
+.xp-profile .xp-profile-action .xp-profile-danger_zone button:hover {
+  background: #c62f02;
+}
+
+.xp-profile .xp-profile-action .xp-profile-following_tags {
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #f5f5f5;
+  border: 1px solid #ebebeb;
+  padding: 10px 20px 8px 20px;
+  width: 100%;
+  margin: 10px auto;
+  border-radius: 12px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card h5 {
+  font-weight: 400;
+}
+
+.xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button {
+  background: transparent;
+  font-size: 14px;
+  color: #ee3902;
+}
+
+.xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button:hover {
+  background: #ee3902;
+  color: #ffffff;
+}
+
+@media (max-width: 991px) {
+  .xp-profile .xp-profile-activity {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .xp-profile .xp-profile-title p {
+    display: none;
+  }
+  .xp-profile .xp-profile-tabs {
+    display: none;
+  }
+  .xp-profile .xp-profile-tabs-mobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+/*# sourceMappingURL=Profile.css.map */

@@ -1,0 +1,291 @@
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory, withRouter } from "react-router";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+import imageCompression from "browser-image-compression";
+
+import "./Publish.css";
+import Popup from "../Popup/Popup";
+import { publishStoryHandler } from "../../store";
+import Modal from "../Modal/Modal";
+import firebase from "../../firebase/base";
+
+const Publish = () => {
+  const [story, setStory] = useState({
+    title: "",
+    content: "",
+    tags: [],
+  });
+  const [tags, setTags] = useState("");
+  const [didFieldsNotFilled, setDidFieldsNotFilled] = useState(false);
+  const [localImgURL, setLocalImgURL] = useState("");
+  const [onPublishing, setOnPublishing] = useState(false);
+  const [imgUploadingTask, setImgUploadingTask] = useState(false);
+  const [imgError, setImgError] = useState(false);
+  const [uploadingToDB, setUploadingToDB] = useState(false);
+
+  //mapStateToProps
+  const didPublished = useSelector((state) => state.publish.story);
+
+  const history = useHistory();
+
+  if (didPublished !== "") {
+    history.push("/profile");
+  }
+
+  //mapDispatchToProps
+  const dispatch = useDispatch();
+  const publishContent = () => {
+    if (story.title !== "" && story.content !== "" && story.tags.length !== 0) {
+      if (localImgURL) {
+        setOnPublishing(true);
+        const storage = firebase.storage();
+        const uploadTask = storage
+          .ref(`/stories/${localStorage.getItem("uid")}/${story.title}`)
+          .put(localImgURL);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            var progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setImgUploadingTask(progress);
+          },
+          () => {
+            setImgError(true);
+          },
+          () => {
+            storage
+              .ref(`/stories/${localStorage.getItem("uid")}/${story.title}`)
+              .getDownloadURL()
+              .then((url) => {
+                setUploadingToDB(true);
+
+                dispatch(
+                  publishStoryHandler({
+                    ...story,
+                    img: url,
+                    createdAt: new Date(),
+                  })
+                );
+              })
+              .catch((refErr) => {
+                setImgError(true);
+              });
+          }
+        );
+      } else {
+        dispatch(
+          publishStoryHandler({
+            ...story,
+            createdAt: new Date(),
+          })
+        );
+      }
+    } else {
+      setDidFieldsNotFilled(true);
+      (async () => {
+        await setTimeout(() => {
+          setDidFieldsNotFilled(false);
+        }, 3000);
+      })();
+    }
+  };
+
+  //Updating categories
+  const onSetTags = (e) => {
+    //check if user presses ','  'enter'  'space'
+    if (
+      e.target.value.indexOf(",") !== -1 ||
+      e.charCode === 13 ||
+      e.charCode === 32 ||
+      e.charCode === 9
+    ) {
+      //Check if user entered #
+      const indexOfHash = tags.indexOf("#");
+      if (indexOfHash !== -1) {
+        //Removing user entered #
+        let updatedTag = tags.replace("#", "");
+        setStory({ ...story, tags: [...story.tags, `#${updatedTag}`] });
+      } else {
+        // setAllTags((curTag) => [...curTag, `#${tags}`]);
+        setStory({ ...story, tags: [...story.tags, `#${tags}`] });
+      }
+      setTags("");
+    } else {
+      setTags(e.target.value);
+    }
+  };
+
+  //Remove categories
+  const removeTag = (tag) => {
+    const filteredTags = story.tags.filter((el) => {
+      return el !== tag;
+    });
+    setStory({ ...story, tags: filteredTags });
+  };
+
+  //Image handler
+  const imageHandler = (e) => {
+    const localFile = e.target.files[0];
+
+    const options = {
+      maxSizeMB: 5,
+      maxWidthOrHeight: 800,
+      useWebWorker: true,
+    };
+
+    imageCompression(localFile, options)
+      .then((imgURL) => {
+        console.log(imgURL);
+        setLocalImgURL(imgURL);
+      })
+      .catch((err) => {
+        setImgError(true);
+
+        setTimeout(() => {
+          setImgError(false);
+        }, 3000);
+      });
+  };
+
+  return (
+    <div className="xp-publish">
+      <div className="xp-publish-title">
+        <h5>Let's motivate</h5>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="xp-publish-editor">
+            <div className="xp-editor-story-title">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                autoComplete="off"
+                value={story.title}
+                onChange={(e) => setStory({ ...story, title: e.target.value })}
+              />
+            </div>
+            <div className="xp-publish-editor-hint_text">
+              <p>
+                Your <span>story</span> content here
+              </p>
+            </div>
+            <div className="xp-publish-editor-layout">
+              <CKEditor
+                editor={ClassicEditor}
+                config={{
+                  toolbar: [
+                    "heading",
+                    "|",
+                    "bold",
+                    "italic",
+                    "blockQuote",
+                    "link",
+                    "numberedList",
+                    "|",
+                    "undo",
+                    "redo",
+                    "codeBlock",
+                  ],
+                }}
+                onChange={(e, editor) =>
+                  setStory({ ...story, content: editor.getData() })
+                }
+              />
+            </div>
+          </div>
+          {story.tags.length > 0 && (
+            <div className="xp-publish-all-tags">
+              {story.tags.map((el, index) => {
+                return (
+                  <p className="xp-publish-all_tags" key={index}>
+                    {el}
+                    <i
+                      className="bx bx-x"
+                      onClick={removeTag.bind(this, el)}
+                    ></i>
+                  </p>
+                );
+              })}
+            </div>
+          )}
+          <div className="xp-editor-tags-image">
+            <div className="xp-editor-tags">
+              <h6>
+                Add Tags <span>Tap enter, space or , to add tag</span>{" "}
+              </h6>
+              <input
+                type="text"
+                autoComplete="off"
+                autoCorrect="off"
+                placeholder="#sports, #technology"
+                value={tags}
+                onChange={onSetTags}
+                onKeyPress={onSetTags}
+              />
+            </div>
+            <div className="xp-editor-image">
+              <h6>Add Image</h6>
+              <div className="xp-editor-image-wrapper">
+                <label htmlFor="image">
+                  {localImgURL ? (
+                    <React.Fragment>
+                      <i
+                        className="bx bx-x"
+                        onClick={() => setLocalImgURL("")}
+                      ></i>
+                      {localImgURL.name}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <i className="bx bx-image-add"></i>Choose an image
+                    </React.Fragment>
+                  )}
+                  <input
+                    type="file"
+                    autoComplete="off"
+                    autoCorrect="off"
+                    id="image"
+                    name="image"
+                    onChange={imageHandler}
+                  />
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-12 text-center d-block mt-4">
+          <button className="xp-btn-primary" onClick={publishContent}>
+            Publish
+          </button>
+        </div>
+      </div>
+
+      {onPublishing && (
+        <Modal
+          type="progress"
+          progress={imgUploadingTask}
+          uploadingToDB={uploadingToDB}
+        />
+      )}
+
+      {didFieldsNotFilled && (
+        <Popup
+          type="alert-danger"
+          text="Please fill all the fields to publish 👀 "
+        />
+      )}
+
+      {imgError && (
+        <Popup
+          type="alert-danger"
+          text="Something went wrong on uploading image👀 "
+        />
+      )}
+    </div>
+  );
+};
+
+export default withRouter(Publish);

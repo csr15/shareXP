@@ -1,0 +1,14 @@
+.xp-story-skull {
+  width: 100%;
+  overflow: hidden;
+}
+
+.xp-skull_layout{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.xp-skull{
+  margin: 0px 3px;
+}

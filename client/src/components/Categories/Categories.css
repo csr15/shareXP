@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  color: #000000;
+}
+
+p,
+a {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  color: #686b78;
+  text-decoration: none;
+}
+
+button:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+
+.xp-btn-primary {
+  background: #8e27f6;
+  color: #ffffff;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-primary:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #7a0aea;
+}
+
+.xp-btn-primary:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-btn-secondary {
+  background: transparent !important;
+  color: #8e27f6;
+  padding: 8px 25px;
+  border: 1px solid #8e27f6;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-secondary:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  color: #7409e1;
+  border-color: #7409e1;
+}
+
+.xp-btn-secondary:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-btn-primary-outline {
+  background: #d3a8ff;
+  color: #8e27f6;
+  padding: 8px 25px;
+  border: none;
+  border-radius: 50px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+.xp-btn-primary-outline:hover {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #8e27f6;
+  color: #ffffff;
+}
+
+.xp-btn-primary-outline:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.xp-center {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.xp-categories-wrapper, .xp-categories .xp-categories-list p {
+  color: #242323;
+  font-size: 12px;
+  border: none;
+  background-color: #F2F2F2;
+  padding: 3px 8px;
+  border-radius: 5px;
+  margin: 5px 5px 5px 0px;
+  white-space: nowrap;
+}
+
+@media (min-width: 250px) and (max-width: 500px) {
+  .xp-btn-secondary {
+    padding: 8px 20px;
+    font-size: 12px;
+  }
+}
+
+.xp-categories {
+  margin: 0px auto 10px auto;
+  background: transparent;
+}
+
+.xp-categories h5 {
+  font-weight: 400;
+  color: #3c383f;
+  margin: 7px auto;
+}
+
+.xp-categories .xp-categories-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.xp-categories .xp-categories-list p {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.xp-categories .xp-categories-list p:hover {
+  color: #fca311;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border-color: #fca311;
+}
+/*# sourceMappingURL=Categories.css.map */

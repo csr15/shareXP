@@ -1,0 +1,119 @@
+@import "../../utilities/scss-variables/variables";
+
+.xp-nav {
+  padding: 0.1rem 2rem;
+  border-bottom: 1px solid $xp-border;
+  // box-shadow: 6px 6px 12px -3px rgba(0, 0, 0, 0.1) ;
+  -webkit-user-select: none;
+  background: $xp-white;
+
+  .navbar-brand {
+    font-family: $xp-pop;
+    font-size: 18px;
+    font-weight: 600;
+    color: $xp-black;
+    margin: 0px;
+    padding: 0px;
+
+    img {
+      width: 25px;
+    }
+  }
+
+  .navbar-toggler {
+    position: relative;
+    z-index: 999;
+    i {
+      color: $xp-accent;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $xp-black;
+        transition: all 0.3s ease;
+      }
+
+      &:focus {
+        color: $xp-black;
+        transition: all 0.3s ease;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .navbar-nav {
+    padding: 0px;
+    margin: 0px;
+    li p {
+      color: $xp-accent;
+      text-decoration: none;
+      margin: 7px 15px;
+      cursor: pointer;
+      padding: 7px 0px;
+
+      &:hover {
+        color: $xp-black;
+        transition: all 0.5s ease-in-out;
+      }
+
+      &:focus {
+        outline: none;
+        box-shadow: none;
+      }
+    }
+    button {
+      padding: 7px 15px;
+    }
+  }
+
+  .xp-nav-mobile-list {
+    background: $xp-black-alt;
+    padding: 10px;
+    width: 70vw;
+    height: 100vh;
+    position: fixed;
+    left: -100%;
+    top: 0%;
+    @extend .xp-center;
+    flex-direction: column;
+    animation: xp_nav_reveal 0.5s linear;
+    transition: all 0.5s ease;
+    opacity: 1;
+    z-index: 999;
+    display: none;
+
+    p {
+      color: $xp-white;
+      font-size: 16px;
+      margin: 15px auto;
+      cursor: pointer;
+    }
+
+    button {
+      @extend .xp-btn-primary;
+      margin: 20px auto;
+    }
+  }
+}
+
+@media (min-width: 300px) and (max-width: 500px) {
+  .xp-nav {
+    padding: 0.3rem 0.15rem;
+    .xp-nav-mobile-list {
+      width: 60vw;
+      display: block;
+
+      p {
+        font-size: 14px;
+      }
+
+      button {
+        font-size: 12px;
+        padding: 8px 20px;
+      }
+    }
+  }
+}
