@@ -133,3 +133,19 @@ export const likeStoryHandler = (storyId) => {
     }
   };
 };
+
+export const getNotifications = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await Axios.get(
+        `${config.server_url}/profile/notifications/${localStorage.getItem(
+          "uid"
+        )}`
+      );
+
+      dispatch({ type: "NOTIFICATIONS", payload: data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

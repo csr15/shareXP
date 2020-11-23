@@ -12,6 +12,7 @@ import { Link, useHistory } from "react-router-dom";
 import AlsoLike from "../../components/AlsoLike/AlsoLike";
 import StorySkeleton from "../../components/StorySkeleton/StorySkeleton";
 import Skeleton from "react-loading-skeleton";
+import { Notifications } from "../../components/Notifications/Notifications";
 const Wrapper = styled.section`
   height: 80vh;
   display: flex;
@@ -33,6 +34,7 @@ export default function StoryScreen() {
       isErrorOnTopStories: state.user.isErrorOnTopStories,
       isErrorOnLatestStories: state.user.isErrorOnLatestStories,
       authState: state.auth.authState,
+      notifications: state.profile.notifications,
     };
   });
 
@@ -42,6 +44,8 @@ export default function StoryScreen() {
     fetchFollowingStories: () => dispatch(actions.followingTagStories()),
     topStories: () => dispatch(actions.topTagStories()),
     latestStories: () => dispatch(actions.latestStories()),
+    fetchProfileDetails: () => dispatch(actions.profileHandler()),
+    notificationsHandler: () => dispatch(actions.getNotifications()),
   };
 
   useEffect(() => {
@@ -59,6 +63,9 @@ export default function StoryScreen() {
       if (state.latestStories === "") {
         mapDispatchToProps.latestStories();
       }
+    }
+    if (state.notifications === "") {
+      mapDispatchToProps.notificationsHandler();
     }
   }, [filter]);
 
@@ -157,7 +164,6 @@ export default function StoryScreen() {
       storySection = <Loader />;
     }
   }
-
   return (
     <div className="xp-story_screen">
       <div className="row">

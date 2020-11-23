@@ -118,9 +118,7 @@ export const logout = () => {
   return (dispatch) => {
     localStorage.removeItem("token");
     localStorage.removeItem("uid");
-    dispatch({ type: "USER_UN_AUTHENTICATED" });
-    dispatch({ type: "RESET_GOOGLE_AUTH" });
-    dispatch({ type: "RESET_SIGNIN" });
+    window.location.reload(1)
   };
 };
 
@@ -131,7 +129,6 @@ export const deleteAccount = () => {
         `${config.server_url}/auth/deleteAccount/${localStorage.getItem("uid")}`
       );
       dispatch(logout());
-      window.location.reload(1);
     } catch (error) {
       dispatch({ type: "ERROR_ON_DELETE_ACCOUNT" });
     }

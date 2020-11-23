@@ -107,10 +107,10 @@ export default function Search() {
       <div className="m-3 text-center xp-no__tags__found">
         <h5>No tags found</h5>
         <button
-          className="btn xp-btn-primary mt-2"
+          className="btn xp-btn-primary mt-2 text-center"
           onClick={() => setSearchValue("")}
         >
-          Go Back
+          <i className='bx bx-left-arrow-alt'></i>Go Back
         </button>
       </div>
     );
@@ -148,7 +148,7 @@ export default function Search() {
 
   return (
     <div className="xp-search">
-      <div className="container-fluid text-center">
+      <div className="text-center">
         <div className="xp-search_bar">
           <h3>Search and inspire</h3>
           <form onSubmit={searchHandler}>

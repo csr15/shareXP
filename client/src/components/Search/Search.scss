@@ -4,7 +4,7 @@
   .xp-search_bar {
     width: 100%;
     height: 30vh;
-    background-image:      url("../../Assets/icons/xp-search-bg.svg");
+    background-image: url("../../Assets/icons/xp-search-bg.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,7 +13,7 @@
     flex: 1;
     position: relative;
 
-    h3{
+    h3 {
       color: $xp-black;
       font-weight: 600;
       font-family: $xp-serif;
@@ -48,7 +48,6 @@
         transition: all 0.3s ease;
         font-weight: 500;
         font-size: 16px;
-
         &:focus {
           outline: none !important;
         }
@@ -99,6 +98,12 @@
   .xp-no__tags__found {
     button {
       @extend .xp-btn-secondary;
+      @extend .xp-center;
+      flex-wrap: nowrap;
+      margin: 10px auto;
+      i {
+        font-size: 1.5rem !important;
+      }
     }
   }
   .xp-search-categories {
@@ -119,7 +124,7 @@
         width: 100%;
 
         input {
-          padding: 15px 5px;
+          padding: 20px 5px;
           font-size: 12px;
         }
         button {

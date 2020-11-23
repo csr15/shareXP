@@ -1,21 +1,35 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Navigation.css";
 import Logo from "../../Assets/icons/logo.svg";
 import { config } from "../../utilities/constants/constants";
+import * as actions from "../../store";
+import { Notifications } from "../Notifications/Notifications";
 
 const Navigation = React.memo(() => {
   const [toggleMobileNav, setToggleMobileNav] = useState(false);
+  const [openNotification, setOpenNotification] = useState(false);
 
   //mapStateToProps
   const state = useSelector((state) => {
     return {
       didPublished: state.publish.story,
       authState: state.auth.authState,
+      myStories: state.profile.myStories,
+      userDetails: state.profile.userDetails,
+      notifications: state.profile.notifications,
     };
   });
+
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    if (state.myStories === "" || state.userDetails === "") {
+      dispatch(actions.profileHandler());
+    }
+  }, []);
 
   const history = useHistory();
 
@@ -54,6 +68,7 @@ const Navigation = React.memo(() => {
             <li className="nav-item" onClick={() => history.push("/help")}>
               <p>Help</p>
             </li>
+
             {state.authState ? (
               <>
                 <li
@@ -61,6 +76,16 @@ const Navigation = React.memo(() => {
                   onClick={() => history.push("/profile")}
                 >
                   <p>Profile</p>
+                </li>
+                <li
+                  className="nav-item"
+                  onClick={() => setOpenNotification(true)}
+                >
+                  {console.log("Notifications:", state.notifications)}
+                  {state.notifications.length > 0 ? (
+                    <span className="len"></span>
+                  ) : null}
+                  <i className="bx bxs-bell"></i>
                 </li>
                 <li
                   className="nav-item m-1"
@@ -128,6 +153,17 @@ const Navigation = React.memo(() => {
               >
                 Profile
               </p>
+              <p
+                onClick={() => {
+                  setToggleMobileNav(false);
+                  setOpenNotification(true);
+                }}
+              >
+                {state.notifications.length > 0 ? (
+                  <span className="len"></span>
+                ) : null}
+                <i className="bx bxs-bell"></i>
+              </p>
               <button
                 className="btn xp-btn-seconary"
                 onClick={() => {
@@ -151,6 +187,16 @@ const Navigation = React.memo(() => {
           )}
         </div>
       </div>
+
+      {/* Notifications */}
+      {openNotification && state.userDetails ? (
+        <div className="xp-notify">
+          <Notifications
+            userDetails={state.userDetails}
+            closeNotification={() => setOpenNotification(false)}
+          />
+        </div>
+      ) : null}
     </div>
   );
 });

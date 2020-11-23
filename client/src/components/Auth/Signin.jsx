@@ -65,16 +65,13 @@ const Signin = React.memo((props) => {
       {didFieldsnotFilled && (
         <Popup
           type="alert-danger"
-          text="Please fill all fields to create an account <span>👀</span>"
+          text="Please fill all fields to create an account 👀"
         />
       )}
       {state.signinError && (
-        <div className="alert-popup">
-          <div className="alert alert-danger" role="alert">
-            mailid or password is wrong <span>🤧</span>
-          </div>
-        </div>
+        <Popup type="alert-danger" text="MailID or password is wrong 🤧" />
       )}
+
       <div className="xp-auth-form">
         <div className="xp-auth-input">
           <label htmlFor="mail">Your mail id</label>

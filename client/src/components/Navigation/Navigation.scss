@@ -22,7 +22,7 @@
 
   .navbar-toggler {
     position: relative;
-    z-index: 999;
+    z-index: 50;
     i {
       color: $xp-accent;
       transition: all 0.3s ease;
@@ -47,21 +47,46 @@
   .navbar-nav {
     padding: 0px;
     margin: 0px;
-    li p {
-      color: $xp-accent;
-      text-decoration: none;
-      margin: 7px 15px;
-      cursor: pointer;
-      padding: 7px 0px;
+    @extend .xp-center;
+    li {
+      position: relative;
+      p {
+        color: $xp-accent;
+        text-decoration: none;
+        margin: 7px 15px;
+        cursor: pointer;
+        padding: 7px 0px;
 
-      &:hover {
-        color: $xp-black;
-        transition: all 0.5s ease-in-out;
+        &:hover {
+          color: $xp-black;
+          transition: all 0.5s ease-in-out;
+        }
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
       }
-
-      &:focus {
-        outline: none;
-        box-shadow: none;
+      i {
+        font-size: 1.2rem;
+        margin: 7px 20px 7px 15px;
+        cursor: pointer;
+        padding: 7px 0px;
+        color: $xp-accent;
+        position: relative;
+        z-index: 11;
+      }
+      .len {
+        content: "";
+        position: absolute;
+        top: 35%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background-color: $xp-sec;
+        z-index: 10;
+        border-radius: 50%;
       }
     }
     button {
@@ -90,6 +115,28 @@
       font-size: 16px;
       margin: 15px auto;
       cursor: pointer;
+      position: relative;
+
+      .len {
+        content: "";
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        background-color: $xp-sec;
+        z-index: 10;
+        border-radius: 50%;
+      }
+      i {
+        font-size: 1.2rem;
+        margin: 5px auto;
+        cursor: pointer;
+        color: $xp-accent;
+        position: relative;
+        z-index: 11;
+      }
     }
 
     button {
@@ -99,9 +146,9 @@
   }
 }
 
-@media (min-width: 300px) and (max-width: 500px) {
+@media (max-width: 500px) {
   .xp-nav {
-    padding: 0.3rem 0.15rem;
+    padding: 0.3rem 0rem;
     .xp-nav-mobile-list {
       width: 60vw;
       display: block;

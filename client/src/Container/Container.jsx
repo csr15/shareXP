@@ -54,6 +54,11 @@ export default function Home() {
             exact
             component={ViewStory}
           />
+          <Route
+            path="/view-story/suggestion/:suggestStoryId"
+            exact
+            component={ViewStory}
+          />
           <Route path="/tagStories/:tagName" exact component={TagStories} />
           <Route path="/sharedStory/:storyId" exact component={SharedStory} />
           <Route path="/auth" exact component={Auth} />

@@ -8,6 +8,7 @@ function App() {
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(actions.checkAuthState());
+    dispatch(actions.getNotifications())
   }, []);
 
   return (

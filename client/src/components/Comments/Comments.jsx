@@ -30,7 +30,11 @@ export default function Comments({
   return (
     <div className="xp-viewstory-comments">
       <div className="xp-viewstory-comments-web">
-        <CommentInput author={author} storyId={storyData._id} />
+        <CommentInput
+          author={author}
+          storyId={storyData._id}
+          storyTitle={storyData.story.title}
+        />
         {storyData ? (
           storyData.comments.length !== 0 ? (
             storyData.comments.map((el, index) => {
@@ -62,6 +66,7 @@ export default function Comments({
                 author={author}
                 storyId={storyData._id}
                 setDoOpenComment={setDoOpenCommentProp}
+                storyTitle={storyData.story.title}
               />
               <div className="xp-all-mobile-comments">
                 {storyData ? (

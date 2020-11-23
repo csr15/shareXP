@@ -21,6 +21,7 @@ export {
   updateViewHandler,
   unFollowTagHandler,
   likeStoryHandler,
+  getNotifications
 } from "./actions/profile";
 
 //Search

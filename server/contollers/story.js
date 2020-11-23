@@ -1,4 +1,5 @@
 const storyModel = require("../models/story");
+const userModel = require("../models/users");
 
 module.exports = {
   publishStory: async (req, res) => {
@@ -12,12 +13,38 @@ module.exports = {
     }
   },
   comment: async (req, res) => {
+    const {
+      storyId,
+      uid,
+      authorId,
+      userName,
+      storyTitle,
+    } = req.body.notification;
+    
     try {
-      const story = await storyModel.findByIdAndUpdate(req.params.storyId, {
-        $addToSet: {
-          comments: req.body,
-        },
-      });
+      const story = await Promise.all([
+        storyModel.findByIdAndUpdate(req.params.storyId, {
+          $addToSet: {
+            comments: req.body.comment,
+          },
+        }),
+        userModel.findByIdAndUpdate(authorId, {
+          //story author ID
+          $addToSet: {
+            notifications: [
+              {
+                uid: uid, // current user ID
+                userName: userName, // current username
+                content: "added a new comment", // content (like / comment)
+                createdAt: new Date(), // creeated at
+                storyId: storyId, // liked story ID
+                storyTitle: storyTitle,
+              },
+            ],
+          },
+        }),
+      ]);
+ 
       res.status(200).json(story);
     } catch (error) {
       res.status(404).json({ message: error.message });

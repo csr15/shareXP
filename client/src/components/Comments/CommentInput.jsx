@@ -6,7 +6,7 @@ import { config } from "../../utilities/constants/constants";
 import Popup from "../Popup/Popup";
 import * as actions from "../../store";
 
-export default function CommentInput({ storyId, setDoOpenComment, author }) {
+export default function CommentInput({ storyId, setDoOpenComment, author, storyTitle }) {
   const [comment, setComment] = React.useState("");
   const [isErrorOnUpdateComment, setIsErrorOnUpdateComment] = React.useState(
     ""
@@ -35,11 +35,20 @@ export default function CommentInput({ storyId, setDoOpenComment, author }) {
       await Axios.post(
         `${config.server_url}/publish/comment/${storyId}`,
         {
-          userName: userDetails.userName,
-          uid: userDetails._id,
-          comment: comment,
-          commentedAt: new Date(),
-          avatar: userDetails.avatar,
+          comment:{
+            userName: userDetails.userName,
+            uid: userDetails._id,
+            comment: comment,
+            commentedAt: new Date(),
+            avatar: userDetails.avatar,
+          },
+          notification:{
+            storyId: storyId,
+            uid: localStorage.getItem("uid"),
+            authorId: author._id,
+            userName: author.userName,
+            storyTitle: storyTitle,
+          }
         },
         { withCredentials: true }
       );

@@ -19,6 +19,7 @@ module.exports = {
             workingStatus: "$workingStatus",
             description: "$description",
             avatar: "$avatar",
+            notifications: "$notifications",
           },
         },
         {
@@ -46,6 +47,7 @@ module.exports = {
               workingStatus: "$workingStatus",
               description: "$description",
               avatar: "$avatar",
+              notifications: "$notifications",
             },
             stories: "$stories",
           },
@@ -85,26 +87,59 @@ module.exports = {
       res.status(404).json({ error: error.message });
     }
   },
-  likeStroy: async (req, res) => {
+  likeStory: async (req, res) => {
+    const { storyId, uid, authorId, userName, storyTitle } = req.body;
     try {
-      const like = await storyModel.findByIdAndUpdate(req.params.storyId, {
-        $addToSet: {
-          likes: req.params.uid,
-        },
-      });
-
-      res.status(200).json({ message: "liked" });
+      if (authorId !== uid) {
+        const likedAndNotify = await Promise.all([
+          storyModel.findByIdAndUpdate(storyId, {
+            $addToSet: {
+              likes: uid,
+            },
+          }),
+          userModel.findByIdAndUpdate(authorId, {
+            //story author ID
+            $addToSet: {
+              notifications: [
+                {
+                  uid: uid, // current user ID
+                  userName: userName, // current username
+                  content: "liked your story", // content (like / comment)
+                  createdAt: new Date(), // creeated at
+                  storyId: storyId, // liked story ID
+                  storyTitle: storyTitle,
+                },
+              ],
+            },
+          }),
+        ]);
+        res.status(200).json({ message: "liked" });
+      } else {
+        const like = await storyModel.findByIdAndUpdate(storyId, {
+          $addToSet: {
+            likes: uid,
+          },
+        });
+        res.status(200).json({ message: "liked" });
+      }
     } catch (error) {
+      console.log(error);
       res.status(400).json({ message: "Problrem on updating like" });
     }
   },
   unLikeStory: async (req, res) => {
     try {
-      const unlike = await storyModel.findByIdAndUpdate(req.params.storyId, {
-        $pull: {
-          likes: req.params.uid,
-        },
-      });
+      const unLikeAndNotify = await Promise.all([
+        storyModel.findByIdAndUpdate(req.params.storyId, {
+          $pull: {
+            likes: req.params.uid,
+          },
+        }),
+        userModel.findByIdAndUpdate(req.params.authorId, {
+          //story author ID
+          $pull: { notifications: { uid: req.params.uid } },
+        }),
+      ]);
       res.status(200).json({ message: "Like updated" });
     } catch (error) {
       res.status(400).json({ message: "Problrem on updating like" });
@@ -157,6 +192,28 @@ module.exports = {
       res.status(200).json("Avatar deleted");
     } catch (error) {
       res.status(404).json("Not found");
+    }
+  },
+  getNotifications: async (req, res) => {
+    try {
+      const data = await userModel.findById(req.params.uid);
+      res.status(200).json(data.notifications);
+    } catch (error) {
+      res.status(400).json("Problem on getting notification");
+    }
+  },
+  clearNotification: async (req, res) => {
+    try {
+      // uid: current user ID
+      // authorID: liked / commented author ID
+      const clear = await userModel.findByIdAndUpdate(req.params.uid, {
+        $pull: { notifications: { uid: req.params.authorId } },
+      });
+
+      console.log(clear);
+      res.status(200).json(clear);
+    } catch (error) {
+      res.status(400).json("Problem on clearing notification");
     }
   },
 };

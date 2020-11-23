@@ -5,7 +5,8 @@ const initialState = {
   updatedProfile: "",
   unfollowedTag: [],
   errorOnUnfollow: false,
-  didUserAuth: false
+  didUserAuth: false,
+  notifications: ""
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -65,6 +66,11 @@ const profileReducer = (state = initialState, action) => {
           story._id === action.payload.id ? action.payload : story
         ),
       };
+    case "NOTIFICATIONS":
+      return {
+        ...state,
+        notifications: action.payload
+      }
     default:
       return state;
   }

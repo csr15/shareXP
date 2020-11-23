@@ -99,7 +99,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .xp-nav .xp-nav-mobile-list {
+.xp-center, .xp-nav .navbar-nav, .xp-nav .xp-nav-mobile-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -151,7 +151,7 @@ button:hover {
 
 .xp-nav .navbar-toggler {
   position: relative;
-  z-index: 999;
+  z-index: 50;
 }
 
 .xp-nav .navbar-toggler i {
@@ -183,6 +183,10 @@ button:hover {
   margin: 0px;
 }
 
+.xp-nav .navbar-nav li {
+  position: relative;
+}
+
 .xp-nav .navbar-nav li p {
   color: #686b78;
   text-decoration: none;
@@ -201,6 +205,30 @@ button:hover {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+
+.xp-nav .navbar-nav li i {
+  font-size: 1.2rem;
+  margin: 7px 20px 7px 15px;
+  cursor: pointer;
+  padding: 7px 0px;
+  color: #686b78;
+  position: relative;
+  z-index: 11;
+}
+
+.xp-nav .navbar-nav li .len {
+  content: "";
+  position: absolute;
+  top: 35%;
+  left: 35%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fca311;
+  z-index: 10;
+  border-radius: 50%;
 }
 
 .xp-nav .navbar-nav button {
@@ -233,15 +261,39 @@ button:hover {
   font-size: 16px;
   margin: 15px auto;
   cursor: pointer;
+  position: relative;
+}
+
+.xp-nav .xp-nav-mobile-list p .len {
+  content: "";
+  position: absolute;
+  top: 30%;
+  left: 20%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: #fca311;
+  z-index: 10;
+  border-radius: 50%;
+}
+
+.xp-nav .xp-nav-mobile-list p i {
+  font-size: 1.2rem;
+  margin: 5px auto;
+  cursor: pointer;
+  color: #686b78;
+  position: relative;
+  z-index: 11;
 }
 
 .xp-nav .xp-nav-mobile-list button {
   margin: 20px auto;
 }
 
-@media (min-width: 300px) and (max-width: 500px) {
+@media (max-width: 500px) {
   .xp-nav {
-    padding: 0.3rem 0.15rem;
+    padding: 0.3rem 0rem;
   }
   .xp-nav .xp-nav-mobile-list {
     width: 60vw;

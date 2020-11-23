@@ -116,25 +116,32 @@ function ViewStory() {
   return (
     <div className="xp-viewstory">
       <StoryCard storyData={storyData[0]} />
-      {suggestions ? (
+      
+      {/* {suggestions ? (
         <div className="xp-sugg">
-          <h4>You might also like</h4>
           {suggestions.length > 0 ? (
-            <div className="row">
-              {suggestions.map(({ _id, story: { title, img } }) => (
-                <Suggestions
-                  key={_id}
-                  title={title}
-                  img={img}
-                  clickHandler={() =>
-                    history.push(`/view-story/suggestion/${_id}`)
+            <>
+              <h4>You might also like</h4>
+              <div className="row">
+                {suggestions.map(({ _id, story: { title, img } }) => {
+                  if (_id !== storyData[0]._id) {
+                    return (
+                      <Suggestions
+                        key={_id}
+                        title={title}
+                        img={img}
+                        clickHandler={() =>
+                          history.push(`/view-story/suggestion/${_id}`)
+                        }
+                      />
+                    );
                   }
-                />
-              ))}
-            </div>
+                })}
+              </div>
+            </>
           ) : null}
         </div>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

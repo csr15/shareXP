@@ -48,20 +48,20 @@ const StoryCard = React.memo(({ storyData }) => {
   }, [storyData]);
 
   const authState = useSelector((state) => state.auth.authState);
+  const userDetails = useSelector((state) => state.profile.userDetails);
   const history = useHistory();
   //Like button config
   const likeStoryHandler = async (storyId) => {
     if (authState) {
       setIsStoryLiking(true);
       try {
-        await Axios.patch(
-          `${
-            config.server_url
-          }/profile/likeStory/${storyId}/${localStorage.getItem("uid")}`,
-          {
-            withCredentials: true,
-          }
-        );
+        await Axios.post(`${config.server_url}/profile/likeStory`, {
+          storyId: storyId,
+          uid: localStorage.getItem("uid"),
+          authorId: author._id,
+          userName: userDetails.userName,
+          storyTitle: storyData.story.title,
+        });
         setDidStoryLiked(true);
         setDidStoryUnLiked(false);
         setIsStoryLiking(false);
@@ -85,7 +85,9 @@ const StoryCard = React.memo(({ storyData }) => {
       await Axios.post(
         `${
           config.server_url
-        }/profile/unLikeStory/${storyId}/${localStorage.getItem("uid")}`
+        }/profile/unLikeStory/${storyId}/${localStorage.getItem("uid")}/${
+          author._id
+        }`
       );
 
       setDidStoryUnLiked(true);

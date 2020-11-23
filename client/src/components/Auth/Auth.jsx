@@ -31,7 +31,7 @@ const Auth = () => {
   const history = useHistory();
   const likedStory = localStorage.getItem("likedStory");
   if (state.didGoogleAuthed !== "" && likedStory === null) {
-    history.push("/profile");
+    history.push("/");
   } else if (state.didGoogleAuthed !== "" && likedStory !== "") {
     history.push(likedStory);
     localStorage.removeItem('likedStory')

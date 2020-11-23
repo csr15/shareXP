@@ -106,6 +106,8 @@ const Publish = () => {
       if (indexOfHash !== -1) {
         //Removing user entered #
         let updatedTag = tags.replace("#", "");
+        updatedTag = updatedTag.trim();
+        console.log(updatedTag)
         setStory({ ...story, tags: [...story.tags, `#${updatedTag}`] });
       } else {
         // setAllTags((curTag) => [...curTag, `#${tags}`]);
