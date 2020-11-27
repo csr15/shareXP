@@ -87,7 +87,6 @@ export default function StoryScreen() {
   );
 
   if (filter === "Following") {
-    console.log(state.followingStories)
     if (state.authState) {
       if (state.followingStories) {
         if (state.followingStories.length !== 0) {
@@ -165,64 +164,69 @@ export default function StoryScreen() {
   }
   return (
     <div className="xp-story_screen">
-      <div className="row">
-        <div className="col-md-8">
-          <div className="xp-story_screen-title">
-            <h4>Stories</h4>
-            <div className="xp-split"></div>
-            <div className="xp-btn-story_screen-filter">
-              <div className="dropdown">
-                <button
-                  className="xp-btn-dropdown xp-btn-secondary"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                >
-                  <span>{filter}</span>
-                  <i className="bx bxs-down-arrow ml-2"></i>
-                </button>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <p
-                    className="mx-4 my-2"
-                    onClick={() => setFilter("Following")}
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="xp-story_screen-title">
+              <h4>Stories</h4>
+              <div className="xp-split"></div>
+              <div className="xp-btn-story_screen-filter">
+                <div className="dropdown">
+                  <button
+                    className="xp-btn-dropdown xp-btn-secondary"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
                   >
-                    Following
-                  </p>
-                  <p
-                    className="mx-4 my-2"
-                    onClick={() => setFilter("Most Popular")}
+                    <span>{filter}</span>
+                    <i className="bx bxs-down-arrow ml-2"></i>
+                  </button>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
                   >
-                    Most Popular
-                  </p>
-                  <p className="mx-4 my-2" onClick={() => setFilter("Latest")}>
-                    Latest
-                  </p>
+                    <p
+                      className="mx-4 my-2"
+                      onClick={() => setFilter("Following")}
+                    >
+                      Following
+                    </p>
+                    <p
+                      className="mx-4 my-2"
+                      onClick={() => setFilter("Most Popular")}
+                    >
+                      Most Popular
+                    </p>
+                    <p
+                      className="mx-4 my-2"
+                      onClick={() => setFilter("Latest")}
+                    >
+                      Latest
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+            {storySection}
           </div>
-          {storySection}
-        </div>
-        <div className="col-md-4">
-          <Categories />
-          <div className="also_like_section">
-            <h5>Some stories you may like</h5>
-            {state.topStories ? (
-              state.topStories.slice(0, 5).map((story, index) => {
-                return (
-                  <AlsoLike key={index} story={story} indexValue={index} />
-                );
-              })
-            ) : (
-              <>
-                <Skeleton width={230} height={90} className="d-block my-2" />
-                <Skeleton width={230} height={90} className="d-block my-2" />
-                <Skeleton width={230} height={90} className="d-block my-2" />
-              </>
-            )}
+          <div className="col-md-4">
+            <Categories />
+            <div className="also_like_section">
+              <h5>Some stories you may like</h5>
+              {state.topStories ? (
+                state.topStories.slice(0, 5).map((story, index) => {
+                  return (
+                    <AlsoLike key={index} story={story} indexValue={index} />
+                  );
+                })
+              ) : (
+                <>
+                  <Skeleton width={230} height={90} className="d-block my-2" />
+                  <Skeleton width={230} height={90} className="d-block my-2" />
+                  <Skeleton width={230} height={90} className="d-block my-2" />
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

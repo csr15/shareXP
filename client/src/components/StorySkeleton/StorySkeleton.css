@@ -1,14 +1,28 @@
-.xp-story-skull {
+.xp-story-skull-web {
   width: 100%;
   overflow: hidden;
+  display: block;
 }
 
-.xp-skull_layout{
+.xp-skull_layout {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
 
-.xp-skull{
+.xp-skull {
   margin: 0px 3px;
+}
+
+.xp-story-skull-mobile {
+  display: none;
+}
+
+@media (max-width: 501px) {
+  .xp-story-skull-web {
+    display: none;
+  }
+  .xp-story-skull-mobile {
+    display: block;
+  }
 }

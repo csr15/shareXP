@@ -61,7 +61,6 @@ const ViewStory = () => {
     return function cleanUp() {
       document.body.style.backgroundColor = "#FFFFFF";
       dispatch(actions.updateViewHandler(storyID));
-      console.log(story)
     };
   }, []);
 
@@ -170,20 +169,40 @@ const ViewStory = () => {
   //Loading skeleton for story component
   const StorySkeleton = () => (
     <div className="xp-viewstory-loader">
-      <div className="row">
-        <div className="col-md-12 my-4">
-          <h1>
-            <Skeleton height={60} width={700} />
-          </h1>
-          <p className="d-block">
-            <Skeleton
-              height={25}
-              width={500}
-              count={8}
-              style={{ marginTop: "10px" }}
-            />
-          </p>
-        </div>
+      <div className="d-block my-3">
+        <Skeleton width={700} height={60} />
+      </div>
+      <div className="d-flex flex-start">
+        <Skeleton width={100} height={35} count={3} className="mx-1 my-1" />
+      </div>
+      <div className="d-block my-3">
+        <Skeleton width={600} height={20} count={5} className="my-2 d-block" />
+      </div>
+    </div>
+  );
+
+  const UserSkeleton = () => (
+    <div className="xp-user-skull text-center">
+      <div className="d-block">
+        <Skeleton
+          width={80}
+          height={80}
+          circle={true}
+          className="xp-skull-img"
+        />
+      </div>
+      <div className="d-block">
+        <Skeleton width={200} height={20} className="xp-sull-text" />
+      </div>
+    </div>
+  );
+
+  const CommentSkull = () => (
+    <div className="xp-skull-comment">
+      <Skeleton width={60} height={60} circle={true} />
+      <div className="xp-skull-comment-body">
+        <Skeleton width={200} height={15} className="my-1" />
+        <Skeleton width={150} height={15} className="my-1" />
       </div>
     </div>
   );
@@ -264,7 +283,7 @@ const ViewStory = () => {
             </h5>
           </div>
         ) : (
-          <Skeleton width={100} height={20} />
+          <UserSkeleton />
         )}
 
         {/* Like */}
@@ -300,13 +319,19 @@ const ViewStory = () => {
         )}
 
         {/* Comment component */}
-        {story && (
+        {story ? (
           <div className="xp-view-comments">
             <Comments
               comments={story.comments}
               addCommentHandler={commentHandler}
             />
           </div>
+        ) : (
+          <>
+            <CommentSkull />
+            <CommentSkull />
+            <CommentSkull />
+          </>
         )}
 
         {/* contact author */}

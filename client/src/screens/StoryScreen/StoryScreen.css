@@ -179,12 +179,12 @@ button:hover {
 }
 
 .xp-story_screen .also_like_section {
-  margin: 20px auto;
+  margin: 30px auto 20px auto;
 }
 
 .xp-story_screen .also_like_section h5 {
   color: #3c383f;
-  font-weight: 400;
+  font-weight: 500;
   margin: 7px auto;
 }
 

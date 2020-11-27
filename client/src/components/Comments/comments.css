@@ -179,6 +179,7 @@ button:hover {
 
 .xp-comment-card .xp-comment-body {
   margin-left: 7px;
+  overflow: hidden;
   padding: 0px 10px;
 }
 
@@ -213,6 +214,8 @@ button:hover {
   font-weight: 400;
   color: #3c383f;
   margin: 6px 0px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 @media (max-width: 991px) {

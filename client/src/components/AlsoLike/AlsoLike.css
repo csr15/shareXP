@@ -99,7 +99,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .also_like .xp-also_like-reaction, .also_like .xp-also_like-reaction .xp-also_like-img,
+.xp-center, .also_like, .also_like .xp-also_like-reaction, .also_like .xp-also_like-reaction .xp-also_like-img,
 .also_like .xp-also_like-reaction .xp-also_view-img {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -132,16 +132,31 @@ button:hover {
 
 .also_like {
   background: #ffffff;
-  border: 1px solid #ebebeb;
-  padding: 10px;
-  margin: 10px 0px;
+  margin: 20px 0px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.also_like:first-child {
+  margin-top: 0px;
+}
+
+.also_like .xp-also_like-left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
 }
 
 .also_like p {
-  color: #686b78;
+  color: #3c383f;
   font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
@@ -157,6 +172,13 @@ button:hover {
 .also_like .xp-also_like-reaction .xp-also_view-img img {
   width: 15px;
   opacity: 0.5;
+}
+
+.also_like .xp-also_like-reaction .xp-also_like-img i,
+.also_like .xp-also_like-reaction .xp-also_view-img i {
+  opacity: 0.5;
+  margin: 0px;
+  padding: 0px;
 }
 
 .also_like .xp-also_like-reaction .xp-also_like-img span,
@@ -179,5 +201,55 @@ button:hover {
 
 .also_like:hover p {
   color: #3c383f;
+}
+
+.also_like .xp-also_like-right img {
+  width: 80px;
+  height: 80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-color: #8e27f6;
+  margin-left: 10px;
+}
+
+@media (max-width: 991px) {
+  .also_like {
+    -webkit-box-align: stretch;
+        -ms-flex-align: stretch;
+            align-items: stretch;
+    width: 100%;
+    margin: 20px auto;
+  }
+  .also_like .xp-also_like-right {
+    padding-left: 7px;
+  }
+  .also_like .xp-also_like-right img {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .also_like {
+    width: 70%;
+    margin: 30px 0px;
+  }
+  .also_like .xp-also_like-right img {
+    width: 70px;
+    height: 70px;
+    margin-left: 7px;
+  }
+}
+
+@media (max-width: 501px) {
+  .also_like {
+    width: 100%;
+    margin: 30px 0px;
+  }
+  .also_like .xp-also_like-right img {
+    width: 70px;
+    height: 70px;
+    margin-left: 7px;
+  }
 }
 /*# sourceMappingURL=AlsoLike.css.map */

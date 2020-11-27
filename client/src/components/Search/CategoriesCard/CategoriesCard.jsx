@@ -19,7 +19,7 @@ function CategoriesCard(props) {
       <div
         className="xp-search-categories-card"
         style={{
-          backgroundColor: randomColor,
+          borderColor: randomColor,
         }}
       >
         <h5>{props.tagTitle}</h5>

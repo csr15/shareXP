@@ -4,7 +4,6 @@ import ReactHtmlParser from "react-html-parser";
 import { useDispatch, useSelector } from "react-redux";
 
 import "./Story.css";
-import saluteImg from "../../Assets/icons/xp-like.svg";
 import viewImg from "../../Assets/icons/xp-view.svg";
 import ShareXpImg from "../../Assets/shareXP-draw.svg";
 import { config } from "../../utilities/constants/constants";

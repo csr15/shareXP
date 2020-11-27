@@ -5,16 +5,19 @@ import "./Comments.css";
 import dummyAvatar from "../../Assets/icons/xp-avatar.svg";
 import { config } from "../../utilities/constants/constants";
 import Skeleton from "react-loading-skeleton";
+import { useSelector } from "react-redux";
 
 const Comments = React.memo(({ comments, addCommentHandler }) => {
   const [newComment, setNewComment] = React.useState("");
+
+  const authState = useSelector(state => state.auth.authState)
   //Comment card
   const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
     <div className="xp-comment-card">
       <div className="xp-comment-img my-auto">
         <img
           src={avatar ? avatar : dummyAvatar}
-          alt={config.server_url}
+          alt={config.imgAlt}
           className="my-auto img-responsive"
         />
       </div>
@@ -43,11 +46,13 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
           autoCapitalize="off"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
+          disabled={!authState}
         />
         <div className="text-center d-block">
           <button
             className="xp-btn-secondary"
             onClick={addCommentHandler.bind(this, newComment)}
+            disabled={newComment === ""}
           >
             Add comment
           </button>

@@ -132,7 +132,7 @@ button:hover {
 .xp-search .xp-search_bar {
   width: 100%;
   height: 30vh;
-  background-image: url("../../Assets/icons/xp-search-bg.svg");
+  background: #fca311;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

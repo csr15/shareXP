@@ -43,6 +43,7 @@
   }
   .xp-comment-body{
     margin-left: 7px;
+    overflow: hidden;
     .xp-comment-details{
       @extend .xp-center;
       justify-content: flex-start;
@@ -71,6 +72,8 @@
         font-weight: 400;
         color: $xp-title;
         margin: 6px 0px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
     }
     padding: 0px 10px;
   }

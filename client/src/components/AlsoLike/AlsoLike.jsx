@@ -1,32 +1,45 @@
 import React from "react";
 
 import "./AlsoLike.css";
-import saluteImg from "../../Assets/icons/xp-like.svg";
 import viewImg from "../../Assets/icons/xp-view.svg";
 import { config } from "../../utilities/constants/constants";
 import { useHistory } from "react-router";
+import sharexpImg from "../../Assets/shareXP-draw.svg";
 
 export default function AlsoLike({ story, indexValue }) {
   const history = useHistory();
   return (
     <div
       className="also_like"
-      onClick={() => history.push(`/view-story/mostPopular/${story._id}`)}
+      onClick={() => history.push(`/viewstory/${story._id}/${story.uid}`)}
     >
-      <p>{story.story.title}</p>
-      <div className="xp-also_like-reaction">
-        <div className="xp-also_like-salute">
-          <div className="xp-also_like-img">
-            <img src={saluteImg} alt={config.imgAlt} />
-            <span>{story.likes.length}</span>
+      <div className=" xp-also_like-left">
+        <p>{story.story.title}</p>
+        <div className="xp-also_like-reaction">
+          <div className="xp-also_like-salute">
+            <div className="xp-also_like-img">
+              <i className="bx bxs-like"></i>
+              <span>{story.likes.length}</span>
+            </div>
+          </div>
+          <div className="xp-also_like-views">
+            <div className="xp-also_view-img">
+              <img src={viewImg} alt={config.imgAlt} />
+              <span>{story.views}</span>
+            </div>
           </div>
         </div>
-        <div className="xp-also_like-views">
-          <div className="xp-also_view-img">
-            <img src={viewImg} alt={config.imgAlt} />
-            <span>{story.views}</span>
-          </div>
-        </div>
+      </div>
+      <div className="xp-also_like-right">
+        <img
+          src={story.story.img ? story.story.img : sharexpImg}
+          alt={
+            config.imgAlt ||
+            story.story.title ||
+            story.story.tags.map((el) => el.substr(1))
+          }
+          className="my-auto img-responsive"
+        />
       </div>
     </div>
   );
