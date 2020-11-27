@@ -11,44 +11,45 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
   //Comment card
   const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
     <div className="xp-comment-card">
-      <div className="xp-comment-card_header">
+      <div className="xp-comment-img my-auto">
         <img
           src={avatar ? avatar : dummyAvatar}
           alt={config.server_url}
           className="my-auto img-responsive"
         />
-        <h6 className="my-auto">{userName}</h6>
-        <p className="my-auto xp-comment-date">
-          {moment(commentedAt).fromNow()}
-        </p>
       </div>
-      <div className="xp-comment-card_body">
-        <p>{comment}</p>
+      <div className="xp-comment-body my-auto">
+        <div className="xp-comment-details">
+          <h6 className="my-auto">{userName}</h6>
+          <div className="spacer"></div>
+          <p className="my-auto xp-comment-date">
+            {moment(commentedAt).fromNow()}
+          </p>
+        </div>
+        <p className="xp-comment-body-text">{comment}</p>
       </div>
     </div>
   );
 
   return (
     <div className="xp-comments">
-      <div className="xp-comment-input_wrapper">
-        <label htmlFor="comment">Add your comment</label>
-        <div className="xp-comment-input">
-          <input
-            type="text"
-            name="comment"
-            id="comment"
-            placeholder="Really inspiring!"
-            autoCorrect="off"
-            autoComplete="off"
-            autoCapitalize="off"
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-          />
+      <div className="xp-comment-input">
+        <h6>Add your comment</h6>
+        <textarea
+          placeholder="Really inspiring!"
+          value={newComment}
+          autoCorrect={false}
+          autoComplete="off"
+          autoCapitalize="off"
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+        />
+        <div className="text-center d-block">
           <button
-            className="btn xp-btn-primary"
+            className="xp-btn-secondary"
             onClick={addCommentHandler.bind(this, newComment)}
           >
-            Add
+            Add comment
           </button>
         </div>
       </div>

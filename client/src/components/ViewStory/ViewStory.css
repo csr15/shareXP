@@ -219,8 +219,8 @@ button:hover {
   font-family: "Merriweather", serif;
   font-weight: 400;
   color: #3c383f;
-  font-size: 21px;
-  line-height: 34px;
+  font-size: 18px;
+  line-height: 32px;
 }
 
 .xp-view .xp-view-first_layer .xp-view-content img, .xp-view .xp-viewstory-loader .xp-view-content img {
@@ -247,6 +247,8 @@ button:hover {
   background: #8e27f6;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  -webkit-box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .xp-view .xp-view-footer .xp-view-footer_user h5 {
@@ -277,10 +279,6 @@ button:hover {
   transition: all 0.3s ease;
 }
 
-.xp-view .xp-view-footer .xp-view-footer_reactions div i:hover {
-  color: #8e27f6;
-}
-
 .xp-view .xp-view-footer .xp-view-footer_reactions div h6 {
   font-weight: 500;
   font-size: 12px;
@@ -289,7 +287,7 @@ button:hover {
 }
 
 .xp-view .xp-view-footer .xp-view-comments {
-  width: 100%;
+  width: 60%;
   margin: 15px auto 10px auto;
   padding: 0px;
 }
@@ -333,6 +331,10 @@ button:hover {
   }
   .xp-view .xp-view-first_layer .xp-view-header h1 {
     font-size: 32px;
+    margin-bottom: 5px;
+  }
+  .xp-view .xp-view-first_layer .xp-view-header .xp-view-header_details {
+    margin: 0px auto;
   }
   .xp-view .xp-view-first_layer .xp-view-header .xp-view-header_details h6 {
     margin: 5px 0px;
@@ -340,17 +342,26 @@ button:hover {
   .xp-view .xp-view-first_layer .xp-view-header .xp-view-header_details .spacer {
     margin: auto 10px;
   }
+  .xp-view .xp-view-first_layer .xp-view-header .xp-view-header_tags {
+    margin: 1px 0px;
+  }
   .xp-view .xp-view-first_layer .xp-view-content h1 {
     font-size: 24px;
   }
   .xp-view .xp-view-footer {
     width: 90%;
   }
+  .xp-view .xp-view-footer .xp-view-comments {
+    width: 85%;
+  }
 }
 
 @media (max-width: 468px) {
   .xp-view .xp-view-first_layer .xp-view-header_details h6 {
     font-size: 14px;
+  }
+  .xp-view .xp-view-first_layer .xp-view-header_details p {
+    margin: 0px;
   }
   .xp-view .xp-view-first_layer .xp-view-content h1 {
     font-size: 22px;
@@ -376,6 +387,9 @@ button:hover {
   }
   .xp-view .xp-view-footer .xp-contact-author .xp-view-footer_user-contact a i {
     font-size: 1.5rem !important;
+  }
+  .xp-view .xp-view-footer .xp-view-comments {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=ViewStory.css.map */

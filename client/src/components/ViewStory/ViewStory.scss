@@ -76,8 +76,8 @@
         font-family: $xp-meri;
         font-weight: 400;
         color: $xp-title;
-        font-size: 21px;
-        line-height: 34px;
+        font-size: 18px;
+        line-height: 32px;
       }
       img{
         width: 100%;
@@ -103,6 +103,7 @@
         border-radius: 50%;
         background: $xp-pri;
         transform: translate(-50%, -50%);
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
       }
       h5 {
         color: $xp-title;
@@ -130,10 +131,6 @@
           color: $xp-accent;
           cursor: pointer;
           transition: all 0.3s ease;
-
-          &:hover {
-            color: $xp-pri;
-          }
         }
         h6 {
           font-weight: 500;
@@ -144,7 +141,7 @@
       }
     }
     .xp-view-comments {
-      width: 100%;
+      width: 60%;
       margin: 15px auto 10px auto;
       padding: 0px;
     }
@@ -197,14 +194,19 @@
       .xp-view-header {
         h1 {
           font-size: 32px;
+          margin-bottom: 5px;
         }
         .xp-view-header_details {
+          margin: 0px auto;
           h6 {
             margin: 5px 0px;
           }
           .spacer {
             margin: auto 10px;
           }
+        }
+        .xp-view-header_tags{
+          margin: 1px 0px;
         }
       }
       .xp-view-content {
@@ -215,6 +217,10 @@
     }
     .xp-view-footer {
       width: 90%;
+
+      .xp-view-comments{
+        width: 85%;
+      }
     }
   }
 }
@@ -225,6 +231,9 @@
       .xp-view-header_details {
         h6 {
           font-size: 14px;
+        }
+        p{
+          margin: 0px;
         }
       }
       .xp-view-content {
@@ -265,6 +274,9 @@
             }
           }
         }
+      }
+      .xp-view-comments{
+        width: 100%;
       }
     }
   }

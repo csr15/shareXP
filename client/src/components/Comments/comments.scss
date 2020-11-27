@@ -1,102 +1,78 @@
 @import "../../utilities/scss-variables/variables";
 
-.xp-comment-input_wrapper {
-  margin-bottom: 7px;
-  label {
-    font-weight: 500;
-    font-family: $xp-pop;
+.xp-comment-input{
+  width: 100%;
+
+  h6{
     text-transform: capitalize;
-    margin: 5px 0px;
   }
-  .xp-comment-input {
+  textarea{
     width: 100%;
-    background: $xp-editor;
+    height: 80px;
     border: 1px solid $xp-story-border;
-    padding: 0px;
-    margin: 5px 0px;
-    @extend .xp-center;
+    outline:  none !important;
+    background: $xp-editor;
+    padding: 0.5rem;
     border-radius: 7px;
+    transition: all 0.3s ease;
+    font-family: $xp-pop;
+    font-size: 13px;
 
-    input {
-      font-family: $xp-pop;
-      font-size: 14px;
-      color: $xp-title;
-      font-weight: 400;
-      background: transparent;
-      border: none;
-      margin: 0px;
-      outline: none !important;
-      padding: 1rem 0.7rem;
-      flex: 1;
+    &:focus{
+      border-color: $xp-black;
     }
-
-    button {
-      font-weight: 500;
-      font-family: $xp-pop;
-      text-transform: uppercase;
-      color: $xp-accent;
-      background: transparent;
-      border-radius: 0px;
-      font-size: 14px;
-      &:hover {
-        color: $xp-black;
-        background: transparent;
-      }
-
-      &:focus {
-        outline: none !important;
-        box-shadow: none;
-      }
-    }
+  }
+  button{
+    margin: 10px auto;
   }
 }
 .xp-comment-card {
-  margin: 10px auto;
-  padding: 0.3rem 0rem;
-  border-bottom: 1px solid $xp-border;
-
-
-  .xp-comment-card_header {
-    @extend .xp-center;
-    justify-content: flex-start;
-
-    img {
-      width: 40px;
-      height: 40px;
+  @extend .xp-center;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 30px auto;
+  .xp-comment-img{
+    img{
+      width: 50px;
+      height: 50px;
       object-fit: contain;
       border-radius: 50%;
-    }
-
-    h6 {
-      color: $xp-accent;
-      text-transform: none;
-      margin: 0px 10px;
-    }
-    .xp-comment-date {
-      font-weight: 400;
-      font-size: 12px;
-      margin: 0px 10px;
-      position: relative;
-
-      &::before {
-        content: "";
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        background: $xp-accent;
-        top: 50%;
-        left: -15%;
-        transform: translate(-50%, -50%);
-        border: none;
-        border-radius: 50%;
-      }
+      padding: 0px;
+      background-color: $xp-pri;
     }
   }
+  .xp-comment-body{
+    margin-left: 7px;
+    .xp-comment-details{
+      @extend .xp-center;
+      justify-content: flex-start;
 
-  .xp-comment-card_body {
-    p {
-      margin: 7px 0px 7px 0px;
+      h6{
+        text-transform: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+      
+      p{
+        color: #acacac;
+        font-weight: 400;
+        font-size: 12px;
+      }
+      .spacer{
+        width: 5px;
+        height: 5px;
+        background-color: $xp-story-border;
+        border-radius: 50%;
+        margin: auto 10px;
+      }
     }
+    .xp-comment-body-text{
+        font-size: 16px;
+        font-weight: 400;
+        color: $xp-title;
+        margin: 6px 0px;
+    }
+    padding: 0px 10px;
   }
 }
 
@@ -104,7 +80,7 @@
   .xp-comment-input_wrapper {
     .xp-comment-input {
       input {
-        padding: 0.7rem;
+        padding: 0.9rem;
       }
     }
   }
