@@ -244,7 +244,7 @@ const ViewStory = () => {
   //share story
   const shareStoryHandler = () => {
     navigator.clipboard.writeText(
-      `localhost:3000/viewstory/${story._id}/${author._id}`
+      `https://sharexp.netlify.app/viewstory/${story._id}/${author._id}`
     );
     setLinkCopied(true);
 

@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
 app.use(cookieParser());
 
 //Body-parser config
