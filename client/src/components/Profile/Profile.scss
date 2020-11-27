@@ -114,13 +114,13 @@ h6 {
         position: absolute;
         width: 120px;
         height: 120px;
-        object-fit: cover;
+        object-fit: contain;
         top: 100%;
         left: 50%;
         transform: translate(-50%, -50%);
         border-radius: 50%;
         border: 5px solid $xp-white;
-        background-color: $xp-pri;
+        background-color: $xp-editor;
       }
 
       h6 {
@@ -133,9 +133,10 @@ h6 {
   .xp-profile-title {
     margin: 60px auto 10px auto;
     h1 {
-      font-family: $xp-serif;
+      font-family: $xp-pop;
       text-transform: capitalize;
-      margin: 5px auto;
+      font-weight: 600;
+      margin: 10px auto;
     }
     h6 {
       color: $xp-accent;
@@ -157,14 +158,6 @@ h6 {
         text-transform: capitalize;
       }
     }
-    // .xp-profile-working_exp {
-    //   margin-top: 10px;
-    //   font-style: italic;
-    //   span {
-    //     font-weight: 600;
-    //     color: $xp-black;
-    //   }
-    // }
   }
   .xp-profile-activity {
     margin: 40px auto;

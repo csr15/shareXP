@@ -15,6 +15,7 @@ const NotificationCard = ({
   createdAt,
   storyTitle,
   clearHandler,
+  loader
 }) => (
   <div className="xp-notification-card">
     <h6>
@@ -24,8 +25,8 @@ const NotificationCard = ({
 
     <div className="xp-notification-reaction">
       {/* <button className="btn xp-btn-outline view">View</button> */}
-      <button className="btn xp-btn-outline clear" onClick={clearHandler}>
-        clear
+      <button className="btn xp-btn-outline clear" onClick={clearHandler} disabled={loader}>
+        {loader ? "Clearing..!" : "Clear"}
       </button>
       <p>{moment(createdAt).fromNow()}</p>
     </div>
@@ -45,6 +46,7 @@ export const Notifications = ({ closeNotification }) => {
     setErrorOnClearNotification,
   ] = React.useState(false);
   const [cleared, setCleared] = React.useState(false);
+  const [loader, setLoader] = React.useState(false);
 
   const notifications = useSelector((state) => state.profile.notifications);
   
@@ -55,6 +57,7 @@ export const Notifications = ({ closeNotification }) => {
 
   //function to clear notification
   const clearNotificationHandler = async (authorId) => {
+    setLoader(true);
     try {
       await Axios.patch(
         `${
@@ -63,6 +66,7 @@ export const Notifications = ({ closeNotification }) => {
       );
 
       setCleared(true);
+      setLoader(false);
       setTimeout(() => {
         setCleared(false);
       }, 3000);
@@ -95,6 +99,7 @@ export const Notifications = ({ closeNotification }) => {
                   storyId={el.storyId}
                   uid={el.uid}
                   storyTitle={el.storyTitle}
+                  loader={loader}
                   clearHandler={clearNotificationHandler.bind(this, el.uid)}
                 />
               );

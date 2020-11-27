@@ -4,7 +4,8 @@
   .xp-search_bar {
     width: 100%;
     height: 30vh;
-    background: $xp-sec;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+      url("../../Assets/icons/xp-search-bg.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,8 +16,9 @@
 
     h3 {
       color: $xp-black;
-      font-weight: 600;
-      font-family: $xp-serif;
+      font-weight: 700;
+      font-family: $xp-pop;
+      color: $xp-white;
     }
 
     .xp-search_bar-wrapper {

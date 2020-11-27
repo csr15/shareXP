@@ -265,15 +265,15 @@ h6 {
   position: absolute;
   width: 120px;
   height: 120px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  -o-object-fit: contain;
+     object-fit: contain;
   top: 100%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   border-radius: 50%;
   border: 5px solid #ffffff;
-  background-color: #8e27f6;
+  background-color: #f5f5f5;
 }
 
 .xp-profile .xp-profile-img-bg .xp-profile-img h6 {
@@ -289,9 +289,10 @@ h6 {
 }
 
 .xp-profile .xp-profile-title h1 {
-  font-family: "DM Serif Display", serif;
+  font-family: "Poppins", sans-serif;
   text-transform: capitalize;
-  margin: 5px auto;
+  font-weight: 600;
+  margin: 10px auto;
 }
 
 .xp-profile .xp-profile-title h6 {
