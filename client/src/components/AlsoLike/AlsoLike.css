@@ -132,7 +132,7 @@ button:hover {
 
 .also_like {
   background: #ffffff;
-  margin: 20px 0px;
+  margin: 10px 0px;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
@@ -142,6 +142,8 @@ button:hover {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
+  border: 1px solid #ebebeb;
+  padding: 10px 10px;
 }
 
 .also_like:first-child {
@@ -165,7 +167,6 @@ button:hover {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin: 5px auto;
 }
 
 .also_like .xp-also_like-reaction .xp-also_like-img img,
@@ -232,7 +233,6 @@ button:hover {
 @media (max-width: 768px) {
   .also_like {
     width: 70%;
-    margin: 30px 0px;
   }
   .also_like .xp-also_like-right img {
     width: 70px;
@@ -244,11 +244,11 @@ button:hover {
 @media (max-width: 501px) {
   .also_like {
     width: 100%;
-    margin: 30px 0px;
+    margin: 15px 0px;
   }
   .also_like .xp-also_like-right img {
     width: 70px;
-    height: 70px;
+    height: 80px;
     margin-left: 7px;
   }
 }

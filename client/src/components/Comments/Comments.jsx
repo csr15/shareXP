@@ -14,11 +14,11 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
   //Comment card
   const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
     <div className="xp-comment-card">
-      <div className="xp-comment-img my-auto">
+      <div className="xp-comment-img">
         <img
           src={avatar ? avatar : dummyAvatar}
           alt={config.imgAlt}
-          className="my-auto img-responsive"
+          className="img-responsive"
         />
       </div>
       <div className="xp-comment-body my-auto">

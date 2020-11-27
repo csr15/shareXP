@@ -164,7 +164,6 @@ export default function StoryScreen() {
   }
   return (
     <div className="xp-story_screen">
-      <div className="container">
         <div className="row">
           <div className="col-md-8">
             <div className="xp-story_screen-title">
@@ -229,7 +228,6 @@ export default function StoryScreen() {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 }

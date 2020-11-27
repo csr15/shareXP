@@ -6,7 +6,7 @@ import { config } from "../../utilities/constants/constants";
 import { useHistory } from "react-router";
 import sharexpImg from "../../Assets/shareXP-draw.svg";
 
-export default function AlsoLike({ story, indexValue }) {
+export default function AlsoLike({ story }) {
   const history = useHistory();
   return (
     <div

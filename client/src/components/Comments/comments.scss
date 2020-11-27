@@ -29,6 +29,7 @@
 .xp-comment-card {
   @extend .xp-center;
   justify-content: flex-start;
+  align-items: stretch;
   width: 100%;
   margin: 30px auto;
   .xp-comment-img{
