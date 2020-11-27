@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -99,7 +98,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .also_like, .also_like .xp-also_like-reaction, .also_like .xp-also_like-reaction .xp-also_like-img,
+.xp-center, .also_like, .also_like .xp-also_like-left .xp-also-like_left-body, .also_like .xp-also_like-reaction, .also_like .xp-also_like-reaction .xp-also_like-img,
 .also_like .xp-also_like-reaction .xp-also_view-img {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -142,8 +141,9 @@ button:hover {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  border: 1px solid #ebebeb;
-  padding: 10px 10px;
+  border: 0.5px solid #ebebeb;
+  padding: 7px 7px;
+  border-radius: 5px;
 }
 
 .also_like:first-child {
@@ -155,6 +155,20 @@ button:hover {
       -ms-flex: 1;
           flex: 1;
   width: 100%;
+  height: 100%;
+}
+
+.also_like .xp-also_like-left .xp-also-like_left-body {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .also_like p {
@@ -204,13 +218,15 @@ button:hover {
   color: #3c383f;
 }
 
-.also_like .xp-also_like-right img {
-  width: 80px;
-  height: 80px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.also_like .xp-also_like-right {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #8e27f6;
-  margin-left: 10px;
+}
+
+.also_like .xp-also_like-right p {
+  color: transparent;
 }
 
 @media (max-width: 991px) {

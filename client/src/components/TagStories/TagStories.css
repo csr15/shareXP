@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -145,8 +144,9 @@ button:hover {
 
 .xp-tag__stories .xp-tag__stories-details h1 {
   color: #000000;
-  font-family: "DM Serif Display", serif;
+  font-family: "Poppins", sans-serif;
   color: #3c383f;
+  font-weight: 600;
 }
 
 .xp-tag__stories .xp-tag_loader {

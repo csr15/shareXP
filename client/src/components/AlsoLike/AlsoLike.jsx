@@ -14,32 +14,33 @@ export default function AlsoLike({ story }) {
       onClick={() => history.push(`/viewstory/${story._id}/${story.uid}`)}
     >
       <div className=" xp-also_like-left">
-        <p>{story.story.title}</p>
-        <div className="xp-also_like-reaction">
-          <div className="xp-also_like-salute">
-            <div className="xp-also_like-img">
-              <i className="bx bxs-like"></i>
-              <span>{story.likes.length}</span>
+        <div className="xp-also-like_left-body">
+          <p>{story.story.title}</p>
+          <div className="xp-also_like-reaction">
+            <div className="xp-also_like-salute">
+              <div className="xp-also_like-img">
+                <i className="bx bxs-like"></i>
+                <span>{story.likes.length}</span>
+              </div>
             </div>
-          </div>
-          <div className="xp-also_like-views">
-            <div className="xp-also_view-img">
-              <img src={viewImg} alt={config.imgAlt} />
-              <span>{story.views}</span>
+            <div className="xp-also_like-views">
+              <div className="xp-also_view-img">
+                <img src={viewImg} alt={config.imgAlt} />
+                <span>{story.views}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="xp-also_like-right">
-        <img
-          src={story.story.img ? story.story.img : sharexpImg}
-          alt={
-            config.imgAlt ||
-            story.story.title ||
-            story.story.tags.map((el) => el.substr(1))
-          }
-          className="my-auto img-responsive"
-        />
+      <div
+        className="xp-also_like-right"
+        style={{
+          backgroundImage: `url(${
+            story.story.img ? story.story.img : sharexpImg
+          })`,
+        }}
+      >
+<p>sharexp</p>
       </div>
     </div>
   );

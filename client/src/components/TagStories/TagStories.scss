@@ -12,8 +12,9 @@
     justify-content: space-between;
     h1 {
       color: $xp-black;
-      font-family: $xp-serif;
+      font-family: $xp-pop;
       color: $xp-title;
+      font-weight: 600;
     }
     button {
       @extend .xp-btn-primary;
