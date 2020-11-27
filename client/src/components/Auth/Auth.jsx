@@ -11,6 +11,9 @@ import * as actions from "../../store";
 
 const Auth = () => {
   const [isSignup, setIsSignup] = useState(false);
+  const [signupLoader, setSignupLoader] = useState(false);
+  const [signInLoader, setSignInLoader] = useState(false);
+  const [googleLoader, setGoogleLoader] = useState(false);
 
   //mapStateToProps
   const state = useSelector((state) => {
@@ -34,7 +37,7 @@ const Auth = () => {
     history.push("/");
   } else if (state.didGoogleAuthed !== "" && likedStory !== "") {
     history.push(likedStory);
-    localStorage.removeItem('likedStory')
+    localStorage.removeItem("likedStory");
   }
 
   return (
@@ -67,16 +70,33 @@ const Auth = () => {
               </p>
             </li>
           </ul>
-          {isSignup ? <Signup /> : <Signin />}
+          {isSignup ? (
+            <Signup
+              loader={signupLoader}
+              onLoader={() => setSignupLoader(true)}
+              offLoader={() => setSignupLoader(false)}
+            />
+          ) : (
+            <Signin
+              loader={signInLoader}
+              onLoader={() => setSignInLoader(true)}
+              offLoader={() => setSignInLoader(false)}
+            />
+          )}
           <div className="text-center m-3">
             <p>Or login with</p>
-            <GoogleLogin
-              clientId="419326780272-n2ti7qe7onojrlmrecfvmj7ll8paa1fk.apps.googleusercontent.com"
-              buttonText="Login with Google"
-              onSuccess={onGoogleSignup}
-              onFailure={(err) => console.log(err)}
-              cookiePolicy={`single_host_origin`}
-            />
+            <div
+              style={{ padding: "0px", margin: "0px" }}
+              onClick={() => setGoogleLoader(true)}
+            >
+              <GoogleLogin
+                clientId="419326780272-n2ti7qe7onojrlmrecfvmj7ll8paa1fk.apps.googleusercontent.com"
+                buttonText={googleLoader ? "Loading..!" : "Login with google"}
+                onSuccess={onGoogleSignup}
+                onFailure={(err) => console.log(err)}
+                cookiePolicy={`single_host_origin`}
+              />
+            </div>
           </div>
         </div>
       </div>

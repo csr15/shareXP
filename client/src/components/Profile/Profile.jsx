@@ -58,7 +58,9 @@ export default function Profile() {
   if (currentTab === "myStories") {
     tab = (
       <MyStories
-        onClick={(storyId) => history.push(`/view-story/mystories/${storyId}`)}
+        onClick={(story) =>
+          history.push(`/viewstory/${story._id}/${story.uid}`)
+        }
         myStories={state.myStories}
       />
     );

@@ -1,100 +1,83 @@
 import React from "react";
 import moment from "moment";
 
-import "./comments.css";
-import dummyImg from "../../Assets/icons/xp-avatar.svg";
-import CommentInput from "./CommentInput";
-import BackDrop from "../BackDrop/BackDrop";
+import "./Comments.css";
+import dummyAvatar from "../../Assets/icons/xp-avatar.svg";
 import { config } from "../../utilities/constants/constants";
+import Skeleton from "react-loading-skeleton";
 
-export default function Comments({
-  storyData,
-  author,
-  doOpenComment,
-  setDoOpenCommentProp,
-}) {
-  const CommentCard = ({ userName, commentedAt, comment, avatar }) => (
-    <div className="xp-viewstory-comments-card">
-      <div className="xp-viewstory-comments-card_header">
-        <img src={avatar ? avatar : dummyImg} alt={config.imgAlt} />
-        <h6>
-          {userName}
-          <span>{moment(commentedAt).fromNow()}</span>{" "}
-        </h6>
+const Comments = React.memo(({ comments, addCommentHandler }) => {
+  const [newComment, setNewComment] = React.useState("");
+  //Comment card
+  const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
+    <div className="xp-comment-card">
+      <div className="xp-comment-card_header">
+        <img
+          src={avatar ? avatar : dummyAvatar}
+          alt={config.server_url}
+          className="my-auto img-responsive"
+        />
+        <h6 className="my-auto">{userName}</h6>
+        <p className="my-auto xp-comment-date">
+          {moment(commentedAt).fromNow()}
+        </p>
       </div>
-      <div className="xp-viewstory-comments-card_text">
+      <div className="xp-comment-card_body">
         <p>{comment}</p>
       </div>
     </div>
   );
+
   return (
-    <div className="xp-viewstory-comments">
-      <div className="xp-viewstory-comments-web">
-        <CommentInput
-          author={author}
-          storyId={storyData._id}
-          storyTitle={storyData.story.title}
-        />
-        {storyData ? (
-          storyData.comments.length !== 0 ? (
-            storyData.comments.map((el, index) => {
-              return (
-                <CommentCard
-                  key={index}
-                  userName={el.userName}
-                  commentedAt={el.commentedAt}
-                  comment={el.comment}
-                  avatar={el.avatar}
-                />
-              );
-            })
+    <div className="xp-comments">
+      <div className="xp-comment-input_wrapper">
+        <label htmlFor="comment">Add your comment</label>
+        <div className="xp-comment-input">
+          <input
+            type="text"
+            name="comment"
+            id="comment"
+            placeholder="Really inspiring!"
+            autoCorrect="off"
+            autoComplete="off"
+            autoCapitalize="off"
+            value={newComment}
+            onChange={(e) => setNewComment(e.target.value)}
+          />
+          <button
+            className="btn xp-btn-primary"
+            onClick={addCommentHandler.bind(this, newComment)}
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      <div className="xp-all-comments">
+        {comments ? (
+          comments.length > 0 ? (
+            comments.map((el) => (
+              <CommentCard
+                key={el._id}
+                avatar={el.hasOwnProperty("avatar") ? el.avatar : ""}
+                commentedAt={el.commentedAt}
+                userName={el.userName}
+                comment={el.comment}
+              />
+            ))
           ) : (
-            <p className="text-center m-3 p-2">No comments!</p>
+            <p className="text-center">No comments </p>
           )
         ) : (
-          <p className="text-center m-3 p-2">
-            <i className="bx bx-loader-alt bx-spin"></i>Loading..!
-          </p>
-        )}
-      </div>
-      <div className="xp-viewstory-comments-mobile">
-        {doOpenComment && (
-          <React.Fragment>
-            <BackDrop />
-            <div className="xp-mobile-comments-wrapper">
-              <CommentInput
-                author={author}
-                storyId={storyData._id}
-                setDoOpenComment={setDoOpenCommentProp}
-                storyTitle={storyData.story.title}
-              />
-              <div className="xp-all-mobile-comments">
-                {storyData ? (
-                  storyData.comments.length !== 0 ? (
-                    storyData.comments.map((el, index) => {
-                      return (
-                        <CommentCard
-                          key={index}
-                          userName={el.userName}
-                          commentedAt={el.commentedAt}
-                          comment={el.comment}
-                          avatar={el.avatar}
-                        />
-                      );
-                    })
-                  ) : (
-                    <p className="text-center m-3 p-2">No comments</p>
-                  )
-                ) : (
-                  <p className="text-center m-3 p-2">
-                    <i className="bx bx-loader-alt bx-spin"></i>Loading..!
-                  </p>
-                )}
-              </div>
-            </div>
-          </React.Fragment>
+          <Skeleton
+            width={200}
+            height={50}
+            count={2}
+            style={{ marginTop: "10px" }}
+          />
         )}
       </div>
     </div>
   );
-}
+});
+
+export default Comments;

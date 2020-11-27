@@ -41,12 +41,13 @@
 
       .xp-story-card-title {
         h3 {
-          font-family: $xp-serif;
+          font-family: $xp-pop;
           text-transform: none;
           margin: 5px 0px;
           color: $xp-title;
           line-height: 32px;
-          font-weight: 500;
+          font-size: 22px;
+          font-weight: 700;
 
           &::first-letter {
             text-transform: capitalize;
@@ -113,6 +114,9 @@
           img {
             width: 15px;
             opacity: 0.5;
+          }
+          i {
+            opacity: 0.6;
           }
           span {
             font-size: 14px;

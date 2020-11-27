@@ -20,32 +20,54 @@ module.exports = {
       userName,
       storyTitle,
     } = req.body.notification;
-    
+
     try {
-      const story = await Promise.all([
-        storyModel.findByIdAndUpdate(req.params.storyId, {
-          $addToSet: {
-            comments: req.body.comment,
-          },
-        }),
-        userModel.findByIdAndUpdate(authorId, {
-          //story author ID
-          $addToSet: {
-            notifications: [
-              {
-                uid: uid, // current user ID
-                userName: userName, // current username
-                content: "added a new comment", // content (like / comment)
-                createdAt: new Date(), // creeated at
-                storyId: storyId, // liked story ID
-                storyTitle: storyTitle,
+      if (uid !== authorId) {
+        const story = await Promise.all([
+          storyModel.findByIdAndUpdate(
+            req.params.storyId,
+            {
+              $addToSet: {
+                comments: req.body.comment,
               },
-            ],
+            },
+            { new: true }
+          ),
+          userModel.findByIdAndUpdate(
+            authorId,
+            {
+              //story author ID
+              $addToSet: {
+                notifications: [
+                  {
+                    uid: uid, // current user ID
+                    userName: userName, // current username
+                    content: "added a new comment", // content (like / comment)
+                    createdAt: new Date(), // creeated at
+                    storyId: storyId, // liked story ID
+                    storyTitle: storyTitle,
+                  },
+                ],
+              },
+            },
+            { new: true }
+          ),
+        ]);
+
+        res.status(200).json(story[0]);
+      } else {
+        const  story = await storyModel.findByIdAndUpdate(
+          req.params.storyId,
+          {
+            $addToSet: {
+              comments: req.body.comment,
+            },
           },
-        }),
-      ]);
- 
-      res.status(200).json(story);
+          { new: true }
+        );
+
+        res.status(200).json(story);
+      }
     } catch (error) {
       res.status(404).json({ message: error.message });
     }

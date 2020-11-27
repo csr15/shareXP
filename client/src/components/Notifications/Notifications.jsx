@@ -85,7 +85,7 @@ export const Notifications = ({ closeNotification }) => {
       <div className="xp-notification-layout">
         {notifications ? (
           notifications.length > 0 ? (
-            notifications.map((el) => {
+            notifications.reverse().map((el) => {
               return (
                 <NotificationCard
                   key={el._id}

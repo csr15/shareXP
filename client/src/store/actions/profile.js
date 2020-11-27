@@ -126,7 +126,8 @@ export const likeStoryHandler = (storyId) => {
           config.server_url
         }/profile/likeStory/${storyId}/${localStorage.getItem("uid")}`
       );
-
+      
+      console.log(data)
       dispatch({ type: "STORY_LIKED", payload: data });
     } catch (error) {
       console.log(error.message);
@@ -142,7 +143,7 @@ export const getNotifications = () => {
           "uid"
         )}`
       );
-
+          
       dispatch({ type: "NOTIFICATIONS", payload: data });
     } catch (error) {
       console.log(error);

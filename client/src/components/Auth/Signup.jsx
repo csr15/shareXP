@@ -8,7 +8,7 @@ import { config } from "../../utilities/constants/constants";
 import * as actions from "../../store";
 import Popup from "../Popup/Popup";
 
-const Signup = () => {
+const Signup = ({ onLoader, loader }) => {
   const [userName, setUserName] = useState("");
   const [sureName, setSureName] = useState("");
   const [mail, setMail] = useState("");
@@ -79,6 +79,7 @@ const Signup = () => {
         !isPasswordError &&
         !isSurenameError
       ) {
+        onLoader();
         dispatch(
           actions.signupHandler({
             data: {
@@ -216,7 +217,11 @@ const Signup = () => {
         </div>
         <div className="text-center">
           <button className="btn xp-btn-primary" onClick={signupHandler}>
-            create an account
+            {loader ? (
+              <i className="bx bx-loader-alt bx-spin"></i>
+            ) : (
+              "create an account"
+            )}
           </button>
         </div>
       </div>

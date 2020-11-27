@@ -87,6 +87,7 @@ export default function StoryScreen() {
   );
 
   if (filter === "Following") {
+    console.log(state.followingStories)
     if (state.authState) {
       if (state.followingStories) {
         if (state.followingStories.length !== 0) {
@@ -96,9 +97,7 @@ export default function StoryScreen() {
                 <Story
                   key={el._id}
                   data={el}
-                  onClick={() =>
-                    history.push(`/view-story/following/${el._id}`)
-                  }
+                  onClick={() => history.push(`/viewstory/${el._id}/${el.uid}`)}
                 />
               </LazyLoad>
             );
@@ -139,7 +138,7 @@ export default function StoryScreen() {
           <LazyLoad key={el._id} once={true} placeholder={<Loading />}>
             <Story
               data={el}
-              onClick={() => history.push(`/view-story/mostPopular/${el._id}`)}
+              onClick={() => history.push(`/viewstory/${el._id}/${el.uid}`)}
             />
           </LazyLoad>
         );
@@ -155,7 +154,7 @@ export default function StoryScreen() {
             <Story
               key={el._id}
               data={el}
-              onClick={() => history.push(`/view-story/latest/${el._id}`)}
+              onClick={() => history.push(`/viewstory/${el._id}/${el.uid}`)}
             />
           </LazyLoad>
         );

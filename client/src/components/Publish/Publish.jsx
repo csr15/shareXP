@@ -27,6 +27,7 @@ const Publish = () => {
 
   //mapStateToProps
   const didPublished = useSelector((state) => state.publish.story);
+  const userDetails = useSelector((state) => state.profile.userDetails);
 
   const history = useHistory();
 
@@ -37,7 +38,8 @@ const Publish = () => {
   //mapDispatchToProps
   const dispatch = useDispatch();
   const publishContent = () => {
-    if (story.title !== "" && story.content !== "" && story.tags.length !== 0) {
+    const { title, content, tags } = story;
+    if (title !== "" && content !== "" && tags.length !== 0) {
       if (localImgURL) {
         setOnPublishing(true);
         const storage = firebase.storage();
@@ -66,6 +68,9 @@ const Publish = () => {
                     ...story,
                     img: url,
                     createdAt: new Date(),
+                    userName: userDetails.userName,
+                    avatar: userDetails.avatar,
+                    createdAt: new Date(),
                   })
                 );
               })
@@ -84,11 +89,9 @@ const Publish = () => {
       }
     } else {
       setDidFieldsNotFilled(true);
-      (async () => {
-        await setTimeout(() => {
-          setDidFieldsNotFilled(false);
-        }, 3000);
-      })();
+      setTimeout(() => {
+        setDidFieldsNotFilled(false);
+      }, 3000);
     }
   };
 
@@ -107,7 +110,7 @@ const Publish = () => {
         //Removing user entered #
         let updatedTag = tags.replace("#", "");
         updatedTag = updatedTag.trim();
-        console.log(updatedTag)
+        console.log(updatedTag);
         setStory({ ...story, tags: [...story.tags, `#${updatedTag}`] });
       } else {
         // setAllTags((curTag) => [...curTag, `#${tags}`]);

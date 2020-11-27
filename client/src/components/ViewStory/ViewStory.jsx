@@ -1,149 +1,372 @@
-import React, { useEffect } from "react";
-import { useHistory, useParams } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
-
-import "./ViewStory.css";
-import * as actions from "../../store";
-import StoryCard from "./StoryCard";
 import Axios from "axios";
+import React, { useState } from "react";
+import ReactHtmlParser from "react-html-parser";
+import Skeleton from "react-loading-skeleton";
+import moment from "moment";
+import { useHistory, useParams } from "react-router";
+import LazyLoad from "react-lazyload";
+import { useDispatch, useSelector } from "react-redux";
+
+import avatar from "../../Assets/icons/xp-avatar.svg";
+import "./ViewStory.css";
 import { config } from "../../utilities/constants/constants";
-import Suggestions from "../Suggestions/Suggestions";
+import Comments from "../../components/Comments/Comments";
+import Popup from "../../components/Popup/Popup";
+import * as actions from "../../store";
 
-function ViewStory() {
-  const [suggestions, setSuggestions] = React.useState("");
-  //mapStateToProps
-  const state = useSelector((state) => {
-    return {
-      myStories: state.profile.myStories,
-      tagStories: state.search.tagStories,
-      followingStories: state.user.followingStories,
-      topStories: state.user.topStories,
-      latestStories: state.user.latestStories,
-    };
-  });
+const ViewStory = () => {
+  const [author, setAuthor] = useState("");
+  const [story, setStory] = useState("");
+  const [storyError, setStoryError] = useState(false);
+  const [isStoryLiking, setIsStoryLiking] = useState(false);
+  const [isErrorOnStoryLike, setIsErrorOnStoryLike] = useState(false);
+  const [linkCopied, setLinkCopied] = useState(false);
 
-  let storyData = "";
-
-  const {
-    storyId,
-    tagName,
-    popularStoryId,
-    latestStoryId,
-    followingStoryId,
-    suggestStoryId,
-  } = useParams();
-
-  if (storyId && state.myStories) {
-    storyData = state.myStories.filter((story) => story._id === storyId);
-  } else if (tagName && state.tagStories) {
-    storyData = state.tagStories.filter((story) => story._id === tagName);
-  } else if (state.topStories && popularStoryId) {
-    storyData = state.topStories.filter(
-      (story) => story._id === popularStoryId
-    );
-  } else if (latestStoryId && state.latestStories) {
-    storyData = state.latestStories.filter(
-      (story) => story._id === latestStoryId
-    );
-  } else if (state.followingStories && followingStoryId) {
-    storyData = state.followingStories.filter(
-      (story) => story._id === followingStoryId
-    );
-  } else if (suggestStoryId && suggestions !== "") {
-    storyData = suggestions.filter((story) => story._id === suggestStoryId);
-  }
-
-  React.useEffect(() => {
-    if (storyData && suggestions === "") {
-      (async (tags) => {
-        try {
-          const { data } = await Axios.post(
-            `${config.server_url}/suggestions`,
-            {
-              tags,
-            }
-          );
-
-          setSuggestions(data);
-        } catch (error) {
-          console.log(error);
-        }
-      })(storyData[0].story.tags);
-    }
-  }, [suggestStoryId, storyData, suggestions]);
+  const { storyID, authorID } = useParams();
+  const history = useHistory();
 
   //mapDispatchToProps
   const dispatch = useDispatch();
-  const mapDispatchToProps = {
-    myStories: () => dispatch(actions.profileHandler()),
-    updateView: () =>
-      dispatch(actions.updateViewHandler(localStorage.getItem("storyID"))),
-    fetchTagStoriesHandler: () =>
-      dispatch(actions.fetchTagStories(sessionStorage.getItem("currentTag"))),
-    fetchFollowingStories: () => dispatch(actions.followingTagStories()),
-    topStories: () => dispatch(actions.topTagStories()),
-    latestStories: () => dispatch(actions.latestStories()),
-  };
 
-  useEffect(() => {
-    if (state.myStories === "" && storyId) {
-      mapDispatchToProps.myStories();
-    }
+  //mapStateToProps
+  const state = useSelector((state) => {
+    return {
+      authState: state.auth.authState,
+      userDetails: state.profile.userDetails,
+    };
+  });
 
-    if (state.tagStories === "" && tagName) {
-      mapDispatchToProps.fetchTagStoriesHandler();
-    }
+  //Fething story from server
+  React.useEffect(() => {
+    document.body.style.backgroundColor = "#F5F5F5";
 
-    if (state.followingStories === "" && followingStoryId) {
-      mapDispatchToProps.fetchFollowingStories();
-    }
+    (async () => {
+      try {
+        const storyData = await Promise.all([
+          Axios.get(`${config.server_url}/storyData/${storyID}`),
+          Axios.get(`${config.server_url}/author/${authorID}`),
+        ]);
+        setStory(storyData[0].data);
+        setAuthor(storyData[1].data[0]);
+      } catch (error) {
+        setStoryError(true);
 
-    if (state.topStories === "" && popularStoryId) {
-      mapDispatchToProps.topStories();
-    }
+        setTimeout(() => {
+          setStoryError(false);
+        }, 3000);
+      }
+    })();
 
-    if (state.latestStories === "" && latestStoryId) {
-      mapDispatchToProps.latestStories();
-    }
-
-    return function cleanup() {
-      mapDispatchToProps.updateView();
-      localStorage.removeItem("storyId");
+    //clenup function
+    return function cleanUp() {
+      document.body.style.backgroundColor = "#FFFFFF";
+      dispatch(actions.updateViewHandler(storyID));
+      console.log(story)
     };
   }, []);
 
-  const history = useHistory();
-  return (
-    <div className="xp-viewstory">
-      <StoryCard storyData={storyData[0]} />
-      
-      {/* {suggestions ? (
-        <div className="xp-sugg">
-          {suggestions.length > 0 ? (
-            <>
-              <h4>You might also like</h4>
-              <div className="row">
-                {suggestions.map(({ _id, story: { title, img } }) => {
-                  if (_id !== storyData[0]._id) {
-                    return (
-                      <Suggestions
-                        key={_id}
-                        title={title}
-                        img={img}
-                        clickHandler={() =>
-                          history.push(`/view-story/suggestion/${_id}`)
-                        }
-                      />
-                    );
-                  }
-                })}
-              </div>
-            </>
-          ) : null}
+  //Like a story
+  const likeStoryHandler = async () => {
+    if (state.authState) {
+      setIsStoryLiking(true);
+      try {
+        const { data } = await Axios.post(
+          `${config.server_url}/profile/likeStory`,
+          {
+            storyId: story._id,
+            uid: localStorage.getItem("uid"),
+            authorId: author._id,
+            userName: state.userDetails.userName,
+            storyTitle: story.title,
+          }
+        );
+
+        setStory(data);
+        setIsStoryLiking(false);
+      } catch (error) {
+        setIsErrorOnStoryLike(true);
+      }
+    } else {
+      localStorage.setItem(
+        "likedStory",
+        `/view-story/mostPopular/${story._id}`
+      );
+
+      history.push("/auth");
+    }
+  };
+
+  //Unlike a story
+  const unLikeStoryHandler = async () => {
+    setIsStoryLiking(true);
+    try {
+      const { data } = await Axios.post(
+        `${config.server_url}/profile/unLikeStory/${
+          story._id
+        }/${localStorage.getItem("uid")}/${author._id}`
+      );
+
+      setStory(data);
+      setIsStoryLiking(false);
+    } catch (error) {
+      setIsErrorOnStoryLike(true);
+
+      setTimeout(() => {
+        setIsErrorOnStoryLike(false);
+      }, 3000);
+    }
+  };
+
+  //Story Component
+  const StoryStruct = ({ title, dateCreated, views, tags, img, content }) => (
+    <div className="xp-view-first_layer">
+      <div className="xp-view-header">
+        <h1>{title}</h1>
+        <div className="xp-view-header_details">
+          <h6>
+            <span>
+              {((text) => {
+                text = text.trim();
+                const totalWords =
+                  text.length > 0 ? text.split(/\s+/).length : 0;
+                const totalMinutes = totalWords / 200;
+                return Math.floor(totalMinutes);
+              })(content)}{" "}
+            </span>
+            mins read
+          </h6>
+          <span className="spacer"></span>
+          <h6>
+            <span>{moment(dateCreated).fromNow()}</span>
+          </h6>
+          <span className="spacer"></span>
+          <h6>
+            <span>{views}</span> Views
+          </h6>
         </div>
-      ) : null} */}
+        <div className="xp-view-header_tags">
+          {tags.map((tag, index) => {
+            return <p key={index}>{tag}</p>;
+          })}
+        </div>
+      </div>
+      <div className="xp-view-img text-center">
+        {img && (
+          <LazyLoad once={true} placeholder={"Loading"} height={100}>
+            <img
+              src={img}
+              alt={`${config.imgAlt} | ${title} | ${tags.map(
+                (story) => story
+              )}`}
+              className="img-responsive"
+            />
+          </LazyLoad>
+        )}
+      </div>
+      <div className="xp-view-content">{ReactHtmlParser(content)}</div>
     </div>
   );
-}
+
+  //Loading skeleton for story component
+  const StorySkeleton = () => (
+    <div className="xp-viewstory-loader">
+      <div className="row">
+        <div className="col-md-12 my-4">
+          <h1>
+            <Skeleton height={60} width={700} />
+          </h1>
+          <p className="d-block">
+            <Skeleton
+              height={25}
+              width={500}
+              count={8}
+              style={{ marginTop: "10px" }}
+            />
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
+  //Add comment
+  const commentHandler = async (commentText) => {
+    try {
+      const { data } = await Axios.post(
+        `${config.server_url}/publish/comment/${story._id}`,
+        {
+          comment: {
+            userName: state.userDetails.userName,
+            uid: state.userDetails._id,
+            comment: commentText,
+            commentedAt: new Date(),
+            avatar: state.userDetails.avatar,
+          },
+          notification: {
+            storyId: story._id,
+            uid: localStorage.getItem("uid"),
+            authorId: author._id,
+            userName: author.userName,
+            storyTitle: story.title,
+          },
+        },
+        { withCredentials: true }
+      );
+
+      setStory(data);
+    } catch (error) {
+      setStoryError(true);
+
+      setTimeout(() => {
+        setStoryError(false);
+      }, 3000);
+    }
+  };
+
+  //share story
+  const shareStoryHandler = () => {
+    navigator.clipboard.writeText(
+      `localhost:3000/viewstory/${story._id}/${author._id}`
+    );
+    setLinkCopied(true);
+
+    setTimeout(() => {
+      setLinkCopied(false);
+    }, 3000);
+  };
+  //Return component
+  return (
+    <div className="xp-view">
+      {story ? (
+        <StoryStruct
+          title={story.story.title}
+          dateCreated={story.createdAt}
+          views={story.views}
+          likes={story.likes}
+          tags={story.story.tags}
+          img={story.story.img}
+          content={story.story.content}
+        />
+      ) : (
+        <StorySkeleton />
+      )}
+
+      {/* User details and story reaction */}
+      <div className="xp-view-footer">
+        {author ? (
+          <div className="xp-view-footer_user text-center">
+            <img
+              src={author.avatar ? author.avatar : avatar}
+              alt={config.imgAlt}
+            />
+            <h5>
+              @{author.userName}
+              <span>AUTHOR</span>
+            </h5>
+          </div>
+        ) : (
+          <Skeleton width={100} height={20} />
+        )}
+
+        {/* Like */}
+        {story && (
+          <div className="xp-view-footer_reactions text-center">
+            <div>
+              {(() => {
+                if (isStoryLiking) {
+                  return <i className="bx bx-loader-alt bx-spin"></i>;
+                } else {
+                  if (story.likes.includes(localStorage.getItem("uid"))) {
+                    return (
+                      <i
+                        className="bx bxs-like"
+                        style={{ color: "#8e27f6" }}
+                        onClick={unLikeStoryHandler}
+                      ></i>
+                    );
+                  } else {
+                    return (
+                      <i className="bx bxs-like" onClick={likeStoryHandler}></i>
+                    );
+                  }
+                }
+              })()}
+              <h6>{story.likes.length}</h6>
+            </div>
+            <div>
+              <i className="bx bxs-share" onClick={shareStoryHandler}></i>
+              <h6>share</h6>
+            </div>
+          </div>
+        )}
+
+        {/* Comment component */}
+        {story && (
+          <div className="xp-view-comments">
+            <Comments
+              comments={story.comments}
+              addCommentHandler={commentHandler}
+            />
+          </div>
+        )}
+
+        {/* contact author */}
+        <div className="xp-contact-author">
+          <h6>Contact author</h6>
+          <div className="xp-view-footer_user-contact">
+            {author.facebook && (
+              <a
+                href={author.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="bx bxl-facebook bx-md"></i>
+              </a>
+            )}
+            {author.linkedIn && (
+              <a
+                href={author.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="bx bxl-linkedin bx-md"></i>
+              </a>
+            )}
+            {author.link && (
+              <a href={author.link} target="_blank" rel="noopener noreferrer">
+                <i className="bx bx-link-external bx-md"></i>
+              </a>
+            )}
+            <a
+              href={`mailto:${author.mail}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="bx bx-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Alerts */}
+      {isErrorOnStoryLike && (
+        <Popup
+          type="alert-danger"
+          text="Something went wrong on updating like!"
+        />
+      )}
+
+      {storyError && (
+        <Popup
+          type="alert-danger"
+          text="Something went wrong on getting story"
+        />
+      )}
+
+      {linkCopied && (
+        <Popup type="alert-success" text="Link copied to your clipboard" />
+      )}
+    </div>
+  );
+};
 
 export default ViewStory;

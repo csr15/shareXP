@@ -81,7 +81,7 @@ const Story = React.memo(({ data, onClick, isProfile }) => {
             <div className="xp-story-card-reaction">
               <div className="xp-story-card-salute">
                 <div className="xp-card-img">
-                  <img src={saluteImg} alt={config.imgAlt} />
+                  <i className="bx bxs-like"></i>
                   <span>{data.likes.length}</span>
                 </div>
               </div>

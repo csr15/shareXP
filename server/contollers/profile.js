@@ -92,11 +92,15 @@ module.exports = {
     try {
       if (authorId !== uid) {
         const likedAndNotify = await Promise.all([
-          storyModel.findByIdAndUpdate(storyId, {
-            $addToSet: {
-              likes: uid,
+          storyModel.findByIdAndUpdate(
+            storyId,
+            {
+              $addToSet: {
+                likes: uid,
+              },
             },
-          }),
+            { new: true }
+          ),
           userModel.findByIdAndUpdate(authorId, {
             //story author ID
             $addToSet: {
@@ -113,14 +117,19 @@ module.exports = {
             },
           }),
         ]);
-        res.status(200).json({ message: "liked" });
+        res.status(200).json(likedAndNotify[0]);
       } else {
-        const like = await storyModel.findByIdAndUpdate(storyId, {
-          $addToSet: {
-            likes: uid,
+        const like = await storyModel.findByIdAndUpdate(
+          storyId,
+          {
+            $addToSet: {
+              likes: uid,
+            },
           },
-        });
-        res.status(200).json({ message: "liked" });
+          { new: true }
+        );
+
+        res.status(200).json(like);
       }
     } catch (error) {
       console.log(error);
@@ -130,17 +139,21 @@ module.exports = {
   unLikeStory: async (req, res) => {
     try {
       const unLikeAndNotify = await Promise.all([
-        storyModel.findByIdAndUpdate(req.params.storyId, {
-          $pull: {
-            likes: req.params.uid,
+        storyModel.findByIdAndUpdate(
+          req.params.storyId,
+          {
+            $pull: {
+              likes: req.params.uid,
+            },
           },
-        }),
+          { new: true }
+        ),
         userModel.findByIdAndUpdate(req.params.authorId, {
           //story author ID
           $pull: { notifications: { uid: req.params.uid } },
         }),
       ]);
-      res.status(200).json({ message: "Like updated" });
+      res.status(200).json(unLikeAndNotify[0]);
     } catch (error) {
       res.status(400).json({ message: "Problrem on updating like" });
     }

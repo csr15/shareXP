@@ -8,7 +8,7 @@ import { config } from "../../utilities/constants/constants";
 import * as actions from "../../store";
 import Popup from "../Popup/Popup";
 
-const Signin = React.memo((props) => {
+const Signin = React.memo(({ loader, onLoader, offLoader }) => {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [didFieldsnotFilled, setDidFieldsnotFilled] = useState(false);
@@ -28,6 +28,7 @@ const Signin = React.memo((props) => {
 
   const onSigninHandler = () => {
     if (mail !== "" && password !== "") {
+      onLoader();
       dispatch(
         actions.signinHandler({
           data: {
@@ -57,6 +58,10 @@ const Signin = React.memo((props) => {
     setTimeout(() => {
       setDidFieldsnotFilled(false);
     }, 3000);
+  }
+
+  if(state.signinError){
+    offLoader();
   }
 
   return (
@@ -126,7 +131,11 @@ const Signin = React.memo((props) => {
         </div>
         <div className="text-center">
           <button className="btn xp-btn-primary" onClick={onSigninHandler}>
-            signin to my account
+            {loader ? (
+              <i className="bx bx-loader-alt bx-spin"></i>
+            ) : (
+              "signin to my account"
+            )}
           </button>
         </div>
       </div>

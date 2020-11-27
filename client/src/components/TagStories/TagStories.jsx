@@ -157,7 +157,7 @@ export default function TagStories(props) {
                   key={index}
                   data={el}
                   onClick={() =>
-                    history.push(`/view-story/tagStories/${el._id}`)
+                    history.push(`/viewstory/${el._id}/${el.uid}`)
                   }
                 />
               </LazyLoad>

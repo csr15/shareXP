@@ -16,7 +16,7 @@ export default function MyStories({ myStories, onClick }) {
                   key={index}
                   data={storyData}
                   isProfile={true}
-                  onClick={onClick.bind(this, storyData._id)}
+                  onClick={onClick.bind(this, storyData)}
                 />
               );
             })

@@ -112,10 +112,10 @@ button:hover {
 }
 
 .xp-categories-wrapper, .xp-story .xp-story-card .xp-story-card-text .xp-story-card-categories p {
-  color: #242323;
-  font-size: 12px;
+  color: #000000;
+  font-size: 13px;
   border: none;
-  background-color: #F2F2F2;
+  background-color: #f2f2f2;
   padding: 3px 8px;
   border-radius: 5px;
   margin: 5px 5px 5px 0px;
@@ -177,12 +177,13 @@ button:hover {
 }
 
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-title h3 {
-  font-family: "DM Serif Display", serif;
+  font-family: "Poppins", sans-serif;
   text-transform: none;
   margin: 5px 0px;
   color: #3c383f;
   line-height: 32px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 700;
 }
 
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-title h3::first-letter {
@@ -264,6 +265,10 @@ button:hover {
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-reaction .xp-card-img img {
   width: 15px;
   opacity: 0.5;
+}
+
+.xp-story .xp-story-card .xp-story-card-text .xp-story-card-reaction .xp-card-img i {
+  opacity: 0.6;
 }
 
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-reaction .xp-card-img span {
