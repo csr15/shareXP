@@ -70,7 +70,6 @@ const Publish = () => {
                     createdAt: new Date(),
                     userName: userDetails.userName,
                     avatar: userDetails.avatar,
-                    createdAt: new Date(),
                   })
                 );
               })

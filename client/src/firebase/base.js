@@ -1,5 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/storage";
+import "firebase/analytics"
 
 const firebaseConfig = {
   server_url: "http://localhost:8080",

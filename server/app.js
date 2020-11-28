@@ -64,10 +64,6 @@ app.get("/api/v1", limiter, (req, res) => {
   res.send("Hello shareXP");
 });
 
-app.get("api/v1/testGit", (req, res) => {
-  res.send("Hello From shareXP")
-})
-
 //Publish
 app.use("/api/v1/publish", publishStory);
 
