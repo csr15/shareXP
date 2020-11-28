@@ -60,7 +60,7 @@ mongoose.set("useFindAndModify", false);
 //----------- API -----------
 
 //Initial response
-app.get("/api/v1", limiter, (req, res) => {
+app.get("/api/v1/sharexp", limiter, (req, res) => {
   res.send("Hello shareXP");
 });
 
