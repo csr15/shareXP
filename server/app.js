@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
 app.use(cookieParser());
 
 //Body-parser config
@@ -77,7 +77,7 @@ app.use("/api/v1/profile", limiter, profile);
 app.use("/api/v1/search", limiter, search);
 
 //Author
-app.use("/api/v1/author",limiter,  author);
+app.use("/api/v1/author", limiter, author);
 
 //User stories
 app.use("/api/v1/userStories", limiter, userStories);
