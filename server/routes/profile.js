@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
 
 //controllers
 const profileAction = require("../contollers/profile");
@@ -8,7 +7,7 @@ const profileAction = require("../contollers/profile");
 //Routes
 
 //User details
-router.get("/:uid", verifyCookieToken, profileAction.profile);
+router.get("/:uid", profileAction.profile);
 
 //Delete story
 router.delete("/deleteStory/:storyId", profileAction.deleteStory);
@@ -44,22 +43,3 @@ router.patch(
 );
 
 module.exports = router;
-
-function verifyCookieToken(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(403).send("Forbidden");
-  } else {
-    try {
-      jwt.verify(req.cookies.token, "secretkey", (err) => {
-        if (err) {
-          throw Error();
-        }
-        next();
-      });
-    } catch (error) {
-      res.clearCookie("token");
-      return res.status(400).send(error.message);
-    }
-  }
-}
