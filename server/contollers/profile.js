@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const storyModel = require("../models/story");
 const userModel = require("../models/users");
 
@@ -220,7 +221,11 @@ module.exports = {
       // uid: current user ID
       // authorID: liked / commented author ID
       const clear = await userModel.findByIdAndUpdate(req.params.uid, {
-        $pull: { notifications: { uid: req.params.authorId } },
+        $pull: {
+          notifications: {
+            _id: new mongoose.Types.ObjectId(req.params.storyId),
+          },
+        },
       });
 
       console.log(clear);

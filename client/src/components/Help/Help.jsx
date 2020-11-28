@@ -1,8 +1,9 @@
 import React from "react";
-
 import { Link } from "react-router-dom";
 
 import "./Help.css";
+import CSRLogo from "../../Assets/icons/CSR-Logo.svg";
+import { config } from "../../utilities/constants/constants";
 
 const Help = () => {
   return (
@@ -174,12 +175,72 @@ const Help = () => {
         </div>
         <div className="xp-footer text-center">
           <h6>
-            shareXP, Made with <i className="bx bxs-heart bx-burst"></i> by{" "}
+            shareXP, Made with <i className="bx bxs-heart bx-burst"></i> by {" "}
             <a href="https://portfolio.bixhubtech.in" target="_black">
-              {" "}
               <span>Ragul CS</span>
-            </a>{" "}
+            </a>
           </h6>
+          <a href="https://portfolio.bixhubtech.in" target="_black">
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="50.561"
+              height="33"
+              viewBox="0 0 50.561 33"
+            >
+              <g id="CSR-Logo" transform="translate(-136.439 -81)">
+                <circle
+                  id="Ellipse_2996"
+                  data-name="Ellipse 2996"
+                  cx="3.064"
+                  cy="3.064"
+                  r="3.064"
+                  transform="translate(153.855 88.09) rotate(90)"
+                  fill="#2922e9"
+                />
+                <circle
+                  id="Ellipse_2997"
+                  data-name="Ellipse 2997"
+                  cx="3.064"
+                  cy="3.064"
+                  r="3.064"
+                  transform="translate(153.855 100.192) rotate(90)"
+                  fill="#2922e9"
+                />
+                <path
+                  id="Path_2622"
+                  data-name="Path 2622"
+                  d="M0,0S-7.561-.026-7.561,6.336,0,12.1,0,12.1"
+                  transform="translate(146.5 91.154)"
+                  fill="none"
+                  stroke="#2922e9"
+                  stroke-width="5"
+                />
+                <text
+                  id="S"
+                  transform="translate(155 106)"
+                  font-size="24"
+                  font-family="Poppins-Bold, Poppins"
+                  font-weight="700"
+                >
+                  <tspan x="0" y="0">
+                    S
+                  </tspan>
+                </text>
+                <text
+                  id="R"
+                  transform="translate(171 106)"
+                  font-size="24"
+                  font-family="Poppins-Bold, Poppins"
+                  font-weight="700"
+                >
+                  <tspan x="0" y="0">
+                    R
+                  </tspan>
+                </text>
+              </g>
+            </svg>{" "}
+          </a>
         </div>
       </div>
     </div>

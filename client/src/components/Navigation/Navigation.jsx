@@ -7,6 +7,7 @@ import Logo from "../../Assets/icons/logo.svg";
 import { config } from "../../utilities/constants/constants";
 import * as actions from "../../store";
 import { Notifications } from "../Notifications/Notifications";
+import BackDrop from "../BackDrop/BackDrop";
 
 const Navigation = React.memo(() => {
   const [toggleMobileNav, setToggleMobileNav] = useState(false);
@@ -50,7 +51,10 @@ const Navigation = React.memo(() => {
           onClick={() => setToggleMobileNav((curNav) => !curNav)}
         >
           {toggleMobileNav ? (
-            <i className="bx bx-x bx-md "></i>
+            <i
+              className="bx bx-x bx-md"
+              style={toggleMobileNav ? { color: "#FFFFFF" } : null}
+            ></i>
           ) : (
             <i className="bx bx-menu-alt-right bx-md"></i>
           )}
@@ -81,7 +85,6 @@ const Navigation = React.memo(() => {
                   className="nav-item"
                   onClick={() => setOpenNotification(true)}
                 >
-                  {console.log("Notifications:", state.notifications)}
                   {state.notifications.length > 0 ? (
                     <span className="len"></span>
                   ) : null}
@@ -111,12 +114,15 @@ const Navigation = React.memo(() => {
         </div>
       </nav>
       <div className="xp-nav-mobile-wrapper">
+        {toggleMobileNav && (
+          <BackDrop clickHandler={() => setToggleMobileNav(false)} />
+        )}
         <div
           className="xp-nav-mobile-list"
           style={
             toggleMobileNav
-              ? { left: "0%", opacity: 1, display: "flex" }
-              : { left: "-100%", opacity: 0, display: "none" }
+              ? { left: "0%", opacity: 1 }
+              : { left: "-100%", opacity: 0 }
           }
         >
           <p
@@ -194,6 +200,10 @@ const Navigation = React.memo(() => {
           <Notifications
             userDetails={state.userDetails}
             closeNotification={() => setOpenNotification(false)}
+            viewPropHandler={(storyId, uid) => {
+              setOpenNotification(false);
+              history.push(`/viewstory/${storyId}/${uid}`);
+            }}
           />
         </div>
       ) : null}

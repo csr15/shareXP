@@ -166,6 +166,8 @@ const Publish = () => {
               <input
                 type="text"
                 name="title"
+                autoCapitalize="off"
+                autoCorrect="off"
                 placeholder="Title"
                 autoComplete="off"
                 value={story.title}

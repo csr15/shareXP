@@ -7,13 +7,13 @@ import { config } from "../../utilities/constants/constants";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
 
-const Comments = React.memo(({ comments, addCommentHandler }) => {
+const Comments = React.memo(({ comments, addCommentHandler, loader }) => {
   const [newComment, setNewComment] = React.useState("");
 
-  const authState = useSelector(state => state.auth.authState)
+  const authState = useSelector((state) => state.auth.authState);
   //Comment card
   const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
-    <div className="xp-comment-card">
+    <div className="xp-comment-card"  id="comment">
       <div className="xp-comment-img">
         <img
           src={avatar ? avatar : dummyAvatar}
@@ -41,7 +41,7 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
         <textarea
           placeholder="Really inspiring!"
           value={newComment}
-          autoCorrect={false}
+          autoCorrect="off"
           autoComplete="off"
           autoCapitalize="off"
           value={newComment}
@@ -52,9 +52,9 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
           <button
             className="xp-btn-secondary"
             onClick={addCommentHandler.bind(this, newComment)}
-            disabled={newComment === ""}
+            disabled={newComment === "" || loader}
           >
-            Add comment
+            {loader ? "Posting comment..!" : "Add comment"}
           </button>
         </div>
       </div>
@@ -71,7 +71,7 @@ const Comments = React.memo(({ comments, addCommentHandler }) => {
               />
             ))
           ) : (
-            <p className="text-center">No comments </p>
+            <p className="text-center mt-1 mb-4"> <strong>No comments</strong>, Be the first to add comment <span>😄</span></p>
           )
         ) : (
           <Skeleton

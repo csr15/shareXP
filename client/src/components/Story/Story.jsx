@@ -91,15 +91,13 @@ const Story = React.memo(({ data, onClick, isProfile }) => {
                 </div>
               </div>
               {isProfile && (
-                <div className="xp-story-card-views ml-auto">
-                  <div className="xp-card-img">
-                    <span
-                      className="xp-card-delete"
-                      onClick={() => setDoConfirmation(true)}
-                    >
-                      Delete story
-                    </span>
-                  </div>
+                <div className="xp-story-card-views ml-auto delete">
+                  <span
+                    className="xp-card-delete"
+                    onClick={() => setDoConfirmation(true)}
+                  >
+                    Delete story
+                  </span>
                 </div>
               )}
               {doConfirmation && (

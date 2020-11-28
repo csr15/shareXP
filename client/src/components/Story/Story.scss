@@ -105,7 +105,16 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        flex-wrap: wrap;
+        .delete{
+          span{
+            font-weight: 500;
+            color: $xp-danger;
+            font-family: $xp-pop;
+            font-size: 14px;
+            margin: auto 7px;
+            white-space: nowrap;
+          }
+        }
         .xp-card-img {
           cursor: pointer;
           margin: 5px 30px 5px 0px;

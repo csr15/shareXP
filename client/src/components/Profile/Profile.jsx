@@ -64,13 +64,13 @@ export default function Profile() {
         myStories={state.myStories}
       />
     );
-  } else if (currentTab === "editProfile") {
+  } else if (currentTab === "Edit Profile") {
     tab = <Edit state={{ userDetails: state.userDetails }} />;
   } else if (currentTab === "logout") {
     tab = <Logout logoutHandler={setLogoutHandler} />;
-  } else if (currentTab === "dangerZone") {
+  } else if (currentTab === "Danger Zone") {
     tab = <DangerZone onClick={() => mapDispatchToProps.deleteAccount()} />;
-  } else if (currentTab === "followingTags") {
+  } else if (currentTab === "Following Tags") {
     tab = <FollowingTags userDetails={state.userDetails} />;
   }
 
@@ -93,7 +93,7 @@ export default function Profile() {
           </p>
         )}
       </div>
-      <div className="xp-profile-activity container">
+      <div className="xp-profile-activity">
         <div className="row">
           <div className="col-md-12">
             <div className="xp-profile-tabs-mobile">
@@ -120,13 +120,13 @@ export default function Profile() {
                   </p>
                   <p
                     className="mx-4 my-2"
-                    onClick={() => setCurrentTab("followingTags")}
+                    onClick={() => setCurrentTab("Following Tags")}
                   >
                     Following Tags
                   </p>
                   <p
                     className="mx-4 my-2"
-                    onClick={() => setCurrentTab("editProfile")}
+                    onClick={() => setCurrentTab("Edit Profile")}
                   >
                     Edit Profile
                   </p>
@@ -138,7 +138,7 @@ export default function Profile() {
                   </p>
                   <p
                     className="mx-4 my-2"
-                    onClick={() => setCurrentTab("dangerZone")}
+                    onClick={() => setCurrentTab("Danger Zone")}
                   >
                     Danger Zone
                   </p>
@@ -164,10 +164,10 @@ export default function Profile() {
                 <li className="nav-item">
                   <p
                     className={`nav-link ${
-                      currentTab === "followingTags" && "active"
+                      currentTab === "Following Tags" && "active"
                     }`}
                     href="#"
-                    onClick={() => setCurrentTab("followingTags")}
+                    onClick={() => setCurrentTab("Following Tags")}
                   >
                     Following Tags
                   </p>
@@ -178,7 +178,7 @@ export default function Profile() {
                       currentTab === "editProfile" && "active"
                     }`}
                     href="#"
-                    onClick={() => setCurrentTab("editProfile")}
+                    onClick={() => setCurrentTab("Edit Profile")}
                   >
                     Edit profile
                   </p>
@@ -199,7 +199,7 @@ export default function Profile() {
                     className={`nav-link ${
                       currentTab === "dangerZone" && "active"
                     }`}
-                    onClick={() => setCurrentTab("dangerZone")}
+                    onClick={() => setCurrentTab("Danger Zone")}
                   >
                     Danger Zone
                   </p>

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -26,7 +25,7 @@ button:hover {
 }
 
 .xp-btn-primary, .xp-profile .xp-profile-save .xp-btn-primary, .xp-profile .xp-profile-action .xp-profile-danger_zone button, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button {
-  background: #8e27f6;
+  background: #8c00ff;
   color: #ffffff;
   padding: 10px 30px;
   border: none;
@@ -40,7 +39,7 @@ button:hover {
 .xp-btn-primary:hover, .xp-profile .xp-profile-save .xp-btn-primary:hover, .xp-profile .xp-profile-action .xp-profile-danger_zone button:hover, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  background: #7a0aea;
+  background: #7600d6;
 }
 
 .xp-btn-primary:focus, .xp-profile .xp-profile-save .xp-btn-primary:focus, .xp-profile .xp-profile-action .xp-profile-danger_zone button:focus, .xp-profile .xp-profile-action .xp-profile-following_tags .xp-following-card button:focus {
@@ -51,9 +50,9 @@ button:hover {
 
 .xp-btn-secondary, .xp-profile .xp-profile-save .xp-btn-secondary, .xp-profile .xp-profile-action .xp-profile-logout button {
   background: transparent !important;
-  color: #8e27f6;
+  color: #8c00ff;
   padding: 8px 25px;
-  border: 1px solid #8e27f6;
+  border: 1px solid #8c00ff;
   border-radius: 50px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
@@ -64,8 +63,8 @@ button:hover {
 .xp-btn-secondary:hover, .xp-profile .xp-profile-save .xp-btn-secondary:hover, .xp-profile .xp-profile-action .xp-profile-logout button:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #7409e1;
-  border-color: #7409e1;
+  color: #7000cc;
+  border-color: #7000cc;
 }
 
 .xp-btn-secondary:focus, .xp-profile .xp-profile-save .xp-btn-secondary:focus, .xp-profile .xp-profile-action .xp-profile-logout button:focus {
@@ -76,7 +75,7 @@ button:hover {
 
 .xp-btn-primary-outline, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button {
   background: #d3a8ff;
-  color: #8e27f6;
+  color: #8c00ff;
   padding: 8px 25px;
   border: none;
   border-radius: 50px;
@@ -89,7 +88,7 @@ button:hover {
 .xp-btn-primary-outline:hover, .xp-profile .xp-profile-activity .xp-profile-story .xp-no_post button:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  background: #8e27f6;
+  background: #8c00ff;
   color: #ffffff;
 }
 
@@ -146,7 +145,7 @@ h6 {
 .xp-profile-tabs .nav-tabs .nav-link.active {
   background-color: transparent;
   border: none;
-  border-bottom: 2px solid #8e27f6;
+  border-bottom: 2px solid #8c00ff;
 }
 
 .xp-profile-tabs p {
@@ -182,7 +181,7 @@ h6 {
 }
 
 .xp-profile-tabs-mobile .dropdown-menu p:hover {
-  color: #8e27f6;
+  color: #8c00ff;
 }
 
 .xp-profile-social_media-wrapper, .xp-profile .xp-profile-activity .xp-profile-details .xp-profile-social_media .xp-facebook,
@@ -255,7 +254,7 @@ h6 {
 }
 
 .xp-profile .xp-profile-img-bg {
-  background: #8e27f6;
+  background: #8c00ff;
   height: 15vh;
   position: relative;
   margin: 0px auto 30px auto;
@@ -309,7 +308,7 @@ h6 {
 }
 
 .xp-profile .xp-profile-title p span {
-  color: #8e27f6;
+  color: #8c00ff;
   font-size: 20px;
 }
 

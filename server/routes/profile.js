@@ -40,6 +40,6 @@ router.delete("/deleteAvatar/:uid", profileAction.deleteAvatar);
 router.get("/notifications/:uid", profileAction.getNotifications)
 
 //Clear notifications
-router.patch("/clearNotification/:authorId/:uid", profileAction.clearNotification);
+router.patch("/clearNotification/:storyId/:uid", profileAction.clearNotification);
 
 module.exports = router;

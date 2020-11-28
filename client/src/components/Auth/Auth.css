@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -196,6 +195,7 @@ button:hover {
   color: #3c383f;
   margin: 10px auto;
   font-family: "Poppins", sans-serif;
+  font-weight: 600;
 }
 
 .xp-auth .col-md-7 .xp-auth-form-group .xp-auth-form {
@@ -369,6 +369,9 @@ button:hover {
   }
   .xp-auth .col-md-7 {
     height: auto;
+  }
+  .xp-auth .col-md-7 .xp-auth-form-group h4 {
+    font-size: 20px;
   }
   .xp-auth .col-md-7::-webkit-scrollbar {
     display: none;

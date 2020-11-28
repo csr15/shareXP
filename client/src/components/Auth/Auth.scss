@@ -54,6 +54,7 @@
         color: $xp-title;
         margin: 10px auto;
         font-family: $xp-pop;
+        font-weight: 600;
       }
       .xp-auth-form {
         margin: 20px auto;
@@ -203,6 +204,11 @@
     .col-md-7 {
       height: auto;
 
+      .xp-auth-form-group{
+        h4{
+          font-size: 20px;
+        }
+      }
       &::-webkit-scrollbar {
         display: none;
       }

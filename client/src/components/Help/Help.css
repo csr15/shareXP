@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -141,7 +140,7 @@ button:hover {
   height: 80vh;
   position: absolute;
   width: 100%;
-  top: 11%;
+  top: 13%;
   left: 0;
   z-index: -1;
 }
@@ -217,6 +216,10 @@ button:hover {
   text-transform: capitalize;
 }
 
+.xp-help .xp-help-container .xp-help-FAQ li a {
+  color: blue;
+}
+
 .xp-help .xp-help-container .xp-help-FAQ li span {
   color: #3c383f;
   font-weight: 600;
@@ -240,19 +243,19 @@ button:hover {
 }
 
 .xp-help .xp-footer h6 {
-  margin-bottom: 30px;
   color: #000000;
   font-weight: 400;
 }
 
-.xp-help .xp-footer h6 i {
-  color: #8e27f6;
+.xp-help .xp-footer h6 span {
+  color: #000000;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: underline;
 }
 
-.xp-help .xp-footer h6 span {
-  color: #8e27f6;
-  text-decoration: underline;
-  font-weight: 700;
+.xp-help .xp-footer svg {
+  margin: 5px auto 20px auto;
 }
 
 @-webkit-keyframes sweep {
@@ -278,6 +281,9 @@ button:hover {
 }
 
 @media (max-width: 768px) {
+  .xp-help .xp-help-header {
+    top: 13%;
+  }
   .xp-help .xp-help-header h1 span {
     font-size: 32px;
   }
@@ -285,7 +291,7 @@ button:hover {
 
 @media (max-width: 500px) {
   .xp-help .xp-help-header {
-    top: 12%;
+    top: 14%;
   }
   .xp-help .xp-help-header h1 span {
     font-size: 32px;
@@ -298,7 +304,7 @@ button:hover {
 
 @media (max-width: 360px) {
   .xp-help .xp-help-header {
-    top: 12%;
+    top: 14%;
   }
   .xp-help .xp-help-header h1 span {
     font-size: 32px;

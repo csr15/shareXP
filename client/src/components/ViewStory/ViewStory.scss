@@ -73,12 +73,16 @@
         font-weight: 600;
         font-family: $xp-meri;
       }
-      p {
+      p, a {
         font-family: $xp-meri;
         font-weight: 400;
         color: $xp-title;
         font-size: 18px;
         line-height: 32px;
+      }
+      a{
+        color: $xp-black;
+        text-decoration: underline;
       }
       img {
         width: 100%;
@@ -190,7 +194,7 @@
     @extend .xp-center;
     margin: 10px auto;
 
-    .xp-skull-comment-body{
+    .xp-skull-comment-body {
       margin-left: 10px;
       @extend .xp-center;
       flex-direction: column;
@@ -266,7 +270,8 @@
         h1 {
           font-size: 22px;
         }
-        p {
+        p,
+        a  {
           font-size: 16px;
           line-height: 28px;
         }

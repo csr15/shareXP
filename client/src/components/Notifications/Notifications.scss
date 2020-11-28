@@ -9,8 +9,19 @@
   background-color: $xp-editor;
   padding: 0.5rem 0.8rem;
   overflow-y: scroll;
-  z-index: 51;
+  z-index: 101;
   transition: all 0.3s ease;
+
+  .xp-notification-loader {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 40%;
+    background: $xp-sec;
+    height: 8px;
+    border-radius: 50px;
+    animation: notification_loader 1s linear infinite;
+  }
 
   .xp-notification-close {
     width: 20px;
@@ -48,6 +59,12 @@
     }
   }
 
+  .xp-date{
+    color: #a5a5a5;
+    font-weight: 400;
+    font-size: 12px;
+    margin: 5px 0px 0px 0px;
+  }
   .xp-notification-card {
     background-color: $xp-white;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
@@ -70,15 +87,21 @@
 
     .title {
       font-size: 14px;
+      margin: 5px 0px;
+      color: $xp-title;
+      font-style: italic;
     }
 
     .xp-notification-reaction {
-      margin: 10px 0px 0px 0px;
+      margin: 5px 0px 0px 0px;
       padding: 0px;
       @extend .xp-center;
-      justify-content: flex-start;
+      justify-content: flex-end;
 
-      button {
+      .xp-btn-notification {
+        &:first-child{
+          margin-left: 0px;
+        }
         color: $xp-accent;
         padding: 0px;
         margin: 0px 10px;
@@ -92,16 +115,6 @@
           box-shadow: none;
         }
       }
-      .clear {
-        color: $xp-pri;
-        margin-left: 0px;
-        text-transform: uppercase;
-      }
-
-      p {
-        font-size: 11px;
-        margin: 5px 0px 5px auto;
-      }
     }
   }
 
@@ -113,12 +126,24 @@
     display: block;
     margin: 15px auto;
 
-    .xp-notification-bone{
+    .xp-notification-bone {
       display: block;
       margin: 10px 0px;
     }
   }
 }
+
+//animation
+@keyframes notification_loader {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+//Responsiveness
 @media (max-width: 900px) {
   .xp-notification {
     width: 30vw;

@@ -6,7 +6,7 @@ import { useHistory, withRouter } from "react-router";
 function CategoriesCard(props) {
   const [randomColor, setRandomColor] = useState("");
   useEffect(() => {
-    const color = "hsl(" + Math.random() * 360 + ", 100%, 75%)";
+    const color = "hsl(" + Math.random() * 360 + ", 30%, 50%)";
     setRandomColor(color);
   }, []);
 
@@ -22,7 +22,7 @@ function CategoriesCard(props) {
           borderColor: randomColor,
         }}
       >
-        <h5>{props.tagTitle}</h5>
+        <h5 style={{ color: randomColor }}>{props.tagTitle}</h5>
         <p>{props.totalStories} Stories</p>
       </div>
     </div>

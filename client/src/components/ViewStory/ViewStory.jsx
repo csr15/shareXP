@@ -21,6 +21,7 @@ const ViewStory = () => {
   const [isStoryLiking, setIsStoryLiking] = useState(false);
   const [isErrorOnStoryLike, setIsErrorOnStoryLike] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
+  const [commentLoader, setCommentLoader] = useState(false);
 
   const { storyID, authorID } = useParams();
   const history = useHistory();
@@ -76,7 +77,7 @@ const ViewStory = () => {
             uid: localStorage.getItem("uid"),
             authorId: author._id,
             userName: state.userDetails.userName,
-            storyTitle: story.title,
+            storyTitle: story.story.title,
           }
         );
 
@@ -88,7 +89,7 @@ const ViewStory = () => {
     } else {
       localStorage.setItem(
         "likedStory",
-        `/view-story/mostPopular/${story._id}`
+        `/viewstory/${story._id}/${story.uid}`
       );
 
       history.push("/auth");
@@ -145,7 +146,7 @@ const ViewStory = () => {
         </div>
         <div className="xp-view-header_tags">
           {tags.map((tag, index) => {
-            return <p key={index}>{tag}</p>;
+            return <p onClick={() => history.push(`/tagStories/${tag.substr(1)}`)} key={index}>{tag}</p>;
           })}
         </div>
       </div>
@@ -209,6 +210,7 @@ const ViewStory = () => {
 
   //Add comment
   const commentHandler = async (commentText) => {
+    setCommentLoader(true);
     try {
       const { data } = await Axios.post(
         `${config.server_url}/publish/comment/${story._id}`,
@@ -225,16 +227,18 @@ const ViewStory = () => {
             uid: localStorage.getItem("uid"),
             authorId: author._id,
             userName: author.userName,
-            storyTitle: story.title,
+            storyTitle: story.story.title,
           },
         },
         { withCredentials: true }
       );
 
       setStory(data);
+      setCommentLoader(false);
     } catch (error) {
       setStoryError(true);
 
+      setCommentLoader(false);
       setTimeout(() => {
         setStoryError(false);
       }, 3000);
@@ -324,6 +328,7 @@ const ViewStory = () => {
             <Comments
               comments={story.comments}
               addCommentHandler={commentHandler}
+              loader={commentLoader}
             />
           </div>
         ) : (

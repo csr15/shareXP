@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Lora:wght@700&family=Spectral:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap");
 h1,
 h2,
 h3,
@@ -26,7 +25,7 @@ button:hover {
 }
 
 .xp-btn-primary {
-  background: #8e27f6;
+  background: #8c00ff;
   color: #ffffff;
   padding: 10px 30px;
   border: none;
@@ -40,7 +39,7 @@ button:hover {
 .xp-btn-primary:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  background: #7a0aea;
+  background: #7600d6;
 }
 
 .xp-btn-primary:focus {
@@ -51,9 +50,9 @@ button:hover {
 
 .xp-btn-secondary {
   background: transparent !important;
-  color: #8e27f6;
+  color: #8c00ff;
   padding: 8px 25px;
-  border: 1px solid #8e27f6;
+  border: 1px solid #8c00ff;
   border-radius: 50px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
@@ -64,8 +63,8 @@ button:hover {
 .xp-btn-secondary:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  color: #7409e1;
-  border-color: #7409e1;
+  color: #7000cc;
+  border-color: #7000cc;
 }
 
 .xp-btn-secondary:focus {
@@ -76,7 +75,7 @@ button:hover {
 
 .xp-btn-primary-outline {
   background: #d3a8ff;
-  color: #8e27f6;
+  color: #8c00ff;
   padding: 8px 25px;
   border: none;
   border-radius: 50px;
@@ -89,7 +88,7 @@ button:hover {
 .xp-btn-primary-outline:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
-  background: #8e27f6;
+  background: #8c00ff;
   color: #ffffff;
 }
 
@@ -177,7 +176,7 @@ button:hover {
      object-fit: contain;
   border-radius: 50%;
   padding: 0px;
-  background-color: #8e27f6;
+  background-color: #8c00ff;
 }
 
 .xp-comment-card .xp-comment-body {

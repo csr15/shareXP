@@ -10,7 +10,7 @@
     height: 80vh;
     position: absolute;
     width: 100%;
-    top: 11%;
+    top: 13%;
     left: 0;
     z-index: -1;
 
@@ -76,6 +76,9 @@
           text-transform: capitalize;
         }
 
+        a{
+          color: blue;
+        }
         span {
           color: $xp-title;
           font-weight: 600;
@@ -100,19 +103,18 @@
     padding: 10px;
 
     h6 {
-      margin-bottom: 30px;
       color: $xp-black;
-      font-weight: 400;
-
-      i{
-        color: $xp-pri;
-      }
-
+      font-weight: 400;    
+      
       span{
-        color: $xp-pri;
+        color: $xp-black;
+        font-weight: 600;
+        font-size: 16px;
         text-decoration: underline;
-        font-weight: 700;
       }
+    }
+    svg{
+      margin: 5px auto 20px auto;
     }
   }
 }
@@ -131,6 +133,7 @@
 @media (max-width: 768px) {
   .xp-help {
     .xp-help-header {
+      top: 13%;
       h1 {
         span {
           font-size: 32px;
@@ -143,7 +146,7 @@
 @media (max-width: 500px) {
   .xp-help {
     .xp-help-header {
-      top: 12%;
+      top: 14%;
       h1 {
         span {
           font-size: 32px;
@@ -160,7 +163,7 @@
 @media (max-width: 360px) {
   .xp-help {
     .xp-help-header {
-      top: 12%;
+      top: 14%;
       h1 {
         span {
           font-size: 32px;

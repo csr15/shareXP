@@ -6,6 +6,7 @@
   // box-shadow: 6px 6px 12px -3px rgba(0, 0, 0, 0.1) ;
   -webkit-user-select: none;
   background: $xp-white;
+  transition: all 0.3s ease;
 
   .navbar-brand {
     font-family: $xp-pop;
@@ -22,7 +23,7 @@
 
   .navbar-toggler {
     position: relative;
-    z-index: 50;
+    z-index: 101;
     i {
       color: $xp-accent;
       transition: all 0.3s ease;
@@ -82,10 +83,10 @@
         top: 35%;
         left: 35%;
         transform: translate(-50%, -50%);
-        width: 10px;
-        height: 10px;
-        background-color: $xp-sec;
-        z-index: 10;
+        width: 12px;
+        height: 12px;
+        background-color: #F84F31;
+        z-index: 9;
         border-radius: 50%;
       }
     }
@@ -105,10 +106,9 @@
     @extend .xp-center;
     flex-direction: column;
     animation: xp_nav_reveal 0.5s linear;
-    transition: all 0.5s ease;
+    transition: all 0.3s ease;
     opacity: 1;
     z-index: 999;
-    display: none;
 
     p {
       color: $xp-white;
@@ -123,9 +123,10 @@
         top: 30%;
         left: 20%;
         transform: translate(-50%, -50%);
-        width: 10px;
-        height: 10px;
-        background-color: $xp-sec;
+        width: 12px;
+        height: 12px;
+        background-color: #F84F31;
+        background: #F84F31;
         z-index: 10;
         border-radius: 50%;
       }
@@ -133,7 +134,7 @@
         font-size: 1.2rem;
         margin: 5px auto;
         cursor: pointer;
-        color: $xp-accent;
+        color: $xp-white;
         position: relative;
         z-index: 11;
       }
@@ -151,7 +152,6 @@
     padding: 0.3rem 0rem;
     .xp-nav-mobile-list {
       width: 60vw;
-      display: block;
 
       p {
         font-size: 14px;

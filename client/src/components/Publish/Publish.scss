@@ -50,9 +50,9 @@
       border-bottom: 0px;
       background: $xp-white;
       font-size: 28px;
-      font-family: $xp-meri;
+      font-family: $xp-pop;
       color: $xp-black;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: none;
 
       &::first-letter {
@@ -99,8 +99,25 @@
         box-shadow: none !important;
         font-size: 20px !important;
       }
-      p {
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: $xp-meri;
+        font-weight: 700;
+      }
+      p,
+      a {
         color: $xp-black !important;
+        font-family: $xp-meri;
+        font-size: 18px;
+        line-height: 30px;
+        font-weight: 400;
+      }
+      a {
+        color: blue;
       }
     }
   }
@@ -240,14 +257,20 @@
     }
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .xp-publish {
     width: 100%;
 
     .xp-publish-editor {
       input {
-        padding: 1rem 0.8rem;
+        padding: 1.3rem 0.8rem;
         font-size: 22px;
+      }
+      .xp-publish-editor-layout {
+        p {
+          font-size: 16px;
+          line-height: 28px;
+        }
       }
     }
     .xp-publish-buttons {
