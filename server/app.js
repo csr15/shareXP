@@ -65,10 +65,10 @@ app.get("/api/v1", limiter, (req, res) => {
 });
 
 //Publish
-app.use("/api/v1/publish", publishStory);
+app.use("/api/v1/publish", limiter, publishStory);
 
 //Auth
-app.use("/api/v1/auth", auth);
+app.use("/api/v1/auth", limiter, auth);
 
 //Profile
 app.use("/api/v1/profile", limiter, profile);
@@ -86,7 +86,7 @@ app.use("/api/v1/userStories", limiter, userStories);
 app.use("/api/v1/suggestions", suggestions);
 
 //Single story
-app.use("/api/v1/storyData", storyData);
+app.use("/api/v1/storyData", limiter, storyData);
 
 //VerifyToken
 function verifyCookieToken(req, res, next) {
