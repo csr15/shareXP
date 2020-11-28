@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
 
 dotenv.config();
 //Port
@@ -15,12 +16,20 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 
 //Body-parser config
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+//Rate limiter (DDOS Attack)
+const limiter = rateLimit({
+  windowMs: 60 * 1000, // 1 minutes
+  max: 10,
+  message:
+    "Too many accounts created from this IP, please try again after an hour",
+});
 
 //Routes
 const publishStory = require("./routes/publishStory");
@@ -29,7 +38,6 @@ const auth = require("./routes/auth");
 const search = require("./routes/search");
 const author = require("./routes/author");
 const userStories = require("./routes/userStories");
-const sharedStory = require("./routes/sharedStory");
 const suggestions = require("./routes/suggestions");
 const storyData = require("./routes/storyData");
 
@@ -52,7 +60,7 @@ mongoose.set("useFindAndModify", false);
 //----------- API -----------
 
 //Initial response
-app.get("/api/v1", (req, res) => {
+app.get("/api/v1", limiter, (req, res) => {
   res.send("Hello shareXP");
 });
 
@@ -63,19 +71,16 @@ app.use("/api/v1/publish", publishStory);
 app.use("/api/v1/auth", auth);
 
 //Profile
-app.use("/api/v1/profile", profile);
+app.use("/api/v1/profile", limiter, profile);
 
 //Search
-app.use("/api/v1/search", search);
+app.use("/api/v1/search", limiter, search);
 
 //Author
-app.use("/api/v1/author", author);
+app.use("/api/v1/author",limiter,  author);
 
 //User stories
-app.use("/api/v1/userStories", userStories);
-
-//Shared Stories
-app.use("/api/v1/sharedStory", sharedStory);
+app.use("/api/v1/userStories", limiter, userStories);
 
 //Suggestion Stories for reader
 app.use("/api/v1/suggestions", suggestions);

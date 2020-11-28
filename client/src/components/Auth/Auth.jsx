@@ -20,6 +20,7 @@ const Auth = () => {
     return {
       didSignedUp: state.auth.didSignedUp,
       didGoogleAuthed: state.auth.googleAuth,
+      authState: state.auth.authState,
     };
   });
   if (state.didSignedUp !== "" && isSignup === true) {
@@ -38,6 +39,10 @@ const Auth = () => {
   } else if (state.didGoogleAuthed !== "" && likedStory !== "") {
     history.push(likedStory);
     localStorage.removeItem("likedStory");
+  }
+
+  if (state.authState) {
+    history.push("/");
   }
 
   return (

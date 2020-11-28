@@ -1,7 +1,7 @@
 export const config = {
   imgAlt:
     "Share your experience with others and motivate them towards success!",
-  server_url: "https://sharexp12.herokuapp.com/api/v1",
+  server_url: "http://localhost:8080/api/v1",
   apiKey: "AIzaSyDqqMYPWwyOI-fpfkB9rzejtlEb_h7a4DU",
   authDomain: "sharexp-15.firebaseapp.com",
   databaseURL: "https://sharexp-15.firebaseio.com",
