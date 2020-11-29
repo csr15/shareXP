@@ -1,7 +1,7 @@
 @import "../../utilities/scss-variables/variables";
 
 .xp-categories {
-  margin: 00px auto 10px auto;
+  margin: 0px auto 10px auto;
   background: transparent;
 
   h5 {
@@ -15,6 +15,7 @@
     align-items: center;
     flex-wrap: wrap;
     transition: all 0.3s ease;
+    margin: 10px auto;
 
     p {
       @extend .xp-categories-wrapper;

@@ -5,19 +5,34 @@
   margin: 25px auto 5px auto;
   overflow-x: hidden;
   background-color: $xp-white;
+  h4 {
+    color: $xp-black;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin: 0px;
+    padding: 0px;
+  }
   .xp-story_screen-title {
-    display: flex;
+    @extend .xp-center;
     justify-content: space-between;
     h4 {
-      color: $xp-black;
-      font-family: $xp-pop;
-      font-weight: 500;
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: none;
+        color: $xp-accent;
+
+        .highlight {
+          font-weight: 600;
+        }
+      }
     }
     .xp-btn-story_screen-filter {
       padding: 0px;
       border: none;
       background: none;
       outline: none;
+
       .dropdown {
         button {
           border-color: $xp-accent;
@@ -41,12 +56,17 @@
       @extend .xp-center;
     }
   }
+  .popular-tags {
+    h4 {
+      border-bottom: 1.5px solid $xp-border;
+      padding: 0px 0px 5px 0px;
+    }
+  }
   .also_like_section {
     margin: 30px auto 20px auto;
-    h5 {
-      color: $xp-title;
-      font-weight: 500;
-      margin: 7px auto;
+    h4 {
+      border-bottom: 1.5px solid $xp-border;
+      padding: 0px 0px 5px 0px;
     }
   }
 }
@@ -70,6 +90,16 @@
       z-index: 44;
       background-color: $xp-white;
       padding: 0.5rem 0.3rem 0.2rem 0.3rem;
+
+      h4 {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    .popular-tags {
+      margin-top: 15px;
     }
   }
 }

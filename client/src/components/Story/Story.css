@@ -178,11 +178,11 @@ button:hover {
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-title h3 {
   font-family: "Poppins", sans-serif;
   text-transform: none;
-  margin: 5px 0px;
-  color: #3c383f;
+  margin: 0px 0px 7px 0px;
+  color: #000000;
   line-height: 32px;
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-title h3::first-letter {
@@ -208,6 +208,15 @@ button:hover {
   font-weight: 500;
 }
 
+.xp-story .xp-story-card .xp-story-card-text .xp-story-card-categories p {
+  margin: auto 5px;
+  font-size: 12px;
+}
+
+.xp-story .xp-story-card .xp-story-card-text .xp-story-card-categories p:first-child {
+  margin-left: 0px;
+}
+
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-categories span {
   color: #686b78;
   font-size: 12px;
@@ -217,7 +226,7 @@ button:hover {
 }
 
 .xp-story .xp-story-card .xp-story-card-text .xp-story-card-content {
-  margin: 7px auto 5px auto;
+  margin: 12px auto 5px auto;
   padding: 0px;
 }
 

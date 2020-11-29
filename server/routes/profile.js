@@ -5,7 +5,6 @@ const router = express.Router();
 const profileAction = require("../contollers/profile");
 
 //Routes
-
 //User details
 router.get("/:uid", profileAction.profile);
 

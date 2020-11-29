@@ -4,10 +4,19 @@ const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(
   "419326780272-n2ti7qe7onojrlmrecfvmj7ll8paa1fk.apps.googleusercontent.com"
 );
+const nodemailer = require("nodemailer");
 
 //Models
 const UserModel = require("../models/users");
 const StoryModel = require("../models/story");
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "sharexp24@gmail.com",
+    pass: "$ngr@csr15",
+  },
+});
 
 module.exports = {
   userName: (req, res) => {
@@ -47,6 +56,32 @@ module.exports = {
           .save()
           .then((result) => {
             res.status(200).json(result);
+
+            const mailOptions = {
+              from: "sharexp24@gmail.com",
+              to: req.body.data.mail,
+              subject: "Account created successfully",
+              html: `
+                <h1 style="color: #8e27f6; text-align: center; margin: 10px auto 0px auto; font-weight: 700; font-size: 32px;"><span style="font-size: 16px; color: #000000; margin: 0px;">welcome
+                    to</span><br />shareXP</h1>
+                    <h5 style="font-style: italic; margin: 10px auto 15px auto; text-align: center; font-size: 16px">Account created successfully!</h5>
+                    <p style="color: #000000; font-size: 14px; text-align: center; margin: 0px auto;">Share your experience with others and motivate them towards success!</p>
+                <a href="https://sharexp.netlify.app">
+                <div style="display: flex; justify-content: center; align-items: center">
+                <button
+                style="padding: 10px 30px; font-family: sans-serif; font-size: 14px; font-weight: bold; border: none; background-color: #8e27f6; color: #FFFFFF; border-radius: 50px; margin: 15px auto; width: auto; text-decoration: none; width: 200px;">Let's
+                Motivate</button></a>
+                </div>
+            `,
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+              if (error) {
+                console.log(error);
+              } else {
+                res.status(200).json("Email sent: ", __dirname);
+              }
+            });
           })
           .catch((err) => console.log(err));
       })
@@ -109,6 +144,7 @@ module.exports = {
                   userName: name.replace(/ /g, ""),
                   sureName: `${given_name}  ${family_name}`,
                   mail: email,
+                  password: "$ngr@dev15_shadow@15_csrIsADev",
                   description: "",
                   link: "",
                   facebook: "",

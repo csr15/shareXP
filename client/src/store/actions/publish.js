@@ -7,7 +7,7 @@ export const publishStoryHandler = (story) => {
     try {
       const { data } = await Axios.post(
         `${config.server_url}/publish/${localStorage.getItem("uid")}`,
-        { uid: localStorage.getItem("uid"), story: { ...story } }
+        { uid: localStorage.getItem("uid"), userName: story.userName, story: { ...story } }
       );
       dispatch({ type: "STORY_PUBLISHED", payload: data });
       dispatch({ type: "FETCH_STORIES_STORY_PUBLISHED", payload: data });

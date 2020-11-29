@@ -9,6 +9,8 @@ const dotenv = require("dotenv");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
+const url = require("url");
+const nodemailer = require("nodemailer");
 
 dotenv.config();
 //Port
@@ -16,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
+app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 
 //Body-parser config
@@ -26,7 +28,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Rate limiter (DDOS Attack)
 const limiter = rateLimit({
   windowMs: 60 * 1000, // 1 minutes
-  max: 10,
+  max: 60,
   message:
     "Too many accounts created from this IP, please try again after an hour",
 });
@@ -65,28 +67,28 @@ app.get("/api/v1/sharexp", limiter, (req, res) => {
 });
 
 //Publish
-app.use("/api/v1/publish", limiter, publishStory);
+app.use("/api/v1/publish", limiter, verifyOrigin, publishStory);
 
 //Auth
-app.use("/api/v1/auth", limiter, auth);
+app.use("/api/v1/auth", limiter, verifyOrigin, auth);
 
 //Profile
-app.use("/api/v1/profile", limiter, profile);
+app.use("/api/v1/profile", limiter, verifyOrigin, profile);
 
 //Search
-app.use("/api/v1/search", limiter, search);
+app.use("/api/v1/search", limiter, verifyOrigin, search);
 
 //Author
-app.use("/api/v1/author", limiter, author);
+app.use("/api/v1/author", limiter, verifyOrigin, author);
 
 //User stories
-app.use("/api/v1/userStories", limiter, userStories);
+app.use("/api/v1/userStories", limiter, verifyOrigin, userStories);
 
 //Suggestion Stories for reader
-app.use("/api/v1/suggestions", suggestions);
+app.use("/api/v1/suggestions", verifyOrigin, suggestions);
 
 //Single story
-app.use("/api/v1/storyData", limiter, storyData);
+app.use("/api/v1/storyData", limiter, verifyOrigin, storyData);
 
 //VerifyToken
 function verifyCookieToken(req, res, next) {
@@ -106,4 +108,18 @@ function verifyCookieToken(req, res, next) {
       return res.status(400).send(error.message);
     }
   }
+}
+
+//Verify origin to avoid anybody to access my REST API
+function verifyOrigin(req, res, next) {
+  var ref = req.headers.referer;
+  if (ref) {
+    // We got a referer
+    var { hostname } = url.parse(ref);
+    if (hostname === "localhost") {
+      return next();
+    }
+  }
+  // Send some kind of error
+  res.status(403).json("Invalid origin");
 }

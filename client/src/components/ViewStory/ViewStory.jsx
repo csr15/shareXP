@@ -49,6 +49,7 @@ const ViewStory = () => {
         ]);
         setStory(storyData[0].data);
         setAuthor(storyData[1].data[0]);
+        document.title = storyData[0].data.story.title;
       } catch (error) {
         setStoryError(true);
 
@@ -146,7 +147,14 @@ const ViewStory = () => {
         </div>
         <div className="xp-view-header_tags">
           {tags.map((tag, index) => {
-            return <p onClick={() => history.push(`/tagStories/${tag.substr(1)}`)} key={index}>{tag}</p>;
+            return (
+              <p
+                onClick={() => history.push(`/tagStories/${tag.substr(1)}`)}
+                key={index}
+              >
+                {tag}
+              </p>
+            );
           })}
         </div>
       </div>

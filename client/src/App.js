@@ -11,7 +11,10 @@ function App() {
     ReactGA.initialize("G-JBYV97BRSK");
     ReactGA.pageview(window.location.pathname + window.location.search);
     dispatch(actions.checkAuthState());
-    dispatch(actions.getNotifications());
+
+    if (localStorage.getItem("uid")) {
+      dispatch(actions.getNotifications());
+    }
   }, []);
 
   return (

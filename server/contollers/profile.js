@@ -3,7 +3,7 @@ const storyModel = require("../models/story");
 const userModel = require("../models/users");
 
 module.exports = {
-  profile: async (req, res) => {
+  profile: async (req, res) => {   
     try {
       const profileDetails = await userModel.aggregate([
         {

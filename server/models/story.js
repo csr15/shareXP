@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const storySchema = mongoose.Schema({
   uid: String,
   userName: String,
-  avatar: String,
   createdAt: {
     type: Date,
     default: new Date(),

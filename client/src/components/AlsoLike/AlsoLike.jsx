@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./AlsoLike.css";
-import viewImg from "../../Assets/icons/xp-view.svg";
 import { config } from "../../utilities/constants/constants";
 import { useHistory } from "react-router";
 import sharexpImg from "../../Assets/shareXP-draw.svg";
@@ -13,34 +12,36 @@ export default function AlsoLike({ story }) {
       className="also_like"
       onClick={() => history.push(`/viewstory/${story._id}/${story.uid}`)}
     >
-      <div className=" xp-also_like-left">
+      <div className="xp-also_like-left">
         <div className="xp-also-like_left-body">
-          <p>{story.story.title}</p>
-          <div className="xp-also_like-reaction">
-            <div className="xp-also_like-salute">
-              <div className="xp-also_like-img">
-                <i className="bx bxs-like"></i>
-                <span>{story.likes.length}</span>
-              </div>
-            </div>
-            <div className="xp-also_like-views">
-              <div className="xp-also_view-img">
-                <img src={viewImg} alt={config.imgAlt} />
-                <span>{story.views}</span>
-              </div>
-            </div>
+          <span className="xp-also-like_user">
+            From <span className="highlight">{story.userName}</span>
+          </span>
+          <h6>{story.story.title}</h6>
+          <div className="xp-also-like-details">
+            <p>
+              {((text) => {
+                text = text.trim();
+                const totalWords =
+                  text.length > 0 ? text.split(/\s+/).length : 0;
+                const totalMinutes = totalWords / 200;
+                return Math.floor(totalMinutes);
+              })(story.story.content)}{" "}
+              mins read
+            </p>
           </div>
         </div>
       </div>
-      <div
-        className="xp-also_like-right"
-        style={{
-          backgroundImage: `url(${
-            story.story.img ? story.story.img : sharexpImg
-          })`,
-        }}
-      >
-<p>sharexp</p>
+      <div className="xp-also_like-right">
+        <img
+          src={story.story.img ? story.story.img : sharexpImg}
+          alt={
+            config.imgAlt ||
+            story.story.title ||
+            story.story.tags.map((el) => el.substr(1))
+          }
+          className="img-responsive mt-0"
+        />
       </div>
     </div>
   );

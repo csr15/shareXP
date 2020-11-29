@@ -43,11 +43,11 @@
         h3 {
           font-family: $xp-pop;
           text-transform: none;
-          margin: 5px 0px;
-          color: $xp-title;
+          margin: 0px 0px 7px 0px;
+          color: $xp-black;
           line-height: 32px;
           font-size: 22px;
-          font-weight: 700;
+          font-weight: 600;
 
           &::first-letter {
             text-transform: capitalize;
@@ -67,6 +67,12 @@
         }
         p {
           @extend .xp-categories-wrapper;
+          margin: auto 5px;
+          font-size: 12px;
+
+          &:first-child{
+            margin-left: 0px;
+          }
         }
 
         span {
@@ -78,7 +84,7 @@
         }
       }
       .xp-story-card-content {
-        margin: 7px auto 5px auto;
+        margin: 12px auto 5px auto;
 
         padding: 0px;
         h1,

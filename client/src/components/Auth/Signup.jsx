@@ -8,7 +8,7 @@ import { config } from "../../utilities/constants/constants";
 import * as actions from "../../store";
 import Popup from "../Popup/Popup";
 
-const Signup = ({ onLoader, loader }) => {
+const Signup = ({ onLoader, loader, offLoader }) => {
   const [userName, setUserName] = useState("");
   const [sureName, setSureName] = useState("");
   const [mail, setMail] = useState("");
@@ -18,6 +18,13 @@ const Signup = ({ onLoader, loader }) => {
   const [isMailError, setIsMailError] = useState(false);
   const [isSurenameError, setIsSurenameError] = useState(false);
   const [isPasswordError, setIsPasswordError] = useState(false);
+
+  React.useEffect(() => {
+
+    return () => {
+      offLoader();
+    }
+  }, [])
 
   //mapStatetoProps
   const state = useSelector((state) => {
@@ -129,7 +136,7 @@ const Signup = ({ onLoader, loader }) => {
           />
           {state.userNameValidation !== null ? (
             state.userNameValidation.length === 0 ? (
-              <span className="xp-error text-success">username is valid</span>
+              <span className="xp-error text-success">username is available</span>
             ) : (
               <span className="xp-error">username is already taken</span>
             )

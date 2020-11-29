@@ -29,7 +29,6 @@ export default function Categories() {
 
   return (
     <div className="xp-categories">
-      <h5>Top categories</h5>
       <div className="xp-categories-list">
         {topTags ? (
           topTags.map((tag, index) => {

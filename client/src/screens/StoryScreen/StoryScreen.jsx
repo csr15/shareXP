@@ -35,6 +35,7 @@ export default function StoryScreen() {
       isErrorOnLatestStories: state.user.isErrorOnLatestStories,
       authState: state.auth.authState,
       notifications: state.profile.notifications,
+      userDetails: state.profile.userDetails,
     };
   });
 
@@ -64,7 +65,7 @@ export default function StoryScreen() {
         mapDispatchToProps.latestStories();
       }
     }
-    if (state.notifications === "") {
+    if (state.notifications === "" && localStorage.getItem("uid")) {
       mapDispatchToProps.notificationsHandler();
     }
   }, [filter]);
@@ -82,7 +83,7 @@ export default function StoryScreen() {
 
   const Loading = () => (
     <div className="loading">
-      <h5>Loading</h5>
+      <h4>Loading</h4>
     </div>
   );
 
@@ -164,70 +165,80 @@ export default function StoryScreen() {
   }
   return (
     <div className="xp-story_screen">
-        <div className="row">
-          <div className="col-md-8">
-            <div className="xp-story_screen-title">
-              <h4>Stories</h4>
-              <div className="xp-split"></div>
-              <div className="xp-btn-story_screen-filter">
-                <div className="dropdown">
-                  <button
-                    className="xp-btn-dropdown xp-btn-secondary"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
+      <div className="row">
+        <div className="col-md-8">
+          <div className="xp-story_screen-title">
+            <h4>
+              Stories{" "}
+              {state.userDetails && (
+                <span>
+                  for{" "}
+                  <span className="highlight">
+                    @{state.userDetails.userName}
+                  </span>
+                </span>
+              )}
+            </h4>
+            <div className="xp-split"></div>
+            <div className="xp-btn-story_screen-filter">
+              <div className="dropdown">
+                <button
+                  className="xp-btn-dropdown xp-btn-secondary"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                >
+                  <span>{filter}</span>
+                  <i className="bx bxs-down-arrow ml-2"></i>
+                </button>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <p
+                    className="mx-4 my-2"
+                    onClick={() => setFilter("Following")}
                   >
-                    <span>{filter}</span>
-                    <i className="bx bxs-down-arrow ml-2"></i>
-                  </button>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
+                    Following
+                  </p>
+                  <p
+                    className="mx-4 my-2"
+                    onClick={() => setFilter("Most Popular")}
                   >
-                    <p
-                      className="mx-4 my-2"
-                      onClick={() => setFilter("Following")}
-                    >
-                      Following
-                    </p>
-                    <p
-                      className="mx-4 my-2"
-                      onClick={() => setFilter("Most Popular")}
-                    >
-                      Most Popular
-                    </p>
-                    <p
-                      className="mx-4 my-2"
-                      onClick={() => setFilter("Latest")}
-                    >
-                      Latest
-                    </p>
-                  </div>
+                    Most Popular
+                  </p>
+                  <p className="mx-4 my-2" onClick={() => setFilter("Latest")}>
+                    Latest
+                  </p>
                 </div>
               </div>
             </div>
-            {storySection}
           </div>
-          <div className="col-md-4">
+          {storySection}
+        </div>
+        <div className="col-md-4">
+          <div className="popular-tags">
+            <h4>Popular tags on XP</h4>
             <Categories />
-            <div className="also_like_section">
-              <h5>Some stories you may like</h5>
-              {state.topStories ? (
-                state.topStories.slice(0, 5).map((story, index) => {
-                  return (
-                    <AlsoLike key={index} story={story} indexValue={index} />
-                  );
-                })
-              ) : (
-                <>
-                  <Skeleton width={230} height={90} className="d-block my-2" />
-                  <Skeleton width={230} height={90} className="d-block my-2" />
-                  <Skeleton width={230} height={90} className="d-block my-2" />
-                </>
-              )}
-            </div>
+          </div>
+          <div className="also_like_section">
+            <h4>Top stories on XP</h4>
+            {state.topStories ? (
+              state.topStories.slice(0, 5).map((story, index) => {
+                return (
+                  <AlsoLike key={index} story={story} indexValue={index} />
+                );
+              })
+            ) : (
+              <>
+                <Skeleton width={230} height={90} className="d-block my-2" />
+                <Skeleton width={230} height={90} className="d-block my-2" />
+                <Skeleton width={230} height={90} className="d-block my-2" />
+              </>
+            )}
           </div>
         </div>
+      </div>
     </div>
   );
 }

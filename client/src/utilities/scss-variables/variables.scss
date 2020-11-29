@@ -78,6 +78,7 @@ button {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  flex-direction: column;
 
   &:hover {
     transition: all 0.3s ease;

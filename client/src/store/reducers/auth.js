@@ -38,6 +38,8 @@ const authReducer = (state = initialState, action) => {
         ...state,
         didSignedUp: "",
         signinError: false,
+        isUserNameValid: null,
+        isMailValid: null
       };
     case "SIGNUP_ERROR":
       return {

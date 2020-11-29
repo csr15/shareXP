@@ -69,7 +69,6 @@ const Publish = () => {
                     img: url,
                     createdAt: new Date(),
                     userName: userDetails.userName,
-                    avatar: userDetails.avatar,
                   })
                 );
               })
@@ -83,6 +82,7 @@ const Publish = () => {
           publishStoryHandler({
             ...story,
             createdAt: new Date(),
+            userName: userDetails.userName,
           })
         );
       }
@@ -279,7 +279,7 @@ const Publish = () => {
 
       {didFieldsNotFilled && (
         <Popup
-          type="alert-danger"
+          type="alert-warning"
           text="Please fill all the fields to publish 👀 "
         />
       )}
