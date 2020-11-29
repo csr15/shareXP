@@ -113,11 +113,10 @@ function verifyCookieToken(req, res, next) {
 //Verify origin to avoid anybody to access my REST API
 function verifyOrigin(req, res, next) {
   var ref = req.headers.referer;
-  console.log(req)
   if (ref) {
     // We got a referer
-    var url= url.parse(ref);
-    if (url.hostname === "sharexp.netlify.app") {
+    var refererURL = url.parse(ref);
+    if (refererURL.hostname === "sharexp.netlify.app") {
       return next();
     }
   }
