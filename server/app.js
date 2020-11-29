@@ -117,7 +117,7 @@ function verifyOrigin(req, res, next) {
     // We got a referer
     console.log(url.parse(ref))
     var { hostname } = url.parse(ref);
-    if (hostname === "netlify") {
+    if (hostname === "sharexp.netlify.app") {
       return next();
     }
   }
