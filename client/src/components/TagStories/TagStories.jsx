@@ -5,13 +5,12 @@ import Axios from "axios";
 
 import "./TagStories.css";
 import * as actions from "../../store";
-import Story from "../Story/Story";
 import { config } from "../../utilities/constants/constants";
 import Popup from "../Popup/Popup";
 import { useHistory, useParams } from "react-router";
-import StorySkeleton from "../StorySkeleton/StorySkeleton";
-import Skeleton from "react-loading-skeleton";
 import LazyLoad from "react-lazyload";
+import VTStoryView from "../VTStoryView/VTStoryView";
+import VTScreenSkeleton from "../VTScreenSkeleton/VTScreenSkeleton";
 
 export default function TagStories(props) {
   const [didFollowed, setDidFollowed] = useState(false);
@@ -35,7 +34,6 @@ export default function TagStories(props) {
   //mapDispatchToProps
   const dispatch = useDispatch();
   const mapDispatchToProps = {
-    fetchUserDetails: () => dispatch(actions.profileHandler()),
     fetchTagStoriesHandler: (tagName) =>
       dispatch(actions.fetchTagStories(tagName)),
   };
@@ -153,12 +151,10 @@ export default function TagStories(props) {
           {state.tagStories.map((el, index) => {
             return (
               <LazyLoad key={el._id} once={true} placeholder={<Loading />}>
-                <Story
+                <VTStoryView
                   key={index}
-                  data={el}
-                  onClick={() =>
-                    history.push(`/viewstory/${el._id}/${el.uid}`)
-                  }
+                  story={el}
+                  onClick={() => history.push(`/viewstory/${el._id}/${el.uid}`)}
                 />
               </LazyLoad>
             );
@@ -166,16 +162,8 @@ export default function TagStories(props) {
         </React.Fragment>
       ) : (
         <>
-          <div className="d-flex justify-content-between my-auto  flex-wrap mb-5">
-            <Skeleton width={100} height={20} />
-            <Skeleton
-              width={150}
-              height={40}
-              style={{ borderRadius: "50px" }}
-            />
-          </div>
-          <StorySkeleton />
-          <StorySkeleton />
+          <VTScreenSkeleton />
+          <VTScreenSkeleton />
         </>
       )}
       {isErrorOnFollow && (

@@ -1,0 +1,30 @@
+.xp-vt-skull {
+  width: 100%;
+  overflow: hidden;
+  margin: 15px auto;
+}
+
+.xp-vt-skull:first-child {
+  margin-top: 0px;
+}
+.xp-vt-skull .xp-vt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+}
+.xp-vt-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0px;
+}
+.xp-vt-tags {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 10px 0px;
+}
+.xp-vt-tags:first-child {
+  margin-left: 0px;
+}

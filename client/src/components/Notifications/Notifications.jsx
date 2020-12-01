@@ -109,7 +109,7 @@ export const Notifications = ({ closeNotification, viewPropHandler }) => {
           ></div>
           {notifications ? (
             notifications.length > 0 ? (
-              notifications.reverse().map((el) => {
+              notifications.map((el) => {
                 return (
                   <NotificationCard
                     key={el._id}

@@ -8,7 +8,7 @@
   .xp-tag__stories-details {
     @extend .xp-center;
     flex-wrap: wrap;
-    margin: 15px auto 30px auto;
+    margin: 15px auto 0px auto;
     justify-content: space-between;
     h1 {
       color: $xp-black;
@@ -33,11 +33,28 @@
 @media (max-width: 768px){
   .xp-tag__stories{
     width: 80%;
+    .xp-tag__stories-details{
+      h1{
+        font-size: 28px;
+      }
+      button{
+        padding: 8px 22px;
+      }
+    }
   }
 }
 
 @media (max-width: 468px){
   .xp-tag__stories{
     width: 100%;
+    .xp-tag__stories-details{
+      h1{
+        font-size: 22px;
+      }
+      button{
+        padding: 5px 20px;
+        font-size: 13px;
+      }
+    }
   }
 }

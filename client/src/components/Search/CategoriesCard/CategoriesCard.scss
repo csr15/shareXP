@@ -3,7 +3,7 @@
 .xp-search-categories-card {
   background: $xp-white;
   display: flex;
-  height: 20vh;
+  height: 120px;
   flex-direction: column;
   justify-content: space-between;
   padding: 0.5rem 0.8rem;
@@ -32,8 +32,3 @@
   }
 }
 
-@media (max-width: 768px) {
-  .xp-search-categories-card {
-    height: 15vh;
-  }
-}

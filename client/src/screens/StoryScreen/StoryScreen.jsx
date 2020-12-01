@@ -12,7 +12,6 @@ import { Link, useHistory } from "react-router-dom";
 import AlsoLike from "../../components/AlsoLike/AlsoLike";
 import StorySkeleton from "../../components/StorySkeleton/StorySkeleton";
 import Skeleton from "react-loading-skeleton";
-import { Notifications } from "../../components/Notifications/Notifications";
 const Wrapper = styled.section`
   height: 80vh;
   display: flex;

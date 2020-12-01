@@ -117,7 +117,7 @@ export default function Search() {
   } else {
     searchDOM = (
       <React.Fragment>
-        <h6>Top Categories</h6>
+        <h6>Top Tags</h6>
         <div className="my-2">
           <div className="row">
             {state.topTags ? (

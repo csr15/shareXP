@@ -58,6 +58,10 @@ button:hover {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .xp-btn-secondary:hover {
@@ -121,10 +125,11 @@ button:hover {
   white-space: nowrap;
 }
 
-@media (min-width: 250px) and (max-width: 500px) {
-  .xp-btn-secondary {
-    padding: 8px 20px;
+@media (max-width: 568px) {
+  .xp-categories-wrapper, .xp-categories .xp-categories-list p {
+    padding: 3px 3px;
     font-size: 12px;
+    margin: 3px 5px 3px 0px;
   }
 }
 

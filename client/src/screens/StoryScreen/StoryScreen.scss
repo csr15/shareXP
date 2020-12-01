@@ -5,16 +5,10 @@
   margin: 25px auto 5px auto;
   overflow-x: hidden;
   background-color: $xp-white;
-  h4 {
-    color: $xp-black;
-    text-transform: capitalize;
-    font-weight: 500;
-    margin: 0px;
-    padding: 0px;
-  }
   .xp-story_screen-title {
     @extend .xp-center;
     justify-content: space-between;
+    margin-bottom: 20px;
     h4 {
       span {
         font-size: 14px;
@@ -38,7 +32,6 @@
           border-color: $xp-accent;
           color: $xp-accent;
           padding: 0.4rem 1.3rem;
-          margin: auto 15px 8px 15px;
           font-weight: 500;
           transition: all 0.3s ease;
         }
@@ -96,10 +89,47 @@
           display: none;
         }
       }
+
+      .xp-btn-story_screen-filter {
+        .dropdown {
+          button {
+            padding: 0.3rem 1rem;
+          }
+        }
+      }
     }
 
     .popular-tags {
       margin-top: 15px;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .xp-story_screen {
+    width: 100%;
+    .xp-story_screen-title {
+      padding: 0px;
+      margin-bottom: 10px;
+      h4 {
+        font-size: 1.1em !important;
+        text-transform: uppercase;
+        color: $xp-black;
+      }
+    }
+    .popular-tags {
+      h4 {
+        font-size: 1.1em !important;
+        text-transform: uppercase;
+        color: $xp-black;
+      }
+    }
+    .also_like_section {
+      h4 {
+        font-size: 1.1em !important;
+        text-transform: uppercase;
+        color: $xp-black;
+      }
     }
   }
 }

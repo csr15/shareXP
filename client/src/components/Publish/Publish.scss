@@ -105,11 +105,14 @@
       h4,
       h5,
       h6 {
-        font-family: $xp-meri;
-        font-weight: 700;
+        font-family: $xp-pop;
+        font-weight: 400;
       }
       p,
-      a {
+      a,
+      ul,
+      li,
+      ol {
         color: $xp-black !important;
         font-family: $xp-meri;
         font-size: 18px;

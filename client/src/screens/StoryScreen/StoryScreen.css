@@ -58,6 +58,10 @@ button:hover {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .xp-btn-secondary:hover {
@@ -121,10 +125,11 @@ button:hover {
   white-space: nowrap;
 }
 
-@media (min-width: 250px) and (max-width: 500px) {
-  .xp-btn-secondary {
-    padding: 8px 20px;
+@media (max-width: 568px) {
+  .xp-categories-wrapper {
+    padding: 3px 3px;
     font-size: 12px;
+    margin: 3px 5px 3px 0px;
   }
 }
 
@@ -135,18 +140,11 @@ button:hover {
   background-color: #ffffff;
 }
 
-.xp-story_screen h4 {
-  color: #000000;
-  text-transform: capitalize;
-  font-weight: 500;
-  margin: 0px;
-  padding: 0px;
-}
-
 .xp-story_screen .xp-story_screen-title {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 .xp-story_screen .xp-story_screen-title h4 span {
@@ -171,7 +169,6 @@ button:hover {
   border-color: #686b78;
   color: #686b78;
   padding: 0.4rem 1.3rem;
-  margin: auto 15px 8px 15px;
   font-weight: 500;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -227,8 +224,36 @@ button:hover {
   .xp-story_screen .xp-story_screen-title h4 span {
     display: none;
   }
+  .xp-story_screen .xp-story_screen-title .xp-btn-story_screen-filter .dropdown button {
+    padding: 0.3rem 1rem;
+  }
   .xp-story_screen .popular-tags {
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 568px) {
+  .xp-story_screen {
+    width: 100%;
+  }
+  .xp-story_screen .xp-story_screen-title {
+    padding: 0px;
+    margin-bottom: 10px;
+  }
+  .xp-story_screen .xp-story_screen-title h4 {
+    font-size: 1.1em !important;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .xp-story_screen .popular-tags h4 {
+    font-size: 1.1em !important;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .xp-story_screen .also_like_section h4 {
+    font-size: 1.1em !important;
+    text-transform: uppercase;
+    color: #000000;
   }
 }
 

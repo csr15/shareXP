@@ -37,6 +37,7 @@ const ViewStory = () => {
     };
   });
 
+  console.log(state.userDetails)
   //Fething story from server
   React.useEffect(() => {
     document.body.style.backgroundColor = "#F5F5F5";
@@ -219,6 +220,7 @@ const ViewStory = () => {
   //Add comment
   const commentHandler = async (commentText) => {
     setCommentLoader(true);
+    console.log(state.userDetails.userName)
     try {
       const { data } = await Axios.post(
         `${config.server_url}/publish/comment/${story._id}`,
@@ -234,7 +236,7 @@ const ViewStory = () => {
             storyId: story._id,
             uid: localStorage.getItem("uid"),
             authorId: author._id,
-            userName: author.userName,
+            userName: state.userDetails.userName,
             storyTitle: story.story.title,
           },
         },
@@ -323,8 +325,8 @@ const ViewStory = () => {
               })()}
               <h6>{story.likes.length}</h6>
             </div>
-            <div>
-              <i className="bx bxs-share" onClick={shareStoryHandler}></i>
+            <div onClick={shareStoryHandler}>
+              <i className="bx bxs-share"></i>
               <h6>share</h6>
             </div>
           </div>

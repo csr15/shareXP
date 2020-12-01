@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Story from "../Story/Story";
 import StorySkeleton from "../StorySkeleton/StorySkeleton";
+import VTScreenSkeleton from "../VTScreenSkeleton/VTScreenSkeleton";
+import VTStoryView from "../VTStoryView/VTStoryView";
 
 export default function MyStories({ myStories, onClick }) {
   return (
@@ -12,9 +13,9 @@ export default function MyStories({ myStories, onClick }) {
           myStories.length > 0 ? (
             myStories.map((storyData, index) => {
               return (
-                <Story
+                <VTStoryView
                   key={index}
-                  data={storyData}
+                  story={storyData}
                   isProfile={true}
                   onClick={onClick.bind(this, storyData)}
                 />
@@ -30,8 +31,8 @@ export default function MyStories({ myStories, onClick }) {
           )
         ) : (
           <>
-            <StorySkeleton />
-            <StorySkeleton />
+            <VTScreenSkeleton />
+            <VTScreenSkeleton />
           </>
         )}
       </div>

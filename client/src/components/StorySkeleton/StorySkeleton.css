@@ -16,6 +16,14 @@
 
 .xp-story-skull-mobile {
   display: none;
+  width: 100%;
+}
+
+.xp-story-skull-mobile .xp-skull_layout-mobile{
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 @media (max-width: 501px) {

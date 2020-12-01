@@ -58,6 +58,10 @@ button:hover {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .xp-btn-secondary:hover {
@@ -121,10 +125,11 @@ button:hover {
   white-space: nowrap;
 }
 
-@media (min-width: 250px) and (max-width: 500px) {
-  .xp-btn-secondary {
-    padding: 8px 20px;
+@media (max-width: 568px) {
+  .xp-categories-wrapper {
+    padding: 3px 3px;
     font-size: 12px;
+    margin: 3px 5px 3px 0px;
   }
 }
 
@@ -136,7 +141,7 @@ button:hover {
 .xp-tag__stories .xp-tag__stories-details {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  margin: 15px auto 30px auto;
+  margin: 15px auto 0px auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -162,11 +167,24 @@ button:hover {
   .xp-tag__stories {
     width: 80%;
   }
+  .xp-tag__stories .xp-tag__stories-details h1 {
+    font-size: 28px;
+  }
+  .xp-tag__stories .xp-tag__stories-details button {
+    padding: 8px 22px;
+  }
 }
 
 @media (max-width: 468px) {
   .xp-tag__stories {
     width: 100%;
+  }
+  .xp-tag__stories .xp-tag__stories-details h1 {
+    font-size: 22px;
+  }
+  .xp-tag__stories .xp-tag__stories-details button {
+    padding: 5px 20px;
+    font-size: 13px;
   }
 }
 /*# sourceMappingURL=TagStories.css.map */

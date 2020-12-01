@@ -58,6 +58,10 @@ button:hover {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .xp-btn-secondary:hover {
@@ -125,10 +129,12 @@ button:hover {
   white-space: nowrap;
 }
 
-@media (min-width: 250px) and (max-width: 500px) {
-  .xp-btn-secondary {
-    padding: 8px 20px;
+@media (max-width: 568px) {
+  .xp-categories-wrapper, .xp-view .xp-view-first_layer .xp-view-header .xp-view-header_tags p,
+  .xp-view .xp-viewstory-loader .xp-view-header .xp-view-header_tags p {
+    padding: 3px 3px;
     font-size: 12px;
+    margin: 3px 5px 3px 0px;
   }
 }
 
@@ -226,13 +232,16 @@ button:hover {
 .xp-view .xp-viewstory-loader .xp-view-content h4,
 .xp-view .xp-viewstory-loader .xp-view-content h5,
 .xp-view .xp-viewstory-loader .xp-view-content h6 {
-  font-weight: 600;
-  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
 }
 
-.xp-view .xp-view-first_layer .xp-view-content p, .xp-view .xp-view-first_layer .xp-view-content a,
+.xp-view .xp-view-first_layer .xp-view-content p, .xp-view .xp-view-first_layer .xp-view-content a, .xp-view .xp-view-first_layer .xp-view-content ul, .xp-view .xp-view-first_layer .xp-view-content li, .xp-view .xp-view-first_layer .xp-view-content ol,
 .xp-view .xp-viewstory-loader .xp-view-content p,
-.xp-view .xp-viewstory-loader .xp-view-content a {
+.xp-view .xp-viewstory-loader .xp-view-content a,
+.xp-view .xp-viewstory-loader .xp-view-content ul,
+.xp-view .xp-viewstory-loader .xp-view-content li,
+.xp-view .xp-viewstory-loader .xp-view-content ol {
   font-family: "Merriweather", serif;
   font-weight: 400;
   color: #3c383f;

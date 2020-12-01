@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./Navigation.css";
-import Logo from "../../Assets/icons/logo.svg";
+import Logo from "../../Assets/icons/Logo.svg";
 import { config } from "../../utilities/constants/constants";
-import * as actions from "../../store";
 import { Notifications } from "../Notifications/Notifications";
 import BackDrop from "../BackDrop/BackDrop";
 
@@ -24,41 +23,58 @@ const Navigation = React.memo(() => {
     };
   });
 
-  const dispatch = useDispatch();
-
-  React.useEffect(() => {
-    if (state.myStories === "" || state.userDetails === "") {
-      dispatch(actions.profileHandler());
-    }
-  }, []);
-
   const history = useHistory();
 
   return (
     <div className="xp-nav">
       <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="/">
-          <img src={Logo} alt={config.imgAlt} />
+        <a href="/">
+          <div className="navbar-brand">
+            <img
+              src={Logo}
+              alt={config.imgAlt}
+              className="img-responsive my-auto"
+            />
+            <span className="my-auto">shareXP</span>
+          </div>
         </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          onClick={() => setToggleMobileNav((curNav) => !curNav)}
-        >
-          {toggleMobileNav ? (
-            <i
-              className="bx bx-x bx-md"
-              style={toggleMobileNav ? { color: "#FFFFFF" } : null}
-            ></i>
-          ) : (
-            <i className="bx bx-menu-alt-right bx-md"></i>
+        <div className="navbar-actions my-auto">
+          {state.authState && (
+            <span
+              className="bell"
+              onClick={() => {
+                setToggleMobileNav(false);
+                setOpenNotification(true);
+              }}
+            >
+              {state.notifications.length > 0 ? (
+                <span className="len"></span>
+              ) : null}
+              <i className="bx bx-bell"></i>{" "}
+            </span>
           )}
-        </button>
+
+          <button
+            className="navbar-toggler my-auto"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            onClick={() => setToggleMobileNav((curNav) => !curNav)}
+          >
+            {toggleMobileNav ? (
+              <i
+                className="bx bx-x"
+                style={toggleMobileNav ? { color: "#FFFFFF" } : null}
+              ></i>
+            ) : (
+              <i className="bx bx-menu-alt-right"></i>
+            )}
+          </button>
+        </div>
+
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
@@ -158,17 +174,6 @@ const Navigation = React.memo(() => {
                 }}
               >
                 Profile
-              </p>
-              <p
-                onClick={() => {
-                  setToggleMobileNav(false);
-                  setOpenNotification(true);
-                }}
-              >
-                {state.notifications.length > 0 ? (
-                  <span className="len"></span>
-                ) : null}
-                <i className="bx bxs-bell"></i>
               </p>
               <button
                 className="btn xp-btn-seconary"

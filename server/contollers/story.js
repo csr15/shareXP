@@ -56,7 +56,7 @@ module.exports = {
 
         res.status(200).json(story[0]);
       } else {
-        const  story = await storyModel.findByIdAndUpdate(
+        const story = await storyModel.findByIdAndUpdate(
           req.params.storyId,
           {
             $addToSet: {

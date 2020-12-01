@@ -1,16 +1,13 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router";
-import ReactHtmlParser from "react-html-parser";
 import { useDispatch, useSelector } from "react-redux";
+import ReactHtmlParser from "react-html-parser";
 
 import "./Story.css";
-import viewImg from "../../Assets/icons/xp-view.svg";
 import ShareXpImg from "../../Assets/shareXP-draw.svg";
 import { config } from "../../utilities/constants/constants";
 import * as actions from "../../store";
-import Modal from "../Modal/Modal";
 
-const Story = React.memo(({ data, onClick, isProfile }) => {
+const Story = React.memo(({ data, onClick }) => {
   const [doConfirmation, setDoConfirmation] = useState(false);
 
   //mapDispatchToProps
@@ -26,94 +23,63 @@ const Story = React.memo(({ data, onClick, isProfile }) => {
 
   if (didStoryDeleted && doConfirmation) setDoConfirmation(false);
 
-  let tags = "";
-  if (data.story.tags.length > 5) {
-    let slicedTags = data.story.data.tags.slice(0, 5);
-    tags = (
-      <React.Fragment>
-        {slicedTags.map((tag, index) => {
-          return <p key={index}>{tag}</p>;
-        })}
-        <span>+{data.tags.length - 5}</span>
-      </React.Fragment>
-    );
-  } else {
-    tags = data.story.tags.map((tag, index) => {
-      return <p key={index}>{tag}</p>;
-    });
-  }
-
   return (
-    <div className="xp-story">
-      <div className="xp-story-card text-left" key={data._id}>
-        <div className="row">
-          <div className="col-md-4" onClick={onClick}>
-            <div
-              className="xp-story-card-img"
-              style={{
-                backgroundImage: `url(${
-                  data.story.img ? data.story.img : ShareXpImg
-                })`,
-              }}
-            >
-              <p>shareXP</p>
-            </div>
+    <div className="xp-story" onClick={onClick}>
+      <div className="xp-story-wrapper">
+        <div className="xp-story-body">
+          <div className="xp-story-body_title">
+            <h6>
+              From <span>{data.userName}</span>
+            </h6>
+            <h1>{data.story.title}</h1>
           </div>
-          <div className="col-md-8 xp-story-card-text">
-            <div className="xp-story-card-wrapper" onClick={onClick}>
-              <div className="xp-story-card-title">
-                <h3>{data.story.title}</h3>
-              </div>
-              <div className="xp-story-card-categories">{tags}</div>
-              <div className="xp-story-card-content">
-                {data.story.content.length > 150 ? (
-                  <React.Fragment>
-                    {ReactHtmlParser(
-                      `${data.story.content.slice(0, 100)} ......`
-                    )}
-                  </React.Fragment>
-                ) : (
-                  ReactHtmlParser(data.story.content)
-                )}
-              </div>
-            </div>
-            <div className="xp-story-card-reaction">
-              <div className="xp-story-card-salute">
-                <div className="xp-card-img">
-                  <i className="bx bxs-like"></i>
-                  <span>{data.likes.length}</span>
-                </div>
-              </div>
-              <div className="xp-story-card-views">
-                <div className="xp-card-img">
-                  <img src={viewImg} alt={config.imgAlt} />
-                  <span>{data.views}</span>
-                </div>
-              </div>
-              {isProfile && (
-                <div className="xp-story-card-views ml-auto delete">
-                  <span
-                    className="xp-card-delete"
-                    onClick={() => setDoConfirmation(true)}
-                  >
-                    Delete story
-                  </span>
-                </div>
-              )}
-              {doConfirmation && (
-                <Modal
-                  text="Are you sure to delete"
-                  pri="Delete"
-                  priHandler={deletepostHandler.bind(this, data)}
-                  secHandler={() => setDoConfirmation(false)}
-                />
-              )}
-            </div>
+          <div className="xp-story-body_content">
+            {data.story.content.length > 150 ? (
+              <React.Fragment>
+                {ReactHtmlParser(`${data.story.content.slice(0, 100)} ...`)}
+              </React.Fragment>
+            ) : (
+              ReactHtmlParser(data.story.content)
+            )}
           </div>
+          <div className="xp-story-body_details">
+            <p className="my-auto">
+              {((createdAt) => {
+                const date = new Date(createdAt);
+                const options = {
+                  year: "2-digit",
+                  day: "numeric",
+                  month: "short",
+                };
+                return date.toLocaleDateString("en-US", options);
+              })(data.createdAt)}
+            </p>
+            <div className="spacer my-auto"></div>
+            <p className="my-auto">
+              {((text) => {
+                text = text.trim();
+                const totalWords =
+                  text.length > 0 ? text.split(/\s+/).length : 0;
+                const totalMinutes = totalWords / 200;
+                return Math.floor(totalMinutes);
+              })(data.story.content)}{" "}
+              mins read
+            </p>
+            <div className="spacer my-auto"></div>
+            <p className="my-auto">{data.views} views</p>
+          </div>
+        </div>
+        <div className="xp-story-img">
+          <img
+            src={data.story.img ? data.story.img : ShareXpImg}
+            alt={`${config.imgAlt} || ${
+              data.story.title
+            } || ${data.story.tags.map((el) => el)}`}
+          />
         </div>
       </div>
     </div>
   );
 });
 
-export default withRouter(Story);
+export default Story;

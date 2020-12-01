@@ -206,7 +206,7 @@ export default function Profile() {
                 </li>
               </ul>
             </div>
-            <div className="mt-4">{tab}</div>
+            <div>{tab}</div>
             {state.didPublished !== "" && (
               <Popup
                 type="alert-success"

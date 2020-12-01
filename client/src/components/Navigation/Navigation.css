@@ -58,6 +58,10 @@ button:hover {
   font-size: 14px;
   font-weight: 400;
   text-transform: capitalize;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .xp-btn-secondary:hover {
@@ -98,7 +102,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .xp-nav .navbar-nav, .xp-nav .xp-nav-mobile-list {
+.xp-center, .xp-nav .navbar-brand, .xp-nav .navbar-nav, .xp-nav .xp-nav-mobile-list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -121,10 +125,11 @@ button:hover {
   white-space: nowrap;
 }
 
-@media (min-width: 250px) and (max-width: 500px) {
-  .xp-btn-secondary {
-    padding: 8px 20px;
+@media (max-width: 568px) {
+  .xp-categories-wrapper {
+    padding: 3px 3px;
     font-size: 12px;
+    margin: 3px 5px 3px 0px;
   }
 }
 
@@ -137,43 +142,68 @@ button:hover {
   transition: all 0.3s ease;
 }
 
-.xp-nav .navbar-brand {
-  font-family: "Poppins", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: #000000;
-  margin: 0px;
-  padding: 0px;
+.xp-nav a {
+  outline: none;
+  text-decoration: none;
 }
 
 .xp-nav .navbar-brand img {
-  width: 25px;
+  width: 20px;
+  margin-right: 5px;
 }
 
-.xp-nav .navbar-toggler {
+.xp-nav .navbar-brand span {
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.xp-nav .navbar-actions .bell {
+  visibility: hidden;
+  position: relative;
+}
+
+.xp-nav .navbar-actions .bell i {
+  font-size: 1.5rem !important;
+  color: #686b78;
+  z-index: 10;
+  position: relative;
+}
+
+.xp-nav .navbar-actions .bell .len {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 25%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: #f84f31;
+  z-index: 11;
+  border-radius: 50%;
+}
+
+.xp-nav .navbar-actions .navbar-toggler {
   position: relative;
   z-index: 101;
 }
 
-.xp-nav .navbar-toggler i {
+.xp-nav .navbar-actions .navbar-toggler i {
   color: #686b78;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  font-size: 1.9rem !important;
 }
 
-.xp-nav .navbar-toggler i:hover {
+.xp-nav .navbar-actions .navbar-toggler i:hover {
   color: #000000;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 
-.xp-nav .navbar-toggler i:focus {
-  color: #000000;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-}
-
-.xp-nav .navbar-toggler:focus {
+.xp-nav .navbar-actions .navbar-toggler:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -227,7 +257,7 @@ button:hover {
           transform: translate(-50%, -50%);
   width: 12px;
   height: 12px;
-  background-color: #F84F31;
+  background-color: #f84f31;
   z-index: 9;
   border-radius: 50%;
 }
@@ -264,21 +294,6 @@ button:hover {
   position: relative;
 }
 
-.xp-nav .xp-nav-mobile-list p .len {
-  content: "";
-  position: absolute;
-  top: 30%;
-  left: 20%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 12px;
-  height: 12px;
-  background-color: #F84F31;
-  background: #F84F31;
-  z-index: 10;
-  border-radius: 50%;
-}
-
 .xp-nav .xp-nav-mobile-list p i {
   font-size: 1.2rem;
   margin: 5px auto;
@@ -292,9 +307,25 @@ button:hover {
   margin: 20px auto;
 }
 
+@media (max-width: 991px) {
+  .xp-nav .navbar .bell {
+    visibility: visible;
+  }
+}
+
 @media (max-width: 500px) {
   .xp-nav {
     padding: 0.3rem 0rem;
+  }
+  .xp-nav .navbar {
+    padding: 0.3rem 0rem;
+  }
+  .xp-nav .navbar .navbar-brand img {
+    width: 15px;
+    margin-right: 3px;
+  }
+  .xp-nav .navbar .navbar-brand span {
+    font-size: 15px;
   }
   .xp-nav .xp-nav-mobile-list {
     width: 60vw;
