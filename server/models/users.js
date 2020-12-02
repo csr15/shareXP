@@ -17,10 +17,11 @@ const userSchema = mongoose.Schema({
       {
         uid: String,
         userName: String,
+        authorId: String,
         content: String,
         createdAt: Date,
         storyId: String,
-        storyTitle: String
+        storyTitle: String,
       },
     ],
     default: [],

@@ -207,9 +207,9 @@ const Navigation = React.memo(() => {
           <Notifications
             userDetails={state.userDetails}
             closeNotification={() => setOpenNotification(false)}
-            viewPropHandler={(storyId, uid) => {
+            viewPropHandler={(storyId, authorId) => {
               setOpenNotification(false);
-              history.push(`/viewstory/${storyId}/${uid}`);
+              history.push(`/viewstory/${storyId}/${authorId}`);
             }}
           />
         </div>

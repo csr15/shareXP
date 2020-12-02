@@ -109,6 +109,7 @@ module.exports = {
                 {
                   uid: uid, // current user ID
                   userName: userName, // current username
+                  authorId: authorId, // Author of story ID
                   content: "liked your story", // content (like / comment)
                   createdAt: new Date(), // creeated at
                   storyId: storyId, // liked story ID
