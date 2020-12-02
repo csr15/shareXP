@@ -405,21 +405,6 @@ export default function Edit({ state }) {
           </div>
         </div>
       </div>
-      {/* <div className="xp-profile-total_reactions">
-        <h6>Total Reactions</h6>
-        <div className="xp-story-total_reactions-container">
-          <div className="xp-profile-total_likes">
-            <img src={likeImg} alt={config.imgAlt} />
-            <h6>19.8k</h6>
-            <p>Total Likes</p>
-          </div>
-          <div className="xp-profile-total_views">
-            <img src={viewImg} alt={config.imgAlt} />
-            <h6>{state.totalViews}</h6>
-            <p>Total Views</p>
-          </div>
-        </div>
-      </div> */}
       <div className="d-flex mt-3 justify-content-center">
         <button
           className="xp-btn-secondary mx-2"

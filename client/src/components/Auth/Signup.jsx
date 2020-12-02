@@ -144,7 +144,7 @@ const Signup = ({ onLoader, loader, offLoader }) => {
         </div>
         <div className="xp-auth-input">
           <label htmlFor="mail">
-            Surename <span>(only letters)</span>
+            Name <span>(only letters)</span>
           </label>
           <input
             type="text"
@@ -158,14 +158,14 @@ const Signup = ({ onLoader, loader, offLoader }) => {
             onBlur={sureNameHandler}
           />
           {isSurenameError && (
-            <span className="xp-error">Surename must contain only letters</span>
+            <span className="xp-error">Name must contain only letters</span>
           )}
         </div>
         <div className="xp-auth-input">
           <label htmlFor="mail">Your mail id</label>
           <input
             type="mail"
-            placeholder="johndoe@gmail.com"
+            placeholder="johndoe@example.com"
             id="mail"
             name="mail"
             value={mail}

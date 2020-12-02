@@ -10,6 +10,8 @@
     flex-wrap: wrap;
     margin: 15px auto 0px auto;
     justify-content: space-between;
+    border-bottom: 1px solid $xp-border;
+    padding-bottom: 5px;
     h1 {
       color: $xp-black;
       font-family: $xp-pop;

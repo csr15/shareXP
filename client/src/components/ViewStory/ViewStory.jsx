@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ReactHtmlParser from "react-html-parser";
 import Skeleton from "react-loading-skeleton";
 import moment from "moment";
-import { useHistory, useParams } from "react-router";
+import { useHistory, useParams, withRouter } from "react-router";
 import LazyLoad from "react-lazyload";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -37,11 +37,10 @@ const ViewStory = () => {
     };
   });
 
-  console.log(state.userDetails)
   //Fething story from server
   React.useEffect(() => {
     document.body.style.backgroundColor = "#F5F5F5";
-
+    
     (async () => {
       try {
         const storyData = await Promise.all([
@@ -65,7 +64,7 @@ const ViewStory = () => {
       document.body.style.backgroundColor = "#FFFFFF";
       dispatch(actions.updateViewHandler(storyID));
     };
-  }, []);
+  }, [storyID]);
 
   //Like a story
   const likeStoryHandler = async () => {
@@ -409,4 +408,4 @@ const ViewStory = () => {
   );
 };
 
-export default ViewStory;
+export default withRouter(ViewStory);

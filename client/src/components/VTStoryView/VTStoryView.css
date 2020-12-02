@@ -139,6 +139,7 @@ button:hover {
   cursor: pointer;
   margin: 10px 0px;
   border-bottom: 1px solid #ebebeb;
+  overflow-x: hidden;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
@@ -150,6 +151,12 @@ button:hover {
 .xp_vt-story:hover {
   -webkit-box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.xp_vt-story .xp-read_more {
+  color: #686b78;
+  font-size: 12px;
+  text-decoration: underline;
 }
 
 .xp_vt-story .xp_vp-story-header {
@@ -187,6 +194,8 @@ button:hover {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 5px 0px;
 }
 

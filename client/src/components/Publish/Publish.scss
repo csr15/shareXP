@@ -23,7 +23,7 @@
 }
 .xp-publish {
   width: 80%;
-  margin: 10px auto;
+  margin: auto;
   .xp-publish-title h5 {
     text-align: center;
     color: $xp-accent;
@@ -241,6 +241,66 @@
       animation: rocket_launch 1.5s linear infinite;
     }
   }
+
+  .xp-publish-login {
+    z-index: 150;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $xp-white;
+    width: 40vw;
+    padding: 2rem;
+    border-radius: 12px;
+
+    h2 {
+      color: $xp-black;
+      font-weight: 700;
+      margin: 0px auto 15px auto;
+
+      span {
+        color: $xp-title;
+        display: block;
+        font-weight: 500;
+        font-size: 22px;
+        margin: 5px auto;
+      }
+    }
+
+    h4 {
+      color: $xp-accent;
+      font-weight: 600;
+    }
+
+    .xp-btn-primary {
+      margin: 7px auto;
+    }
+    p {
+      margin: 5px auto;
+    }
+    .xp-btn-secondary {
+      border: none;
+      font-weight: 600;
+      color: $xp-accent;
+      text-transform: uppercase;
+      text-decoration: underline;
+      margin: 0px;
+    }
+  }
+
+  .xp-publish-help {
+    margin: 15px auto 5px auto;
+    p {
+      font-weight: 500;
+
+      span {
+        font-weight: 600;
+        color: $xp-black;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 //Responsive
@@ -258,12 +318,21 @@
         }
       }
     }
+    .xp-publish-login {
+      width: 50vw;
+      padding: 1.5rem;
+    }
   }
 }
 @media (max-width: 768px) {
   .xp-publish {
     width: 100%;
-
+    padding: 1.5rem 1rem;
+    .xp-publish-title {
+      h5 {
+        margin: 10px auto;
+      }
+    }
     .xp-publish-editor {
       input {
         padding: 1.3rem 0.8rem;
@@ -278,6 +347,50 @@
     }
     .xp-publish-buttons {
       margin: 5px auto 5px auto;
+    }
+    .xp-publish-login {
+      width: 60vw;
+
+      h2 {
+        font-size: 28px;
+      }
+      h4 {
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+@media (max-width: 567px) {
+  .xp-publish {
+    padding: 1rem 0.5rem;
+    .xp-publish-login {
+      width: 80vw;
+      padding: 1.5rem 1.5rem;
+
+      h2 {
+        font-size: 24px;
+      }
+      h4 {
+        font-size: 20px;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .xp-publish {
+    .xp-publish-login {
+      width: 90vw;
+      padding: 2rem 1rem;
+
+      h2 {
+        font-size: 24px;
+
+        span {
+          font-size: 18px;
+          margin: 15px auto 5px auto;
+        }
+      }
     }
   }
 }

@@ -6,6 +6,7 @@
   cursor: pointer;
   margin: 10px 0px;
   border-bottom: 1px solid $xp-border;
+  overflow-x: hidden;
 
   transition: all 0.3s ease;
   &:first-child {
@@ -14,6 +15,12 @@
 
   &:hover {
     box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .xp-read_more {
+    color: $xp-accent;
+    font-size: 12px;
+    text-decoration: underline;
   }
   .xp_vp-story-header {
     padding: 0px;
@@ -49,6 +56,7 @@
   .xp_vp-story-tags {
     @extend .xp-center;
     justify-content: flex-start;
+    flex-wrap: wrap;
     margin: 5px 0px;
     p {
       @extend .xp-categories-wrapper;
@@ -193,11 +201,11 @@
   }
 }
 
-@media (max-width: 350px){
-  .xp_vt-story{
-    .xp_vp-story-footer{
+@media (max-width: 350px) {
+  .xp_vt-story {
+    .xp_vp-story-footer {
       .delete {
-        span{
+        span {
           display: none;
         }
       }

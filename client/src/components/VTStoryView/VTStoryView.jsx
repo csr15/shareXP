@@ -66,7 +66,8 @@ const VTStoryView = ({ story, isProfile, onClick }) => {
       <div className="xp_vp-story-content" onClick={onClick}>
         {story.story.content.length > 150 ? (
           <React.Fragment>
-            {ReactHtmlParser(`${story.story.content.slice(0, 150)} ...`)}
+            {ReactHtmlParser(`${story.story.content.slice(0, 150)} ...`)}{" "}
+            <span className="xp-read_more">Read more</span>
           </React.Fragment>
         ) : (
           ReactHtmlParser(story.story.content)
@@ -90,7 +91,7 @@ const VTStoryView = ({ story, isProfile, onClick }) => {
             className="my-auto ml-auto delete"
             onClick={() => setDoConfirmation(true)}
           >
-            <i class="bx bxs-trash-alt"></i>
+            <i className="bx bxs-trash-alt"></i>
             <span className="my-auto">Delete story</span>
           </p>
         )}

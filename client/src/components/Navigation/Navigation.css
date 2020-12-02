@@ -24,7 +24,7 @@ button:hover {
   outline: none;
 }
 
-.xp-btn-primary, .xp-nav .xp-nav-mobile-list button {
+.xp-btn-primary {
   background: #8e27f6;
   color: #ffffff;
   padding: 10px 30px;
@@ -36,13 +36,13 @@ button:hover {
   text-transform: capitalize;
 }
 
-.xp-btn-primary:hover, .xp-nav .xp-nav-mobile-list button:hover {
+.xp-btn-primary:hover {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   background: #7a0aea;
 }
 
-.xp-btn-primary:focus, .xp-nav .xp-nav-mobile-list button:focus {
+.xp-btn-primary:focus {
   outline: none;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -150,6 +150,8 @@ button:hover {
 .xp-nav .navbar-brand img {
   width: 20px;
   margin-right: 5px;
+  -webkit-animation: logo_reveal 1s linear;
+          animation: logo_reveal 1s linear;
 }
 
 .xp-nav .navbar-brand span {
@@ -303,7 +305,12 @@ button:hover {
   z-index: 11;
 }
 
-.xp-nav .xp-nav-mobile-list button {
+.xp-nav .xp-nav-mobile-list .xp-btn-secondary {
+  border: none;
+  font-weight: 600;
+}
+
+.xp-nav .xp-nav-mobile-list .xp-btn-primary {
   margin: 20px auto;
 }
 
@@ -336,6 +343,46 @@ button:hover {
   .xp-nav .xp-nav-mobile-list button {
     font-size: 12px;
     padding: 8px 20px;
+  }
+}
+
+@-webkit-keyframes logo_reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(10px, -10px);
+            transform: translate(10px, -10px);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes logo_reveal {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate(10px, -10px);
+            transform: translate(10px, -10px);
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=Navigation.css.map */

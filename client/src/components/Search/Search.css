@@ -208,6 +208,11 @@ button:hover {
   transition: all 0.3s ease;
 }
 
+.xp-search .xp-search_bar .xp-search_bar-wrapper .xp-search-actions {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
 .xp-search .xp-search_bar .xp-search_bar-wrapper span i {
   display: none;
 }

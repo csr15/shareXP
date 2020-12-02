@@ -268,6 +268,9 @@ button:hover {
   .xp-story .xp-story-body .xp-story-body_details p {
     font-size: 12px;
   }
+  .xp-story .xp-story-body .xp-story-body_details .spacer {
+    margin: auto 7px;
+  }
   .xp-story .xp-story-img img {
     width: 172px;
     height: 129px;
@@ -281,7 +284,7 @@ button:hover {
             flex: 2;
   }
   .xp-story .xp-story-body .xp-story-body_details p {
-    font-size: 13px;
+    font-size: 14px;
   }
   .xp-story .xp-story-body .xp-story-body_content h1,
   .xp-story .xp-story-body .xp-story-body_content h2,
@@ -318,8 +321,11 @@ button:hover {
         -ms-flex: 3;
             flex: 3;
   }
+  .xp-story .xp-story-body .xp-story-body_details {
+    margin: 3px 0px;
+  }
   .xp-story .xp-story-body .xp-story-body_details p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .xp-story .xp-story-body .xp-story-body_details .spacer {
     margin: auto 5px;
@@ -350,8 +356,11 @@ button:hover {
         -ms-flex: 3;
             flex: 3;
   }
+  .xp-story .xp-story-body .xp-story-body_details {
+    margin: 3px 0px;
+  }
   .xp-story .xp-story-body .xp-story-body_details p {
-    font-size: 11px;
+    font-size: 12px;
   }
   .xp-story .xp-story-body .xp-story-body_details .spacer {
     margin: auto 5px;

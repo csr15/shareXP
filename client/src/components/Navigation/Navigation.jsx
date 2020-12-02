@@ -106,26 +106,28 @@ const Navigation = React.memo(() => {
                   ) : null}
                   <i className="bx bxs-bell"></i>
                 </li>
-                <li
-                  className="nav-item m-1"
-                  onClick={() => history.push("/publish")}
-                >
-                  <button
-                    className="xp-btn-secondary"
-                    disabled={state.didPublished !== ""}
-                  >
-                    share experience
-                  </button>
-                </li>
               </>
             ) : (
               <li
                 className="nav-item m-1"
                 onClick={() => history.push("/auth")}
               >
-                <button className="xp-btn-primary">Login</button>
+                <button className="xp-btn-secondary" style={{ border: "none" }}>
+                  Login
+                </button>
               </li>
             )}
+            <li
+              className="nav-item m-1"
+              onClick={() => history.push("/publish")}
+            >
+              <button
+                className="xp-btn-secondary"
+                disabled={state.didPublished !== ""}
+              >
+                share experience
+              </button>
+            </li>
           </ul>
         </div>
       </nav>
@@ -175,27 +177,27 @@ const Navigation = React.memo(() => {
               >
                 Profile
               </p>
-              <button
-                className="btn xp-btn-seconary"
-                onClick={() => {
-                  setToggleMobileNav(false);
-                  history.push("/publish");
-                }}
-              >
-                Share experience
-              </button>
             </>
           ) : (
             <button
-              className="btn xp-btn-seconary"
+              className="xp-btn-secondary"
               onClick={() => {
                 setToggleMobileNav(false);
                 history.push("/auth");
               }}
             >
-              Login
+              LOGIN
             </button>
           )}
+          <button
+            className="xp-btn-primary"
+            onClick={() => {
+              setToggleMobileNav(false);
+              history.push("/publish");
+            }}
+          >
+            Share experience
+          </button>
         </div>
       </div>
 

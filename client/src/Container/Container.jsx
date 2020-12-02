@@ -31,10 +31,10 @@ export default function Home() {
           <Route path="/tagStories/:tagName" exact component={TagStories} />
           <Route path="/auth" exact component={Auth} />
           <Route path="/help" exact component={Help} />
+          <Route path="/publish" exact component={Publish} />
           {authState ? (
             <>
               <Route path="/profile" exact component={Profile} />
-              <Route path="/publish" exact component={Publish} />
             </>
           ) : (
             <Redirect from="/profile" to="/" />

@@ -17,6 +17,7 @@ export default function TagStories(props) {
   const [didUnFollowed, setDidUnFollowed] = useState(false);
   const [isErrorOnUnFollow, setIsErrorOnUnFollow] = useState(false);
   const [isErrorOnFollow, setIsErrorOnFollow] = useState(false);
+  const [loader, setLoader] = useState(false);
 
   const history = useHistory();
   const { tagName } = useParams();
@@ -34,6 +35,7 @@ export default function TagStories(props) {
   //mapDispatchToProps
   const dispatch = useDispatch();
   const mapDispatchToProps = {
+    fetchUserDetails: () => dispatch(actions.profileHandler()),
     fetchTagStoriesHandler: (tagName) =>
       dispatch(actions.fetchTagStories(tagName)),
   };
@@ -48,6 +50,7 @@ export default function TagStories(props) {
   }, [state.userDetails]);
 
   const followTagHandler = async () => {
+    setLoader(true);
     try {
       await Axios.post(
         `${config.server_url}/profile/followTag/${localStorage.getItem("uid")}`,
@@ -58,8 +61,10 @@ export default function TagStories(props) {
 
       setDidFollowed(true);
       setDidUnFollowed(false);
+      setLoader(false);
     } catch (error) {
       setIsErrorOnFollow(true);
+      setLoader(false);
 
       (async () => {
         setTimeout(() => {
@@ -70,6 +75,7 @@ export default function TagStories(props) {
   };
 
   const unFollowTagHandler = async () => {
+    setLoader(true);
     try {
       await Axios.post(
         `${config.server_url}/profile/unFollowTag/${localStorage.getItem(
@@ -84,8 +90,10 @@ export default function TagStories(props) {
       );
       setDidUnFollowed(true);
       setDidFollowed(false);
+      setLoader(false);
     } catch (error) {
       setIsErrorOnUnFollow(true);
+      setLoader(false);
 
       (async () => {
         setTimeout(() => {
@@ -103,16 +111,16 @@ export default function TagStories(props) {
       state.userDetails.following.includes(`${props.match.params.tagName}`) &&
       !didUnFollowed
     ) {
-      followButton = <span>Unfollow</span>;
+      followButton = <span> {loader ? "Updating.." : "Unfollow"} </span>;
       followButtonHandler = unFollowTagHandler;
     } else if (didFollowed && !didUnFollowed) {
-      followButton = <span>Unfollow</span>;
+      followButton = <span>{loader ? "Updating.." : "Unfollow"}</span>;
       followButtonHandler = unFollowTagHandler;
     } else if (didUnFollowed) {
-      followButton = <span>Follow</span>;
+      followButton = <span>{loader ? "Updating.." : "Follow"}</span>;
       followButtonHandler = followTagHandler;
     } else {
-      followButton = <span>Follow</span>;
+      followButton = <span>{loader ? "Updating.." : "Follow"}</span>;
       followButtonHandler = followTagHandler;
     }
   } else {
@@ -139,6 +147,7 @@ export default function TagStories(props) {
               <button
                 className="btn xp-btn-follow"
                 onClick={followButtonHandler}
+                disabled={loader}
               >
                 {followButton}
               </button>

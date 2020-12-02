@@ -2,20 +2,19 @@
 
 .xp-help {
   overflow-x: hidden;
+  position: relative;
+  background-image: url("../../Assets/icons/hexp-help-bg.svg");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 0px;
+  padding: 1rem 0rem;
   .xp-help-header {
-    background-image: url("../../Assets/icons/hexp-help-bg.svg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 80vh;
-    position: absolute;
-    width: 100%;
-    top: 13%;
-    left: 0;
-    z-index: -1;
+    width: 80%;
+    margin: auto;
 
     h1 {
-      margin: 20px auto;
+      margin: 0px auto 20px auto;
       color: #481081;
       font-weight: 600;
       text-transform: capitalize;
@@ -37,6 +36,8 @@
     width: 80%;
     margin: 10px auto;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 80px;
     h4 {
       color: $xp-black-alt;
       font-weight: 600;
@@ -48,6 +49,7 @@
         background-color: $xp-editor;
         border-radius: 7px;
         margin: 15px 0px;
+        padding: orem 1em;
       }
       summary {
         padding: 1em;
@@ -76,7 +78,7 @@
           text-transform: capitalize;
         }
 
-        a{
+        a {
           color: blue;
         }
         span {
@@ -99,22 +101,21 @@
   }
 
   .xp-footer {
-    margin: 30px auto;
-    padding: 10px;
+    
 
     h6 {
       color: $xp-black;
-      font-weight: 400;    
-      
-      span{
+      font-weight: 400;
+
+      span {
         color: $xp-black;
         font-weight: 600;
         font-size: 16px;
         text-decoration: underline;
       }
     }
-    svg{
-      margin: 5px auto 20px auto;
+    svg {
+      margin: 5px auto 0px auto;
     }
   }
 }
@@ -133,12 +134,12 @@
 @media (max-width: 768px) {
   .xp-help {
     .xp-help-header {
-      top: 13%;
       h1 {
         span {
           font-size: 32px;
         }
       }
+      width: 90%;
     }
   }
 }
@@ -146,7 +147,7 @@
 @media (max-width: 500px) {
   .xp-help {
     .xp-help-header {
-      top: 14%;
+      width: 100%;
       h1 {
         span {
           font-size: 32px;
@@ -154,8 +155,8 @@
       }
     }
     .xp-help-container {
-      padding: 1.5rem 1rem;
-      width: 90%;
+      padding: 1rem 1rem 0.3rem 1rem;
+      width: 99%;
     }
   }
 }

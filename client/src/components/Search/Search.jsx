@@ -107,10 +107,10 @@ export default function Search() {
       <div className="m-3 text-center xp-no__tags__found">
         <h5>No tags found</h5>
         <button
-          className="btn xp-btn-primary mt-2 text-center"
+          className="xp-btn-primary mt-2 text-center xp-center"
           onClick={() => setSearchValue("")}
         >
-          <i className='bx bx-left-arrow-alt'></i>Go Back
+          <i className="bx bx-left-arrow-alt"></i> <span>Go Back</span>
         </button>
       </div>
     );
@@ -151,7 +151,7 @@ export default function Search() {
       <div className="text-center">
         <div className="xp-search_bar">
           <h3>Search and inspire</h3>
-          <form onSubmit={searchHandler}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <div className="xp-search_bar-wrapper">
               <input
                 type="text"
@@ -163,15 +163,24 @@ export default function Search() {
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
-              <button className="btn xp-btn-secondary">
-                <i className="bx bx-x" onClick={() => setSearchValue("")}></i>
-              </button>
-              <button className="btn xp-btn-secondary" onClick={searchHandler}>
-                <span className="search_text">Search</span>{" "}
-                <span className="search_icon">
-                  <i className="bx bx-search"></i>
-                </span>
-              </button>
+              <div
+                className={`xp-search-actions ${
+                  searchValue ? "d-flex" : "d-none"
+                }`}
+              >
+                <button className="btn xp-btn-secondary">
+                  <i className="bx bx-x" onClick={() => setSearchValue("")}></i>
+                </button>
+                <button
+                  className="btn xp-btn-secondary"
+                  onClick={searchHandler}
+                >
+                  <span className="search_text">Search</span>{" "}
+                  <span className="search_icon">
+                    <i className="bx bx-search"></i>
+                  </span>
+                </button>
+              </div>
             </div>
           </form>
         </div>

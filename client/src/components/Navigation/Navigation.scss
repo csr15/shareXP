@@ -18,6 +18,7 @@
     img {
       width: 20px;
       margin-right: 5px;
+      animation: logo_reveal 1s linear;
     }
     span {
       font-weight: 600;
@@ -153,8 +154,11 @@
       }
     }
 
-    button {
-      @extend .xp-btn-primary;
+    .xp-btn-secondary {
+      border: none;
+      font-weight: 600;
+    }
+    .xp-btn-primary {
       margin: 20px auto;
     }
   }
@@ -198,5 +202,24 @@
         padding: 8px 20px;
       }
     }
+  }
+}
+
+@keyframes logo_reveal {
+  0% {
+    opacity: 0;
+    transform: translate(10px, -10px);
+  }
+  25%{
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
   }
 }

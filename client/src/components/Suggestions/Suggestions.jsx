@@ -11,7 +11,7 @@ export default function Suggestions({ title, img, clickHandler }) {
         <div className="row">
           <div className="col-md-12">
             <div className="xp-sugg-img">
-              <img src={img ? img : ShareXpImg} alt={config.server_url} />
+              <img src={img ? img : ShareXpImg} alt={config.imgAlt} />
             </div>
             <div className="col-md-12 xp-sugg-title">
               <h6>{title}</h6>

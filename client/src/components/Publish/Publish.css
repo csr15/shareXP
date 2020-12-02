@@ -160,7 +160,7 @@ button:hover {
 
 .xp-publish {
   width: 80%;
-  margin: 10px auto;
+  margin: auto;
 }
 
 .xp-publish .xp-publish-title h5 {
@@ -411,6 +411,70 @@ button:hover {
           animation: rocket_launch 1.5s linear infinite;
 }
 
+.xp-publish .xp-publish-login {
+  z-index: 150;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 40vw;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.xp-publish .xp-publish-login h2 {
+  color: #000000;
+  font-weight: 700;
+  margin: 0px auto 15px auto;
+}
+
+.xp-publish .xp-publish-login h2 span {
+  color: #3c383f;
+  display: block;
+  font-weight: 500;
+  font-size: 22px;
+  margin: 5px auto;
+}
+
+.xp-publish .xp-publish-login h4 {
+  color: #686b78;
+  font-weight: 600;
+}
+
+.xp-publish .xp-publish-login .xp-btn-primary {
+  margin: 7px auto;
+}
+
+.xp-publish .xp-publish-login p {
+  margin: 5px auto;
+}
+
+.xp-publish .xp-publish-login .xp-btn-secondary {
+  border: none;
+  font-weight: 600;
+  color: #686b78;
+  text-transform: uppercase;
+  text-decoration: underline;
+  margin: 0px;
+}
+
+.xp-publish .xp-publish-help {
+  margin: 15px auto 5px auto;
+}
+
+.xp-publish .xp-publish-help p {
+  font-weight: 500;
+}
+
+.xp-publish .xp-publish-help p span {
+  font-weight: 600;
+  color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media (max-width: 991px) {
   .xp-publish .xp-editor-tags-image {
     display: block;
@@ -421,11 +485,19 @@ button:hover {
   .xp-publish .xp-editor-tags-image .xp-editor-image .xp-editor-image-wrapper label {
     width: 100%;
   }
+  .xp-publish .xp-publish-login {
+    width: 50vw;
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
   .xp-publish {
     width: 100%;
+    padding: 1.5rem 1rem;
+  }
+  .xp-publish .xp-publish-title h5 {
+    margin: 10px auto;
   }
   .xp-publish .xp-publish-editor input {
     padding: 1.3rem 0.8rem;
@@ -437,6 +509,45 @@ button:hover {
   }
   .xp-publish .xp-publish-buttons {
     margin: 5px auto 5px auto;
+  }
+  .xp-publish .xp-publish-login {
+    width: 60vw;
+  }
+  .xp-publish .xp-publish-login h2 {
+    font-size: 28px;
+  }
+  .xp-publish .xp-publish-login h4 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 567px) {
+  .xp-publish {
+    padding: 1rem 0.5rem;
+  }
+  .xp-publish .xp-publish-login {
+    width: 80vw;
+    padding: 1.5rem 1.5rem;
+  }
+  .xp-publish .xp-publish-login h2 {
+    font-size: 24px;
+  }
+  .xp-publish .xp-publish-login h4 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .xp-publish .xp-publish-login {
+    width: 90vw;
+    padding: 2rem 1rem;
+  }
+  .xp-publish .xp-publish-login h2 {
+    font-size: 24px;
+  }
+  .xp-publish .xp-publish-login h2 span {
+    font-size: 18px;
+    margin: 15px auto 5px auto;
   }
 }
 

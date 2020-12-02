@@ -1,6 +1,6 @@
 export const config = {
   imgAlt:
-    "Share your experience with others and motivate them towards success!",
+    "shareXP is used to share your experience with others on how you succeed. It can be any experience that might help other people who are struggling towards success!",
   server_url: "https://sharexp12.herokuapp.com/api/v1",
   apiKey: "AIzaSyDqqMYPWwyOI-fpfkB9rzejtlEb_h7a4DU",
   authDomain: "sharexp-15.firebaseapp.com",

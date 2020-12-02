@@ -4,12 +4,14 @@ import { useHistory, withRouter } from "react-router";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import imageCompression from "browser-image-compression";
+import { Link } from "react-router-dom";
 
 import "./Publish.css";
 import Popup from "../Popup/Popup";
 import { publishStoryHandler } from "../../store";
 import Modal from "../Modal/Modal";
 import firebase from "../../firebase/base";
+import BackDrop from "../BackDrop/BackDrop";
 
 const Publish = () => {
   const [story, setStory] = useState({
@@ -24,10 +26,12 @@ const Publish = () => {
   const [imgUploadingTask, setImgUploadingTask] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [uploadingToDB, setUploadingToDB] = useState(false);
+  const [help, setHelp] = useState(false);
 
   //mapStateToProps
   const didPublished = useSelector((state) => state.publish.story);
   const userDetails = useSelector((state) => state.profile.userDetails);
+  const authState = useSelector((state) => state.auth.authState);
 
   const history = useHistory();
 
@@ -167,7 +171,7 @@ const Publish = () => {
                 name="title"
                 autoCapitalize="off"
                 autoCorrect="off"
-                placeholder="Title"
+                placeholder="Title, eg: How I...? "
                 autoComplete="off"
                 value={story.title}
                 onChange={(e) => setStory({ ...story, title: e.target.value })}
@@ -262,13 +266,21 @@ const Publish = () => {
             </div>
           </div>
         </div>
-        <div className="col-md-12 text-center d-block mt-4">
-          <button className="xp-btn-primary" onClick={publishContent}>
-            Publish
-          </button>
-        </div>
+        {authState && (
+          <>
+            <div className="col-md-12 text-center d-block xp-publish-button my-2">
+              <button className="xp-btn-primary" onClick={publishContent}>
+                Publish
+              </button>
+            </div>
+            <div className="xp-publish-help text-center">
+              <p>
+                Problem on publishing? <span onClick={() => history.push("/help")}>Need Help?</span>{" "}
+              </p>
+            </div>
+          </>
+        )}
       </div>
-
       {onPublishing && (
         <Modal
           type="progress"
@@ -289,6 +301,22 @@ const Publish = () => {
           type="alert-danger"
           text="Something went wrong on uploading image👀 "
         />
+      )}
+      {!authState && (
+        <React.Fragment>
+          <BackDrop />
+          <div className="xp-publish-login text-center">
+            <h2>You are one step away!</h2>
+            <h4>Login to publish a story</h4>
+            <Link to="/auth">
+              <button className="xp-btn-primary">Login</button>
+            </Link>
+            <p className="xp-cennter">or</p>
+            <Link to="/">
+              <button className="xp-btn-secondary">Read stories</button>
+            </Link>
+          </div>
+        </React.Fragment>
       )}
     </div>
   );

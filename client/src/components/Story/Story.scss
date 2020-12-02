@@ -119,6 +119,9 @@
         p {
           font-size: 12px;
         }
+        .spacer{
+          margin: auto 7px;
+        }
       }
     }
     .xp-story-img {
@@ -136,7 +139,7 @@
       flex: 2;
       .xp-story-body_details {
         p {
-          font-size: 13px;
+          font-size: 14px;
         }
       }
       .xp-story-body_content {
@@ -172,8 +175,9 @@
     .xp-story-body {
       flex: 3;
       .xp-story-body_details {
+        margin: 3px 0px;
         p {
-          font-size: 11px;
+          font-size: 12px;
         }
         .spacer {
           margin: auto 5px;
@@ -207,8 +211,9 @@
     .xp-story-body {
       flex: 3;
       .xp-story-body_details {
+        margin: 3px 0px;
         p {
-          font-size: 11px;
+          font-size: 12px;
         }
         .spacer {
           margin: auto 5px;

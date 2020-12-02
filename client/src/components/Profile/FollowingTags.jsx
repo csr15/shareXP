@@ -22,7 +22,7 @@ export default function FollowingTags({ userDetails }) {
           userDetails.following.map((el, index) => {
             return (
               <div className="xp-following-card" key={index}>
-                <h5>{el}</h5>
+                <h5>#{el}</h5>
                 <button
                   className="btn xp-btn-danger"
                   onClick={unFollowTagHandler.bind(this, el)}
