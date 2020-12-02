@@ -122,7 +122,7 @@ export const Notifications = ({ closeNotification, viewPropHandler }) => {
                     viewStoryHandler={viewPropHandler.bind(
                       this,
                       el.storyId,
-                      el.uid
+                      el.authorId
                     )}
                     clearHandler={clearNotificationHandler.bind(this, el._id)}
                   />
