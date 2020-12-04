@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
 app.use(cookieParser());
 
 //Body-parser config
@@ -116,7 +116,7 @@ function verifyOrigin(req, res, next) {
   if (ref) {
     // We got a referer
     var refererURL = url.parse(ref);
-    if (refererURL.hostname === "localhost") {
+    if (refererURL.hostname === "sharexp.netlify.app") {
       return next();
     }
   }

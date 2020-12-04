@@ -13,7 +13,6 @@ module.exports = {
     }
   },
   updateStory: async (req, res) => {
-    console.log(req.body.story)
     try {
       const story = await storyModel.findByIdAndUpdate(req.params.storyId, {
         story: req.body.story,
