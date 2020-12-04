@@ -102,7 +102,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .xp-story_screen .xp-story_screen-title, .xp-story_screen .xp-story_screen-title .xp-btn-story_screen-filter, .xp-no_tags_followed {
+.xp-center, .xp-story_screen .xp-story-login, .xp-story_screen .xp-story_screen-title, .xp-story_screen .xp-story_screen-title .xp-btn-story_screen-filter, .xp-no_tags_followed {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -138,6 +138,24 @@ button:hover {
   margin: 25px auto 5px auto;
   overflow-x: hidden;
   background-color: #ffffff;
+}
+
+.xp-story_screen .xp-story-login {
+  height: 80vh;
+  background-color: #f2f2f2;
+  padding: 0.5rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.xp-story_screen .xp-story-login h3 {
+  font-weight: 600;
+  margin: 17px auto;
+  text-align: center;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .xp-story_screen .xp-story_screen-title {
@@ -235,6 +253,9 @@ button:hover {
 @media (max-width: 568px) {
   .xp-story_screen {
     width: 100%;
+  }
+  .xp-story_screen .xp-story-login h3 {
+    font-size: 22px;
   }
   .xp-story_screen .xp-story_screen-title {
     padding: 0px;

@@ -1,5 +1,5 @@
 //Publish
-export { publishStoryHandler } from "./actions/publish";
+export { publishStoryHandler, updateStoryHandler } from "./actions/publish";
 
 //Auth
 export {

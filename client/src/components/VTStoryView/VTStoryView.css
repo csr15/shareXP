@@ -102,7 +102,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .xp_vt-story .xp_vp-story-header, .xp_vt-story .xp_vp-story-tags, .xp_vt-story .xp_vp-story-footer, .xp_vt-story .xp_vp-story-footer p {
+.xp-center, .xp_vt-story .xp_vp-story-header, .xp_vt-story .xp_vp-story-tags, .xp_vt-story .xp_vp-story-footer, .xp_vt-story .xp_vp-story-footer p, .xp_vt-story .xp_vp-story-footer .delete {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -277,6 +277,14 @@ button:hover {
   transition: all 0.3s ease;
 }
 
+.xp_vt-story .xp_vp-story-footer .delete p {
+  margin: auto 15px;
+}
+
+.xp_vt-story .xp_vp-story-footer .delete p i {
+  margin-right: 3px;
+}
+
 .xp_vt-story .xp_vp-story-footer .delete:hover {
   color: #ee3902;
 }
@@ -320,6 +328,9 @@ button:hover {
   .xp_vt-story .xp_vp-story-content ol,
   .xp_vt-story .xp_vp-story-content strong {
     font-size: 12;
+  }
+  .xp_vt-story .xp_vp-story-footer .delete span {
+    display: none;
   }
 }
 

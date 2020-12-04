@@ -12,14 +12,6 @@ import { Link, useHistory } from "react-router-dom";
 import AlsoLike from "../../components/AlsoLike/AlsoLike";
 import StorySkeleton from "../../components/StorySkeleton/StorySkeleton";
 import Skeleton from "react-loading-skeleton";
-const Wrapper = styled.section`
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background: #f2f2f2;
-`;
 export default function StoryScreen() {
   const [filter, setFilter] = useState("Most Popular");
 
@@ -49,17 +41,17 @@ export default function StoryScreen() {
   };
 
   useEffect(() => {
-    if (filter === "Following") {
+    if (filter === "Following" && state.followingStories === "") {
       if (state.followingStories === "") {
         mapDispatchToProps.fetchFollowingStories();
       }
     }
-    if (filter === "Most Popular") {
+    if (filter === "Most Popular" && state.topStories === "") {
       if (state.topStories === "") {
         mapDispatchToProps.topStories();
       }
     }
-    if (filter === "Latest") {
+    if (filter === "Latest" && state.latestStories === "") {
       if (state.latestStories === "") {
         mapDispatchToProps.latestStories();
       }
@@ -119,7 +111,7 @@ export default function StoryScreen() {
       }
     } else {
       storySection = (
-        <Wrapper>
+        <div className="xp-story-login">
           <h3>Login to view following tag's Story</h3>
           <button
             className="xp-btn-primary"
@@ -127,7 +119,7 @@ export default function StoryScreen() {
           >
             Login
           </button>
-        </Wrapper>
+        </div>
       );
     }
   } else if (filter === "Most Popular") {

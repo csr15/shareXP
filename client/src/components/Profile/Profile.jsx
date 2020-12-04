@@ -27,6 +27,7 @@ export default function Profile() {
       updatedProfile: state.profile.updatedProfile,
       didStoryDeleted: state.profile.didStoryDeleted,
       errorOnAccountDeletion: state.auth.errorOnAccountDeletion,
+      didStoryUpdated: state.publish.didStoryUpdated,
     };
   });
 
@@ -35,20 +36,16 @@ export default function Profile() {
   const mapDispatchToProps = {
     fetchProfileDetails: () => dispatch(actions.profileHandler()),
     updatedProfile: (data) => dispatch(actions.updateProfileHandler(data)),
-    unfollowHandler: (tagName) => dispatch(actions.unFollowTagHandler(tagName)),
     logouthandler: () => dispatch(actions.logout()),
     deleteAccount: () => dispatch(actions.deleteAccount()),
   };
 
+  console.log(state.didStoryUpdated)
   useEffect(() => {
-    if (state.myStories === "" || state.userDetails === "") {
+    if (state.myStories === "" || state.userDetails === "" || state.didStoryUpdated) {
       mapDispatchToProps.fetchProfileDetails();
     }
-  }, [state.didPublished, state.didStoryDeleted]);
-
-  const unFollowTagHandler = (tagName) => {
-    mapDispatchToProps.unfollowHandler(tagName);
-  };
+  }, [state.didPublished, state.didStoryDeleted, state.didStoryUpdated]);
 
   const setLogoutHandler = () => {
     mapDispatchToProps.logouthandler();
@@ -250,6 +247,13 @@ export default function Profile() {
               <Popup
                 type="alert-danger"
                 text={"Something went wrong on account deletin, try again 🥴"}
+              />
+            )}
+
+            {state.didStoryUpdated && (
+              <Popup
+                type="alert-success"
+                text={"Story updated successfully!"}
               />
             )}
           </div>

@@ -24,7 +24,6 @@ const searchReducer = (state = initialState, action) => {
         isErrorOnTopTags: false,
       };
     case "TOP_TAG_STORIES":
-      console.log(action.tagName)
       return {
         ...state,
         tagStories: action.payload,

@@ -35,6 +35,11 @@ export default function Home() {
           {authState ? (
             <>
               <Route path="/profile" exact component={Profile} />
+              <Route
+                path="/publish/editStory/:storyId"
+                exact
+                component={Publish}
+              />
             </>
           ) : (
             <Redirect from="/profile" to="/" />

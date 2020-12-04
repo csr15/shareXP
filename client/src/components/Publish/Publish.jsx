@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, withRouter } from "react-router";
+import { useHistory, withRouter, useParams } from "react-router";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import imageCompression from "browser-image-compression";
@@ -8,10 +8,12 @@ import { Link } from "react-router-dom";
 
 import "./Publish.css";
 import Popup from "../Popup/Popup";
-import { publishStoryHandler } from "../../store";
+import * as actions from "../../store";
 import Modal from "../Modal/Modal";
 import firebase from "../../firebase/base";
 import BackDrop from "../BackDrop/BackDrop";
+import Axios from "axios";
+import { config } from "../../utilities/constants/constants";
 
 const Publish = () => {
   const [story, setStory] = useState({
@@ -26,18 +28,43 @@ const Publish = () => {
   const [imgUploadingTask, setImgUploadingTask] = useState(false);
   const [imgError, setImgError] = useState(false);
   const [uploadingToDB, setUploadingToDB] = useState(false);
-  const [help, setHelp] = useState(false);
+  const [storyError, setStoryError] = useState(false);
+  const [editStoryId, setEditStoryId] = useState("");
 
   //mapStateToProps
   const didPublished = useSelector((state) => state.publish.story);
   const userDetails = useSelector((state) => state.profile.userDetails);
   const authState = useSelector((state) => state.auth.authState);
+  const didStoryUpdated = useSelector((state) => state.publish.didStoryUpdated);
+  const errorOnPublishing = useSelector(
+    (state) => state.publish.errorOnPublishing
+  );
 
   const history = useHistory();
-
-  if (didPublished !== "") {
+  if (didPublished !== "" || didStoryUpdated) {
     history.push("/profile");
   }
+  const { storyId } = useParams();
+  React.useEffect(() => {
+    if (storyId) {
+      (async () => {
+        try {
+          const { data } = await Axios.get(
+            `${config.server_url}/storyData/${storyId}`
+          );
+
+          setStory(data.story);
+          setEditStoryId(data._id);
+        } catch (error) {
+          setStoryError(true);
+
+          setTimeout(() => {
+            setStoryError(false);
+          }, 3000);
+        }
+      })();
+    }
+  }, []);
 
   //mapDispatchToProps
   const dispatch = useDispatch();
@@ -68,7 +95,7 @@ const Publish = () => {
                 setUploadingToDB(true);
 
                 dispatch(
-                  publishStoryHandler({
+                  actions.publishStoryHandler({
                     ...story,
                     img: url,
                     createdAt: new Date(),
@@ -83,7 +110,7 @@ const Publish = () => {
         );
       } else {
         dispatch(
-          publishStoryHandler({
+          actions.publishStoryHandler({
             ...story,
             createdAt: new Date(),
             userName: userDetails.userName,
@@ -157,6 +184,55 @@ const Publish = () => {
       });
   };
 
+  const updateContent = () => {
+    if (localImgURL) {
+      setOnPublishing(true);
+      const storage = firebase.storage();
+      const uploadTask = storage
+        .ref(`/stories/${localStorage.getItem("uid")}/${story.title}`)
+        .put(localImgURL);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          var progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setImgUploadingTask(progress);
+        },
+        () => {
+          setImgError(true);
+        },
+        () => {
+          storage
+            .ref(`/stories/${localStorage.getItem("uid")}/${story.title}`)
+            .getDownloadURL()
+            .then((url) => {
+              setUploadingToDB(true);
+
+              dispatch(
+                actions.updateStoryHandler({
+                  story: {
+                    ...story,
+                    img: url,
+                  },
+                  storyId: editStoryId,
+                })
+              );
+            })
+            .catch((refErr) => {
+              setImgError(true);
+            });
+        }
+      );
+    } else {
+      dispatch(
+        actions.updateStoryHandler({
+          story: { ...story, img: "" },
+          storyId: editStoryId,
+        })
+      );
+    }
+  };
+
   return (
     <div className="xp-publish">
       <div className="xp-publish-title">
@@ -185,6 +261,7 @@ const Publish = () => {
             <div className="xp-publish-editor-layout">
               <CKEditor
                 editor={ClassicEditor}
+                data={story.content}
                 config={{
                   toolbar: [
                     "heading",
@@ -200,9 +277,10 @@ const Publish = () => {
                     "codeBlock",
                   ],
                 }}
-                onChange={(e, editor) =>
-                  setStory({ ...story, content: editor.getData() })
-                }
+                onBlur={(event, editor) => {
+                  const data = editor.getData();
+                  setStory({ ...story, content: data });
+                }}
               />
             </div>
           </div>
@@ -222,7 +300,10 @@ const Publish = () => {
             </div>
           )}
           <div className="xp-editor-tags-image">
-            <div className="xp-editor-tags">
+            <div
+              className="xp-editor-tags"
+              style={storyId ? { marginRight: "0px" } : null}
+            >
               <h6>
                 Add Tags <span>Tap enter, space or , to add tag</span>{" "}
               </h6>
@@ -236,10 +317,42 @@ const Publish = () => {
                 onKeyPress={onSetTags}
               />
             </div>
-            <div className="xp-editor-image">
-              <h6>Add Image</h6>
-              <div className="xp-editor-image-wrapper">
-                <label htmlFor="image">
+            {!storyId && (
+              <div className="xp-editor-image">
+                <h6>Add Image</h6>
+                <div className="xp-editor-image-wrapper">
+                  <label htmlFor="image">
+                    {localImgURL ? (
+                      <React.Fragment>
+                        <i
+                          className="bx bx-x"
+                          onClick={() => setLocalImgURL("")}
+                        ></i>
+                        {localImgURL.name}
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <i className="bx bx-image-add"></i>Choose an image
+                      </React.Fragment>
+                    )}
+                    <input
+                      type="file"
+                      autoComplete="off"
+                      autoCorrect="off"
+                      id="image"
+                      name="image"
+                      onChange={imageHandler}
+                    />
+                  </label>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {storyId && (
+            <div className="xp-publish-edit">
+              <div className="xp-publish-edit_choose">
+                <label for="image">
                   {localImgURL ? (
                     <React.Fragment>
                       <i
@@ -250,7 +363,7 @@ const Publish = () => {
                     </React.Fragment>
                   ) : (
                     <React.Fragment>
-                      <i className="bx bx-image-add"></i>Choose an image
+                      <i className="bx bx-image-add"></i>Choose new image
                     </React.Fragment>
                   )}
                   <input
@@ -263,19 +376,33 @@ const Publish = () => {
                   />
                 </label>
               </div>
+              <div className="xp-publish-edit_delete">
+                <p onClick={() => setLocalImgURL("")}>
+                  <i className="bx bx-trash-alt"></i>Delete Image
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         {authState && (
           <>
-            <div className="col-md-12 text-center d-block xp-publish-button my-2">
-              <button className="xp-btn-primary" onClick={publishContent}>
-                Publish
-              </button>
-            </div>
+            {storyId ? (
+              <div className="col-md-12 text-center d-block xp-publish-button my-2">
+                <button className="xp-btn-primary" onClick={updateContent}>
+                  Update
+                </button>
+              </div>
+            ) : (
+              <div className="col-md-12 text-center d-block xp-publish-button my-2">
+                <button className="xp-btn-primary" onClick={publishContent}>
+                  Pulish{" "}
+                </button>
+              </div>
+            )}
             <div className="xp-publish-help text-center">
               <p>
-                Problem on publishing? <span onClick={() => history.push("/help")}>Need Help?</span>{" "}
+                Problem on publishing?{" "}
+                <span onClick={() => history.push("/help")}>Need Help?</span>{" "}
               </p>
             </div>
           </>
@@ -302,6 +429,18 @@ const Publish = () => {
           text="Something went wrong on uploading image👀 "
         />
       )}
+
+      {storyError && (
+        <Popup type="alert-danger" text="Something went wrong on editing " />
+      )}
+
+      {errorOnPublishing && (
+        <Popup
+          type="alert-danger"
+          text="Something went wrong on updating story "
+        />
+      )}
+
       {!authState && (
         <React.Fragment>
           <BackDrop />

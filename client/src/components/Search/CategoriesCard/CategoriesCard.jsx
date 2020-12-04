@@ -1,13 +1,41 @@
 import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
 import "./CategoriesCard.css";
 import { useHistory, withRouter } from "react-router";
 
 function CategoriesCard(props) {
-  const [randomColor, setRandomColor] = useState("");
+  const [randomImg, setRandomImg] = useState("");
   useEffect(() => {
-    const color = "hsl(" + Math.random() * 360 + ", 30%, 50%)";
-    setRandomColor(color);
+    (async () => {
+      try {
+        const {
+          data: { results },
+        } = await Axios.get(
+          `https://api.unsplash.com/search/photos?page=1&query=${props.tagTitle.substr(
+            1
+          )}&client_id=oK47xmnNqY_owM3f9ykIWivKOe3RxSDB9qQlWf1r55M`,
+          {
+            withCredentials: false,
+          }
+        );
+
+        if (results.length === 0) {
+          const { data } = await Axios.get(
+            `https://api.unsplash.com/photos/?client_id=oK47xmnNqY_owM3f9ykIWivKOe3RxSDB9qQlWf1r55M`,
+            {
+              withCredentials: false,
+            }
+          );
+
+          setRandomImg(data[Math.floor(Math.random() * 10)].urls.regular);
+        } else {
+          setRandomImg(results[0].urls.regular);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, []);
 
   const history = useHistory();
@@ -18,12 +46,15 @@ function CategoriesCard(props) {
     >
       <div
         className="xp-search-categories-card"
-        style={{
-          borderColor: randomColor,
-        }}
+        style={
+          randomImg
+            ? {
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)), url(${randomImg})`,
+              }
+            : null
+        }
       >
-        <h5 style={{ color: randomColor }}>{props.tagTitle}</h5>
-        <p>{props.totalStories} Stories</p>
+        <h5>{props.tagTitle}</h5>
       </div>
     </div>
   );

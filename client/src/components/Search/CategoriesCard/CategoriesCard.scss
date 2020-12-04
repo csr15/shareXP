@@ -1,11 +1,11 @@
 @import "../../../utilities/scss-variables/variables";
 
 .xp-search-categories-card {
-  background: $xp-white;
+  background: $xp-black;
   display: flex;
   height: 120px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0.5rem 0.8rem;
   border-radius: 7px;
   line-height: 26px;
@@ -13,9 +13,11 @@
   margin: 15px auto;
   cursor: pointer;
   border: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   transition: all 0.3s ease;
   box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.2);
-  border: 2px solid $xp-white;
   &:hover {
     box-shadow: 0px 6px 12px -1px rgba(0, 0, 0, 0.2);
   }
@@ -23,12 +25,11 @@
   h5 {
     font-weight: 600;
     text-transform: none;
-    color: $xp-black-alt;
+    color: $xp-white;
   }
   p {
     margin: 5px 0px;
-    color: $xp-black-alt;
+    color: $xp-white;
     text-align: right;
   }
 }
-

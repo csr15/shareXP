@@ -10,7 +10,6 @@ function App() {
   const authState = useSelector((state) => state.auth.authState);
   const dispatch = useDispatch();
   React.useEffect(() => {
-    console.log("From APp")
     ReactGA.initialize("G-JBYV97BRSK");
     ReactGA.pageview(window.location.pathname + window.location.search);
     dispatch(actions.checkAuthState());

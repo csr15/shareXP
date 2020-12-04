@@ -135,6 +135,15 @@
     }
     .delete {
       transition: all 0.3s ease;
+      @extend .xp-center;
+
+      p {
+        margin: auto 15px;
+
+        i {
+          margin-right: 3px;
+        }
+      }
       &:hover {
         color: $xp-danger;
       }
@@ -196,6 +205,14 @@
       ol,
       strong {
         font-size: 12;
+      }
+    }
+
+    .xp_vp-story-footer {
+      .delete {
+        span {
+          display: none;
+        }
       }
     }
   }

@@ -1,5 +1,7 @@
 const initialState = {
   story: "",
+  didStoryUpdated: false,
+  errorOnPublishing: false,
 };
 
 const publishReducer = (state = initialState, action) => {
@@ -13,6 +15,22 @@ const publishReducer = (state = initialState, action) => {
       return {
         ...state,
         story: "",
+      };
+    case "UPDATED_STORY":
+      return {
+        ...state,
+        didStoryUpdated: true,
+      };
+    case "ERROR_ON_UPDATE_STORY":
+      return {
+        ...state,
+        errorOnPublishing: true,
+      };
+    case "RESET_UPDATE_STORY":
+      return {
+        ...state,
+        errorOnPublishing: false,
+        didStoryUpdated: false,
       };
     default:
       return state;

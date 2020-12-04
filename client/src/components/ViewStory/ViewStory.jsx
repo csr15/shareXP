@@ -22,6 +22,7 @@ const ViewStory = () => {
   const [isErrorOnStoryLike, setIsErrorOnStoryLike] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const [commentLoader, setCommentLoader] = useState(false);
+  const [storyImg, setStoryImg] = useState(false);
 
   const { storyID, authorID } = useParams();
   const history = useHistory();
@@ -40,7 +41,7 @@ const ViewStory = () => {
   //Fething story from server
   React.useEffect(() => {
     document.body.style.backgroundColor = "#F5F5F5";
-    
+
     (async () => {
       try {
         const storyData = await Promise.all([
@@ -50,6 +51,20 @@ const ViewStory = () => {
         setStory(storyData[0].data);
         setAuthor(storyData[1].data[0]);
         document.title = storyData[0].data.story.title;
+
+        if (!storyData[0].data.story.hasOwnProperty("img")) {
+          const {
+            data: { results },
+          } = await Axios.get(
+            `https://api.unsplash.com/search/photos?page=1&query=${storyData[0].data.story.tags[0].substr(
+              1
+            )})}&client_id=oK47xmnNqY_owM3f9ykIWivKOe3RxSDB9qQlWf1r55M`,
+            {
+              withCredentials: false,
+            }
+          );
+          setStoryImg(results[0].urls.regular);
+        }
       } catch (error) {
         setStoryError(true);
 
@@ -159,7 +174,7 @@ const ViewStory = () => {
         </div>
       </div>
       <div className="xp-view-img text-center">
-        {img && (
+        {img ? (
           <LazyLoad once={true} placeholder={"Loading"} height={100}>
             <img
               src={img}
@@ -169,7 +184,17 @@ const ViewStory = () => {
               className="img-responsive"
             />
           </LazyLoad>
-        )}
+        ) : storyImg ? (
+          <LazyLoad once={true} placeholder={"Loading"} height={100}>
+            <img
+              src={storyImg}
+              alt={`${config.imgAlt} | ${title} | ${tags.map(
+                (story) => story
+              )}`}
+              className="img-responsive"
+            />
+          </LazyLoad>
+        ) : null}
       </div>
       <div className="xp-view-content">{ReactHtmlParser(content)}</div>
     </div>
@@ -183,6 +208,9 @@ const ViewStory = () => {
       </div>
       <div className="d-flex flex-start">
         <Skeleton width={100} height={35} count={3} className="mx-1 my-1" />
+      </div>
+      <div className="d-block my-2 text-center">
+        <Skeleton width={300} height={300} className="mx-auto my-1" />
       </div>
       <div className="d-block my-3">
         <Skeleton width={600} height={20} count={5} className="my-2 d-block" />
@@ -219,7 +247,6 @@ const ViewStory = () => {
   //Add comment
   const commentHandler = async (commentText) => {
     setCommentLoader(true);
-    console.log(state.userDetails.userName)
     try {
       const { data } = await Axios.post(
         `${config.server_url}/publish/comment/${story._id}`,

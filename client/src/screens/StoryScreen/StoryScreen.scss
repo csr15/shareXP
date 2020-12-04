@@ -5,6 +5,20 @@
   margin: 25px auto 5px auto;
   overflow-x: hidden;
   background-color: $xp-white;
+  .xp-story-login {
+    height: 80vh;
+    background-color: $xp-tag;
+    padding: 0.5rem;
+    @extend .xp-center;
+    flex-direction: column;
+
+    h3 {
+      font-weight: 600;
+      margin: 17px auto;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+  }
   .xp-story_screen-title {
     @extend .xp-center;
     justify-content: space-between;
@@ -108,6 +122,11 @@
 @media (max-width: 568px) {
   .xp-story_screen {
     width: 100%;
+    .xp-story-login {
+      h3 {
+        font-size: 22px;
+      }
+    }
     .xp-story_screen-title {
       padding: 0px;
       margin-bottom: 10px;

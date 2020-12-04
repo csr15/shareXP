@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import ReactHtmlParser from "react-html-parser";
 
 import "./Story.css";
 import ShareXpImg from "../../Assets/shareXP-draw.svg";
 import { config } from "../../utilities/constants/constants";
-import * as actions from "../../store";
 
 const Story = React.memo(({ data, onClick }) => {
   const [doConfirmation, setDoConfirmation] = useState(false);
 
   //mapDispatchToProps
-  const dispatch = useDispatch();
-  const deletepostHandler = (storyData) => {
-    dispatch(actions.onDeletemyStoryHandler(storyData));
-  };
 
   //mapStateToProps
   const didStoryDeleted = useSelector((state) => {

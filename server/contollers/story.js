@@ -12,6 +12,18 @@ module.exports = {
       res.status(409).json({ message: error.message });
     }
   },
+  updateStory: async (req, res) => {
+    console.log(req.body.story)
+    try {
+      const story = await storyModel.findByIdAndUpdate(req.params.storyId, {
+        story: req.body.story,
+      });
+
+      res.status(200).json(story);
+    } catch (error) {
+      res.status(409).json(error.message);
+    }
+  },
   comment: async (req, res) => {
     const {
       storyId,

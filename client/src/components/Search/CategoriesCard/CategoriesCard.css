@@ -134,7 +134,7 @@ button:hover {
 }
 
 .xp-search-categories-card {
-  background: #ffffff;
+  background: #000000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -143,9 +143,9 @@ button:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   padding: 0.5rem 0.8rem;
   border-radius: 7px;
   line-height: 26px;
@@ -153,11 +153,13 @@ button:hover {
   margin: 15px auto;
   cursor: pointer;
   border: none;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   -webkit-box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 3px 6px -1px rgba(0, 0, 0, 0.2);
-  border: 2px solid #ffffff;
 }
 
 .xp-search-categories-card:hover {
@@ -168,12 +170,12 @@ button:hover {
 .xp-search-categories-card h5 {
   font-weight: 600;
   text-transform: none;
-  color: #242323;
+  color: #ffffff;
 }
 
 .xp-search-categories-card p {
   margin: 5px 0px;
-  color: #242323;
+  color: #ffffff;
   text-align: right;
 }
 /*# sourceMappingURL=CategoriesCard.css.map */

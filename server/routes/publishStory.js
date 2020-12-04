@@ -7,4 +7,6 @@ router.post("/:uid", storyAction.publishStory);
 
 router.post("/comment/:storyId", storyAction.comment);
 
+router.patch("/updateStory/:storyId", storyAction.updateStory)
+
 module.exports = router;

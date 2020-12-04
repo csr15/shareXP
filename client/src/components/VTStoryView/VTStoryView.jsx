@@ -1,6 +1,7 @@
 import React from "react";
 import ReactHtmlParser from "react-html-parser";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import "./VTStoryView.css";
 import { config } from "../../utilities/constants/constants";
@@ -14,6 +15,8 @@ const VTStoryView = ({ story, isProfile, onClick }) => {
   const deletepostHandler = (storyData) => {
     dispatch(actions.onDeletemyStoryHandler(storyData));
   };
+
+  const history = useHistory();
 
   return (
     <div className="xp_vt-story">
@@ -87,13 +90,24 @@ const VTStoryView = ({ story, isProfile, onClick }) => {
           <span className="my-auto"> {story.comments.length}</span>
         </p>
         {isProfile && (
-          <p
-            className="my-auto ml-auto delete"
-            onClick={() => setDoConfirmation(true)}
-          >
-            <i className="bx bxs-trash-alt"></i>
-            <span className="my-auto">Delete story</span>
-          </p>
+          <div className="my-auto ml-auto delete">
+            <p
+              className="my-auto ml-auto"
+              onClick={() => setDoConfirmation(true)}
+            >
+              <i className="bx bxs-trash-alt"></i>
+              <span className="my-auto">Delete story</span>
+            </p>
+            <p
+              className="my-auto ml-auto"
+              onClick={() => {
+                history.push(`/publish/editStory/${story._id}`);
+              }}
+            >
+              <i className="bx bxs-edit"></i>{" "}
+              <span className="my-auto">Edit story</span>
+            </p>
+          </div>
         )}
       </div>
 

@@ -102,7 +102,7 @@ button:hover {
           box-shadow: none;
 }
 
-.xp-center, .xp-publish .xp-publish-all-tags, .xp-publish .xp-editor-tags-image .xp-editor-tags input, .xp-publish .xp-editor-tags-image .xp-editor-image .xp-editor-image-wrapper label, .xp-publish .xp-loader {
+.xp-center, .xp-publish .xp-publish-all-tags, .xp-publish .xp-editor-tags-image .xp-editor-tags input, .xp-publish .xp-editor-tags-image .xp-editor-image .xp-editor-image-wrapper label, .xp-publish .xp-loader, .xp-publish .xp-publish-edit, .xp-publish .xp-publish-edit .xp-publish-edit_choose, .xp-publish .xp-publish-edit .xp-publish-edit_choose label, .xp-publish .xp-publish-edit .xp-publish-edit_delete, .xp-publish .xp-publish-edit .xp-publish-edit_delete p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -475,6 +475,70 @@ button:hover {
   cursor: pointer;
 }
 
+.xp-publish .xp-publish-edit {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1;
+          flex: 1 1;
+  margin: 15px auto;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_choose {
+  width: 100%;
+  border: 1px solid #c5c5c5;
+  padding: 0px;
+  border-radius: 7px;
+  margin-right: 10px;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_choose label {
+  padding: 0.9rem;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+  color: #686b78;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_choose label i {
+  margin-right: 7px;
+  font-size: 1.5rem !important;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_choose input {
+  display: none;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_delete {
+  width: 100%;
+  border: 1px solid #c5c5c5;
+  padding: 0px;
+  border-radius: 7px;
+  margin: left 10px;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_delete p {
+  padding: 0.9rem;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+  color: #686b78;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.xp-publish .xp-publish-edit .xp-publish-edit_delete p i {
+  margin-right: 7px;
+  font-size: 1.4rem !important;
+}
+
 @media (max-width: 991px) {
   .xp-publish .xp-editor-tags-image {
     display: block;
@@ -518,6 +582,16 @@ button:hover {
   }
   .xp-publish .xp-publish-login h4 {
     font-size: 22px;
+  }
+  .xp-publish .xp-publish-edit {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .xp-publish .xp-publish-edit .xp-publish-edit_choose {
+    margin: 10px 0px;
+  }
+  .xp-publish .xp-publish-edit .xp-publish-edit_delete {
+    margin: 10px 0px;
   }
 }
 
