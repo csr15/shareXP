@@ -149,6 +149,17 @@ button:hover {
 }
 
 .xp-modal h6 {
+  color: #3c383f;
+}
+
+.xp-modal h6 i {
+  font-size: 1.5rem !important;
+  margin-left: 7px;
+  -webkit-animation: rocket_launch 1.5s linear infinite;
+          animation: rocket_launch 1.5s linear infinite;
+}
+
+.xp-modal h6 {
   color: #242323;
   font-weight: 600;
   margin: 10px auto;
@@ -166,17 +177,6 @@ button:hover {
 
 .xp-modal .xp-modal-buttons .btn-secondary {
   margin: auto 10px;
-}
-
-.xp-modal .xp-modal-progress h6 {
-  color: #3c383f;
-}
-
-.xp-modal .xp-modal-progress h6 i {
-  font-size: 1.5rem !important;
-  margin-left: 7px;
-  -webkit-animation: rocket_launch 1.5s linear infinite;
-          animation: rocket_launch 1.5s linear infinite;
 }
 
 .xp-modal .xp-modal-progress .progress {

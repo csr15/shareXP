@@ -117,6 +117,7 @@ const VTStoryView = ({ story, isProfile, onClick }) => {
           pri="Delete"
           secHandler={() => setDoConfirmation(false)}
           priHandler={deletepostHandler.bind(this, story)}
+          backDropHandler={() => setDoConfirmation(false)}
         />
       )}
     </div>

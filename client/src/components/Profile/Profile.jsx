@@ -12,9 +12,11 @@ import Logout from "./Logout";
 import DangerZone from "./DangerZone";
 import FollowingTags from "./FollowingTags";
 import { config } from "../../utilities/constants/constants";
+import Modal from "../Modal/Modal";
 
 export default function Profile() {
   const [currentTab, setCurrentTab] = useState("myStories");
+  const [confirmation, setConfirmation] = useState(false);
 
   const history = useHistory();
 
@@ -40,9 +42,12 @@ export default function Profile() {
     deleteAccount: () => dispatch(actions.deleteAccount()),
   };
 
-  console.log(state.didStoryUpdated)
   useEffect(() => {
-    if (state.myStories === "" || state.userDetails === "" || state.didStoryUpdated) {
+    if (
+      state.myStories === "" ||
+      state.userDetails === "" ||
+      state.didStoryUpdated
+    ) {
       mapDispatchToProps.fetchProfileDetails();
     }
   }, [state.didPublished, state.didStoryDeleted, state.didStoryUpdated]);
@@ -66,7 +71,7 @@ export default function Profile() {
   } else if (currentTab === "logout") {
     tab = <Logout logoutHandler={setLogoutHandler} />;
   } else if (currentTab === "Danger Zone") {
-    tab = <DangerZone onClick={() => mapDispatchToProps.deleteAccount()} />;
+    tab = <DangerZone onClick={() => setConfirmation(true)} />;
   } else if (currentTab === "Following Tags") {
     tab = <FollowingTags userDetails={state.userDetails} />;
   }
@@ -254,6 +259,16 @@ export default function Profile() {
               <Popup
                 type="alert-success"
                 text={"Story updated successfully!"}
+              />
+            )}
+
+            {confirmation && (
+              <Modal
+                text="Are you sure to quit shareXP?"
+                pri="Delete"
+                secHandler={() => setConfirmation(false)}
+                priHandler={() => mapDispatchToProps.deleteAccount()}
+                backDropHandler={() => setConfirmation(false)}
               />
             )}
           </div>

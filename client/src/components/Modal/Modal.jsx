@@ -25,6 +25,12 @@ export default function Modal(props) {
         )}
       </div>
     );
+  } else if (props.type === "loader") {
+    modal = (
+      <h6>
+        Your story is publishing ! <i className="bx bxs-rocket"></i>
+      </h6>
+    );
   } else {
     modal = (
       <React.Fragment>
@@ -42,7 +48,7 @@ export default function Modal(props) {
   }
   return (
     <React.Fragment>
-      <BackDrop />
+      <BackDrop clickHandler={props.backDropHandler} />
       <div className="xp-modal">{modal}</div>
     </React.Fragment>
   );

@@ -30,6 +30,7 @@ const Publish = () => {
   const [uploadingToDB, setUploadingToDB] = useState(false);
   const [storyError, setStoryError] = useState(false);
   const [editStoryId, setEditStoryId] = useState("");
+  const [loader, setLoader] = useState(false);
 
   //mapStateToProps
   const didPublished = useSelector((state) => state.publish.story);
@@ -109,6 +110,7 @@ const Publish = () => {
           }
         );
       } else {
+        setLoader(true)
         dispatch(
           actions.publishStoryHandler({
             ...story,
@@ -224,6 +226,7 @@ const Publish = () => {
         }
       );
     } else {
+      setLoader(true)
       dispatch(
         actions.updateStoryHandler({
           story: { ...story, img: "" },
@@ -411,6 +414,13 @@ const Publish = () => {
       {onPublishing && (
         <Modal
           type="progress"
+          progress={imgUploadingTask}
+          uploadingToDB={uploadingToDB}
+        />
+      )}
+      {loader && (
+        <Modal
+          type="loader"
           progress={imgUploadingTask}
           uploadingToDB={uploadingToDB}
         />
