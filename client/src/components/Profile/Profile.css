@@ -265,6 +265,20 @@ h6 {
   margin: 0px auto 30px auto;
 }
 
+.xp-profile .xp-profile-img-bg .xp-cutom-avatar {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  background-color: #ffffff;
+  height: 120px;
+  width: 120px;
+  overflow: hidden;
+}
+
 .xp-profile .xp-profile-img-bg .xp-profile-img img {
   position: absolute;
   width: 120px;

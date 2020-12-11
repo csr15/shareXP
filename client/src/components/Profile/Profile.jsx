@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import "./Profile.css";
-import xpAvatar from "../../Assets/icons/xp-avatar.svg";
 import * as actions from "../../store";
 import Popup from "../Popup/Popup";
 import MyStories from "./MyStories";
@@ -13,6 +12,7 @@ import DangerZone from "./DangerZone";
 import FollowingTags from "./FollowingTags";
 import { config } from "../../utilities/constants/constants";
 import Modal from "../Modal/Modal";
+import CustomAvatar from "../CustomAvatar/CustomAvatar";
 
 export default function Profile() {
   const [currentTab, setCurrentTab] = useState("myStories");
@@ -80,10 +80,13 @@ export default function Profile() {
     <div className="xp-profile">
       <div className="container-fluid xp-profile-img-bg">
         <div className="d-block xp-profile-img text-center">
-          <img
-            src={state.userDetails.avatar ? state.userDetails.avatar : xpAvatar}
-            alt={config.imgAlt}
-          />
+          {state.userDetails.avatar ? (
+            <img src={state.userDetails.avatar} alt={config.imgAlt} />
+          ) : (
+            <div className="xp-cutom-avatar">
+              <CustomAvatar />
+            </div>
+          )}
         </div>
       </div>
       <div className="d-block xp-profile-title text-center">

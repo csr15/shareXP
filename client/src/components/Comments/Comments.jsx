@@ -6,6 +6,7 @@ import dummyAvatar from "../../Assets/icons/xp-avatar.svg";
 import { config } from "../../utilities/constants/constants";
 import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
+import CustomAvatar from "../CustomAvatar/CustomAvatar";
 
 const Comments = React.memo(({ comments, addCommentHandler, loader }) => {
   const [newComment, setNewComment] = React.useState("");
@@ -13,13 +14,15 @@ const Comments = React.memo(({ comments, addCommentHandler, loader }) => {
   const authState = useSelector((state) => state.auth.authState);
   //Comment card
   const CommentCard = ({ avatar, userName, commentedAt, comment }) => (
-    <div className="xp-comment-card"  id="comment">
+    <div className="xp-comment-card" id="comment">
       <div className="xp-comment-img">
-        <img
-          src={avatar ? avatar : dummyAvatar}
-          alt={config.imgAlt}
-          className="img-responsive"
-        />
+        {avatar ? (
+          <img src={avatar} alt={config.imgAlt} className="img-responsive" />
+        ) : (
+          <div className="xp-comment_custom_avatar">
+            <CustomAvatar width="50px" height="50px" />
+          </div>
+        )}
       </div>
       <div className="xp-comment-body my-auto">
         <div className="xp-comment-details">
@@ -71,7 +74,11 @@ const Comments = React.memo(({ comments, addCommentHandler, loader }) => {
               />
             ))
           ) : (
-            <p className="text-center mt-1 mb-4"> <strong>No comments</strong>, Be the first to add comment <span>😄</span></p>
+            <p className="text-center mt-1 mb-4">
+              {" "}
+              <strong>No comments</strong>, Be the first to add comment{" "}
+              <span>😄</span>
+            </p>
           )
         ) : (
           <Skeleton

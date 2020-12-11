@@ -108,6 +108,18 @@ h6 {
     height: 15vh;
     position: relative;
     margin: 0px auto 30px auto;
+    .xp-cutom-avatar {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      border: 5px solid $xp-white;
+      background-color: $xp-white;
+      height: 120px;
+      width: 120px;
+      overflow: hidden;
+    }
 
     .xp-profile-img {
       img {
