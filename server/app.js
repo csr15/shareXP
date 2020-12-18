@@ -119,5 +119,5 @@ function verifyOrigin(req, res, next) {
 }
 
 app.listen(PORT, () => {
-  console.log(`Server Running at ${port}`);
+  console.log(`Server Running at ${PORT}`);
 });
