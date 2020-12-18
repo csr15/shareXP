@@ -44,7 +44,7 @@ const storyData = require("./routes/storyData");
 
 //Connecting mongodb
 mongoose
-  .connect(config.mongoURI, {
+  .connect(mongoURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
