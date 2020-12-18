@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 8080;
 
 //Cors configuration
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "https://sharexp.netlify.app" }));
+app.use(cors({ credentials: true }));
 app.use(cookieParser());
 
 //Body-parser config
@@ -61,28 +61,28 @@ app.get("/api/v1/sharexp", limiter, (req, res) => {
 });
 
 //Publish
-app.use("/api/v1/publish", limiter, verifyOrigin, publishStory);
+app.use("/api/v1/publish", limiter, publishStory);
 
 //Auth
-app.use("/api/v1/auth", limiter, verifyOrigin, auth);
+app.use("/api/v1/auth", limiter, auth);
 
 //Profile
-app.use("/api/v1/profile", limiter, verifyOrigin, profile);
+app.use("/api/v1/profile", limiter, profile);
 
 //Search
-app.use("/api/v1/search", limiter, verifyOrigin, search);
+app.use("/api/v1/search", limiter, search);
 
 //Author
-app.use("/api/v1/author", limiter, verifyOrigin, author);
+app.use("/api/v1/author", limiter, author);
 
 //User stories
-app.use("/api/v1/userStories", limiter, verifyOrigin, userStories);
+app.use("/api/v1/userStories", limiter, userStories);
 
 //Suggestion Stories for reader
-app.use("/api/v1/suggestions", verifyOrigin, suggestions);
+app.use("/api/v1/suggestions", suggestions);
 
 //Single story
-app.use("/api/v1/storyData", limiter, verifyOrigin, storyData);
+app.use("/api/v1/storyData", limiter, storyData);
 
 //VerifyToken
 function verifyCookieToken(req, res, next) {
