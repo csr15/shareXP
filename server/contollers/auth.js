@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { OAuth2Client } = require("google-auth-library");
 const client = new OAuth2Client(
@@ -37,14 +37,15 @@ module.exports = {
   },
   signup: (req, res) => {
     const password = req.body.data.password;
-    bcrypt
-      .hash(password, 12)
-      .then((hashedPw) => {
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash("B4c0//", salt, function (err, hash) {
+        // Store hash in your password DB.
+
         const user = new UserModel({
           userName: req.body.data.userName,
           sureName: req.body.data.sureName,
           mail: req.body.data.mail,
-          password: hashedPw,
+          password: hash,
           description: "",
           link: "",
           facebook: "",
@@ -84,10 +85,8 @@ module.exports = {
             });
           })
           .catch((err) => console.log(err));
-      })
-      .catch((err) => {
-        console.log("Bcrypt error", err);
       });
+    });
   },
   signin: (req, res) => {
     const token = jwt.sign({}, "secretkey", { expiresIn: "30d" });
@@ -96,19 +95,23 @@ module.exports = {
     UserModel.findOne({ mail: req.body.data.mail })
       .then((MongoResult) => {
         uid = MongoResult._id;
-        return bcrypt.compare(req.body.data.password, MongoResult.password);
-      })
-      .then((result) => {
-        if (!result) {
-          throw Error();
-        }
+        bcrypt.compare(
+          req.body.data.password,
+          MongoResult.password,
+          function (err, result) {
+            // res === true
+            if (result === false) {
+              throw Error();
+            }
 
-        const userDetails = {
-          uid: uid,
-        };
-        res
-          .cookie("token", token, { httpOnly: true })
-          .send({ userDetails: userDetails });
+            const userDetails = {
+              uid: uid,
+            };
+            res
+              .cookie("token", token, { httpOnly: true })
+              .send({ userDetails: userDetails });
+          }
+        );
       })
       .catch((err) => res.status(404).json({ message: "Mail id wrong" }));
   },
@@ -180,7 +183,7 @@ module.exports = {
                       if (error) {
                         console.log(error);
                       } else {
-                        res.status(200).json("Email sent")
+                        res.status(200).json("Email sent");
                       }
                     });
                   })

@@ -31,6 +31,7 @@ export default function Edit({ state }) {
   const [linkedInLinkError, setLinkedInLinkError] = useState(false);
   const [externalLinkCheck, setExternalLinkCheck] = useState(false);
   const [externalLinkError, setExternalLinkError] = useState(false);
+  const [deletingAvatar, setDeletingAvatar] = useState(false);
   //save profile handler
   const dispatch = useDispatch();
   const saveProfile = () => {
@@ -130,6 +131,7 @@ export default function Edit({ state }) {
   };
 
   const deleteAvatar = async () => {
+    setDeletingAvatar(true);
     try {
       await Axios.delete(
         `${config.server_url}/profile/deleteAvatar/${localStorage.getItem(
@@ -139,11 +141,12 @@ export default function Edit({ state }) {
           withCredentials: true,
         }
       );
-
+      setDeletingAvatar(false);
       setIsAvatarDeleted(true);
     } catch (error) {
       setAvatarError(true);
 
+      setDeletingAvatar(false);
       setTimeout(() => {
         setAvatarError(false);
       }, 3000);
@@ -396,12 +399,14 @@ export default function Edit({ state }) {
           <div
             className="xp-profile-avatar_delete"
             style={
-              state.userDetails.avatar === ""
+              state.userDetails.avatar || deletingAvatar === ""
                 ? { pointerEvents: "none", opacity: 0.7 }
                 : null
             }
           >
-            <p onClick={deleteAvatar}>Delete avatar</p>
+            <p onClick={deleteAvatar}>
+              {deletingAvatar ? "Updating" : "Delete Avatar"}
+            </p>
           </div>
         </div>
       </div>

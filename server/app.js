@@ -10,7 +10,6 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const rateLimit = require("express-rate-limit");
 const url = require("url");
-const nodemailer = require("nodemailer");
 
 dotenv.config();
 //Port
@@ -45,17 +44,12 @@ const storyData = require("./routes/storyData");
 
 //Connecting mongodb
 mongoose
-  .connect(mongoURL, {
+  .connect(config.mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    //App is running
-    app.listen(PORT, () => console.log(`App is running  on PORT ${PORT}`));
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.error(err));
 
 mongoose.set("useFindAndModify", false);
 
@@ -123,3 +117,7 @@ function verifyOrigin(req, res, next) {
   // Send some kind of error
   res.status(403).json("Invalid origin");
 }
+
+app.listen(port, () => {
+  console.log(`Server Running at ${port}`);
+});
