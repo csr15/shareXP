@@ -13,8 +13,8 @@ const StoryModel = require("../models/story");
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "sharexp24@gmail.com",
-    pass: "$ngr@csr15",
+    user: "XXXX@gmail.com", //Your mail ID
+    pass: "*****", //Your mail password
   },
 });
 
