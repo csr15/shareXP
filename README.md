@@ -10,3 +10,25 @@
 - Search for a particular tag
 - Like a story
 - Comment your thoughts about the story
+
+## Technologies used
+- HTML
+- CSS
+- JS
+- Bootstrap
+- React
+- React Redux
+- Redux Thunk
+- Express JS
+- MongoDB Atlas
+- Mongoose
+- Firebase Storage
+- JWT
+- Nodemailer
+- Rate Limiter
+- Google Analytics
+- Heroku (backend)
+- Netlify (frontend)
+
+## Link
+[sharexp](https://sharexp.netlify.app)
