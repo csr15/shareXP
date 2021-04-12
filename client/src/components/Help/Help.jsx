@@ -148,7 +148,7 @@ const Help = () => {
       <div className="xp-footer text-center">
         <h6>
           shareXP, Made with <i className="bx bxs-heart bx-burst"></i> by{" "}
-          <a href="https://portfolio.bixhubtech.in" target="_black">
+          <a href="https://ragulcs.netlify.app" target="_black">
             <span>Ragul CS</span>
           </a>
         </h6>
