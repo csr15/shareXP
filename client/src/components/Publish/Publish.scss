@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../utilities/scss-variables/variables";
 
 //Ckeditor styles
 .ck-editor__editable_inline {
@@ -465,7 +465,7 @@
 
 //Animation
 @keyframes editor_hint_text {
-  from {
+  form {
     z-index: 1;
   }
   to {
@@ -474,7 +474,7 @@
 }
 
 @keyframes rocket_launch {
-  from {
+  form {
     transform: translate(0px, 0px);
     opacity: 0.1;
   }
