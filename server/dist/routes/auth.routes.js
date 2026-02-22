@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_controller_1 = require("../controllers/auth.controller");
+const auth_middleware_1 = require("../middleware/auth.middleware");
+const router = (0, express_1.Router)();
+router.post('/checkUserName/:userName', auth_controller_1.authController.checkUserName);
+router.post('/mailValidation/:mail', auth_controller_1.authController.checkMail);
+router.post('/signup', auth_controller_1.authController.signup);
+router.post('/signin', auth_controller_1.authController.signin);
+router.post('/googleAuth', auth_controller_1.authController.googleAuth);
+router.get('/checkAuth', auth_controller_1.authController.checkAuth);
+router.delete('/deleteAccount/:uid', auth_middleware_1.authMiddleware, auth_controller_1.authController.deleteAccount);
+exports.default = router;
+//# sourceMappingURL=auth.routes.js.map
