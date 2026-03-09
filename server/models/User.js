@@ -33,27 +33,29 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Story = void 0;
+exports.User = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
-const commentSchema = new mongoose_1.Schema({
-    userName: { type: String, required: true },
-    uid: { type: String, required: true },
-    comment: { type: String, required: true },
-    commentedAt: { type: Date, default: Date.now },
-    avatar: { type: String, default: '' },
-}, { _id: true });
-const storySchema = new mongoose_1.Schema({
+const notificationSchema = new mongoose_1.Schema({
     uid: { type: String, required: true },
     userName: { type: String, required: true },
+    authorId: { type: String, required: true },
+    content: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
-    likes: { type: [String], default: [] },
-    views: { type: Number, default: 0 },
-    story: {
-        title: { type: String, required: true },
-        content: { type: String, required: true },
-        tags: { type: [String], default: [] },
-        img: { type: String, default: '' },
-    },
-    comments: { type: [commentSchema], default: [] },
+    storyId: { type: String, required: true },
+    storyTitle: { type: String, required: true },
+}, { _id: true });
+const userSchema = new mongoose_1.Schema({
+    userName: { type: String, required: true },
+    sureName: { type: String, required: true },
+    mail: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    following: { type: [String], default: [] },
+    workingStatus: { type: String, default: '' },
+    facebook: { type: String, default: '' },
+    linkedIn: { type: String, default: '' },
+    link: { type: String, default: '' },
+    description: { type: String, default: '' },
+    avatar: { type: String, default: '' },
+    notifications: { type: [notificationSchema], default: [] },
 }, { timestamps: true });
-exports.Story = mongoose_1.default.model('Story', storySchema);
+exports.User = mongoose_1.default.model('User', userSchema);
