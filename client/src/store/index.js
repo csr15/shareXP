@@ -33,6 +33,3 @@ export {
   topTagStories,
   latestStories,
 } from "./actions/userStories";
-
-//Suggestion stories
-export { fetchSuggestions } from "./actions/suggestion";
